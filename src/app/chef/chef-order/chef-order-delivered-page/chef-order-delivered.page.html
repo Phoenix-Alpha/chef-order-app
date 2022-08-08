@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="order-list">
+      <ion-item
+        *ngFor="let order of historyOrderList"
+        class="order-item"
+        button
+        lines="none"
+        detail="false"
+        (click)="onClickOrderItem(order)"
+      >
+        <ion-avatar slot="start" class="order-item-avatar">
+          <!-- <img src="assets/images/tajine chicken.png" class="order-item-avatar"> -->
+          <img [src]="order.offer?.offerPictures[0]" class="order-item-avatar">
+        </ion-avatar>
+        <div class="order-info">
+          <div class="order-header m-5">
+            <div class="order-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              {{ order.offer?.title }}
+            </div>
+          </div>
+          <div class="order-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.delivery' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge">
+                      {{ order.pickupDate | localizedDate:'ddd. DD MMM. HH:mm': 'en-US' :browserTimeZone | async }}
+                    </ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.quantity' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge mr-20">{{ order.quantity }}</ion-badge>
+                    <ion-icon *ngIf="order.deliveryMethod === 'PICKUP'" src="assets/images/pickup.svg" class="order-info-icon"></ion-icon>
+                    <ion-icon *ngIf="order.deliveryMethod === 'DELIVERY'" src="assets/images/scooter.svg" class="order-info-icon"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <ion-button item-right class="order-item-edit-btn" (click)="onClickOrderItem(order)">
+          <ion-icon src="assets/images/more-black.svg" class="order-item-edit-icon"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

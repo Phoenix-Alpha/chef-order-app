@@ -1,0 +1,163 @@
+:host {
+  background: rgba(250, 238, 231, 0.32);;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.page-wrapper {
+  color: #4A4949;
+  .upload-section {
+    min-height: 300px !important;
+    max-height: 300px !important;
+    
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.2rem;
+
+    ion-spinner.loading-spinner {
+      --color: #CB652B;
+      position: absolute;
+      transform: scale(1.5);
+      z-index: 100;
+    }
+
+    .offer-picture-slides {
+      width: 100%;
+      height: 300px;
+      img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+      }
+    }
+
+    .description {
+      color: white;
+      position: absolute;
+      top: 15px;
+      z-index: 999;
+    }
+    
+    img.camera-icon {
+      position: absolute;
+      width: 20%;
+      opacity: 0.9;
+      z-index: 999;
+    }
+
+    img.camera-icon:active {
+      width: 20%;
+      opacity: 1.0;
+    }
+
+    ion-button.upload-btn {
+      --color: var(--ion-color-primary);
+      --background: #FAEEE7;
+      --box-shadow: none !important;
+      --min-height: 2rem;
+      position: absolute;
+      bottom: 15px;
+      // border: 1px solid var(--ion-color-primary);
+      text-transform: none;
+      font-size: 1.2rem;
+      height: 2.8rem;
+      z-index: 999;
+    }
+  }
+  ion-item.new-offer-item {
+    --min-height: 40px;
+    --detail-icon-color: var(--ion-color-primary);
+    --detail-icon-font-size: 2.8rem;
+    ion-label {
+      color: #4A4949 !important;
+      margin: 0 !important;
+    }
+  }
+
+  ion-input.offer-title-input {
+    font-size: 1.2rem;
+  }
+
+  ion-textarea.offer-description-input {
+    font-size: 1.2rem;
+  }
+
+  .draft-span {
+    font-size: 1.8rem;
+  }
+  
+}
+
+ion-slides.offer-picture-slides {
+  // --bullet-background: #CB652B;
+  // --bullet-background-active: #CB652B;
+  // --bullet-background: white;
+  // --bullet-background-active: white;
+
+  ::ng-deep .swiper-pagination.swiper-pagination-bullets {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding-right: 7% !important;
+    padding-left: 7% !important;
+    // bottom: 30px !important;
+    bottom: 10% !important;
+
+    .swiper-pagination-bullet {
+      position: relative;
+      width: 10px !important;
+      height: 10px !important;
+      background-color: transparent !important;
+      border: 1px solid white !important;
+      opacity: 1.0 !important;
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      margin-left: -35%;
+      top: 50%;
+      margin-top: -35%;
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: 1.0;
+      transition: 500ms;
+    }
+  }
+}
+
+.loading-effect {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}

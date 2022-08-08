@@ -1,0 +1,86 @@
+:host {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ion-intl-tel-input-code{
+        position: relative;
+    }
+
+    .ion-intl-tel-input-number {
+        flex: 1;
+        text-align: start;
+        margin-left: 10px !important;
+        font-size: 1.8rem !important;
+        ion-input {
+            --padding-top: 0;
+            --padding-bottom: 0;
+        }
+    }
+
+    .ionic-selectable {
+        &-label-default,
+        &-label-fixed {
+            max-width: 100%;
+        }
+
+        /* Keep an eye out for depreciated ::ng-deep replacement*/
+        &:not(&-label-stacked):not(&-label-floating) {
+            ::ng-deep {
+                .ionic-selectable-inner {
+                    .ionic-selectable-value {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+                }
+
+                .ionic-selectable-icon {
+                    &-inner {
+                        top: 17px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .flag-icon {
+        margin-right: 5px;
+        font-size: 2rem !important;
+    }
+
+    ::ng-deep .ionic-selectable-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+    div.custom-value-template-class {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        ion-icon {
+            color: #707070 !important;
+            font-size: 1.4rem !important;
+        }
+    }
+    
+    div.custom-icon-template-class {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        color: black !important;
+        font-size: 1.8rem !important;
+        .divider {
+            width: 1px !important;
+            height: 3rem !important;
+            margin-right: 5px;
+            border-left: 1px solid #707070;
+        }
+    }
+}

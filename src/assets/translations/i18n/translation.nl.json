@@ -1,0 +1,519 @@
+{
+	"global": {
+		"language": {
+			"english": "English",
+			"french": "Français",
+			"dutch": "Dutch",
+			"german": "Deutsch"
+		},
+		"fab": {
+			"skip": ""
+		},
+		"button": {
+			"next": "",
+			"login": "",
+			"confirm": "",
+			"signup": "",
+			"send": "",
+			"save": "",
+			"allow": "",
+			"skip": "",
+			"startSelling": "",
+			"continue": "",
+			"remove": "",
+			"edit": "",
+			"back": "",
+			"close": "",
+			"saveOffer": "",
+			"submit": ""
+		},
+		"divider": {
+			"or": ""
+		},
+		"label": {
+			"or": "",
+			"emailAddress": "",
+			"password": "",
+			"resendCode": "",
+			"resend": "",
+			"login": "",
+			"firstName": "",
+			"lastName": "",
+			"personalInformation": "",
+			"city": "",
+			"postCode": "",
+			"streetAndHouseNumber": "",
+			"address": "",
+			"phoneNumber": "",
+			"profileName": "",
+			"aboutMe": "",
+			"language": "",
+			"available": "",
+			"pending": "",
+			"toBeConfirmed": "",
+			"toBePrepared": "",
+			"activeOffers": "",
+			"mealsServed": "",
+			"tips": "",
+			"title": "",
+			"description": "",
+			"price": "",
+			"mandatoryFields": "",
+			"tags": "",
+			"allergens": "",
+			"portionWeight": "",
+			"offerType": "",
+			"preorder": "",
+			"ondemand": "",
+			"servingDate": "",
+			"orderUntil": "",
+			"noticePeriod": "",
+			"quantity": "",
+			"dishes": "",
+			"hours": "",
+			"hoursLowercase": "",
+			"gramm": "",
+			"option": "",
+			"onlyPickup": "",
+			"onlyDelivery": "",
+			"deliveryAndPickup": "",
+			"pickupAddress": "",
+			"chefAddress": "",
+			"review": "",
+			"delivery": "",
+			"pickup": "",
+			"zone": "",
+			"distance": "",
+			"euroSign": "€",
+			"notifications": "",
+			"messages": "",
+			"inPreparation": "",
+			"delivered": "",
+			"inPrep": "",
+			"enter6DigitCode": "",
+			"scanQRCode": "",
+			"reviews": "",
+			"edit": "",
+			"draft": "",
+			"active": "",
+			"archive": "",
+			"firstAndLastName": "",
+			"birthdate": "",
+			"billingAddress": "",
+			"attachYourAddress": "",
+			"bankAccount": "",
+			"attachYourIBAN": "",
+			"inactive": "",
+			"off": "",
+			"saveInDraft": "",
+			"estimation": "",
+			"customer": "",
+			"specialNote": "",
+			"serving": "",
+			"orders": "",
+			"cuisines": "",
+			"share": "",
+			"top": "",
+			"okay": "",
+			"onDemand": "",
+			"save": "",
+			"notSet": ""
+		}
+	},
+	"validation": {
+		"email": {
+			"required": "",
+			"notValid": ""
+		},
+		"password": {
+			"required": "",
+			"minLength": "",
+			"maxLength": "",
+			"containNumber": "",
+			"containSpecial": "",
+			"containUppercase": "",
+			"containLowercase": ""
+		},
+		"newPasswordConfirm": {
+			"required": "",
+			"notMatching": ""
+		},
+		"firstName": {
+			"required": "",
+			"minLength": "",
+			"maxLength": ""
+		},
+		"lastName": {
+			"required": "",
+			"minLength": "",
+			"maxLength": ""
+		},
+		"termsAndPolicy": {
+			"required": ""
+		},
+		"phoneNumber": {
+			"required": "",
+			"invalid": ""
+		},
+		"chef": {
+			"profileName": {
+				"required": "",
+				"minLength": "",
+				"maxLength": ""
+			},
+			"aboutMe": {
+				"required": "",
+				"minLength": "",
+				"maxLength": ""
+			},
+			"cuisines": {
+				"required": ""
+			},
+			"sellPlan": {
+				"required": ""
+			}
+		},
+		"offer": {
+			"title": {
+				"maxLength": ""
+			},
+			"description": {
+				"maxLength": ""
+			}
+		},
+		"global": {
+			"required": "",
+			"maxDistance": {
+				"required": ""
+			},
+			"deliveryPrice": {
+				"required": ""
+			}
+		}
+	},
+	"instruction": {
+		"slide1": {
+			"title": "",
+			"description": ""
+		},
+		"slide2": {
+			"title": "",
+			"description": ""
+		},
+		"slide3": {
+			"title": "",
+			"description": "",
+			"commitmentLink": ""
+		}
+	},
+	"home": {
+		"menu": {
+			"greeting": "",
+			"subtitle": "",
+			"login": "",
+			"signup": "",
+			"myAccount": "",
+			"myOrders": "",
+			"inbox": "",
+			"becomeAHomeChef": "",
+			"chefDashboard": "",
+			"shareAndEarn": "",
+			"needHelp": "",
+			"logout": ""
+		},
+		"title": {
+			"timeToEat": "",
+			"findOffer": ""
+		},
+		"slides": {
+			"locationDescription": "",
+			"exploreDescription": "",
+			"orderDescription": "",
+			"title": ""
+		},
+		"searchBar": {
+			"myLocation": "",
+			"poweredBy": "",
+			"show": "",
+			"suggestions": ""
+		}
+	},
+	"auth": {
+		"emailVerification": {
+			"verifiyYourEmail": "",
+			"pleaseEnterCode": ""
+		},
+		"login": {
+			"pageTitle": "",
+			"loginWithGoogle": "",
+			"loginWithFacebook": "",
+			"forgotPassword": "",
+			"doNotHaveAnAccount": ""
+		},
+		"passwordResetConfirm": {
+			"emailSent": "",
+			"pleaseCheckYourInbox": "",
+			"didNotReceiveCode": ""
+		},
+		"passwordReset": {
+			"forgotYourPassword": "",
+			"enterRegisteredEmail": "",
+			"rememberPassword": ""
+		},
+		"passwordUpdate": {
+			"passwordReset": "",
+			"setupNewPassword": ""
+		},
+		"signup": {
+			"pageTitle": "",
+			"signupWithGoogle": "",
+			"signupWithFacebook": "",
+			"alreadyHaveAnAccount": ""
+		}
+	},
+	"account": {
+		"setting": {
+			"title": "",
+			"personalDetails": "",
+			"paymentMethods": "",
+			"notificationSettings": ""
+		},
+		"notificationSettings": {
+			"title": "",
+			"turnOffAll": "",
+			"importantNotifications": "",
+			"newMessage": "",
+			"newOrder": "",
+			"orderUpdate": "",
+			"newReview": "",
+			"marketingNotification": "",
+			"newFollower": "",
+			"favouriteChefOffers": "",
+			"discountActions": "",
+			"customerServiceNotifications": "",
+			"customerService": ""
+		},
+		"paymentMethods": {
+			"title": ""
+		},
+		"personalDetails": {
+			"title": ""
+		}
+	},
+	"chef": {
+		"engagements": {
+			"yourEngagements": "",
+			"ourEngagements": "",
+			"keepItClean": {
+				"title": "",
+				"description": ""
+			},
+			"storeItWell": {
+				"title": "",
+				"description": ""
+			},
+			"cookItThrough": {
+				"title": "",
+				"description": ""
+			},
+			"keepItHalal": {
+				"title": "",
+				"description": ""
+			},
+			"keepItProfessional": {
+				"title": "",
+				"description": ""
+			},
+			"findCustomers": {
+				"title": "",
+				"description": ""
+			},
+			"managePayments": {
+				"title": "",
+				"description": " to your indicated account."
+			},
+			"customerSupport": {
+				"title": "",
+				"description": ""
+			},
+			"getApprovedSign": {
+				"title": "",
+				"description": ""
+			},
+			"freeOfCharge": {
+				"title": "",
+				"description": ""
+			}
+		},
+		"instruction": {
+			"slide1": {
+				"title": "",
+				"description": ""
+			},
+			"slide2": {
+				"title": "",
+				"description": ""
+			},
+			"slide3": {
+				"title": "",
+				"description": ""
+			}
+		},
+		"promote": {
+			"title": "",
+			"avatar": {
+				"comment": ""
+			},
+			"cusinesYouSpecialisedIn": "",
+			"howOftenYouPlanToSell": "",
+			"referalCodeIfApplicable": "",
+			"selectAvatarSource": ""
+		},
+		"dashboard": {
+			"title": "",
+			"newOffer": "",
+			"chefInbox": "",
+			"manageIncomingOrder": "",
+			"myOffers": "",
+			"aboutMe": "",
+			"myWallet": "",
+			"packaging": "",
+			"vacationMode": "",
+			"openOrders": "",
+			"sales": "",
+			"avatar": {
+				"uploadNew": ""
+			}
+		},
+		"offer": {
+			"startFromScratch": "",
+			"startBasedOnExistingOffer": "",
+			"new": {
+				"title": "",
+				"publishOffer": "",
+				"offerPictureDescription": "",
+				"uploadPictures": "",
+				"uploadMorePictures": "",
+				"dishAndOfferDetails": "",
+				"dishDetails": {
+					"title": "",
+					"dishOrigin": ""
+				},
+				"deliveryOptions": {
+					"title": "",
+					"pickupAddressDescription": "",
+					"freeDeliveryForMinimum": ""
+				},
+				"price": {
+					"description": ""
+				}
+			},
+			"list": {
+				"title": "",
+				"showOffer": "",
+				"viewOrders": "",
+				"editOffer": "",
+				"cancelOffer": "",
+				"deleteOffer": ""
+			}
+		},
+		"inbox": {
+			"title": "",
+			"typeInYourMessage": "",
+			"clearSelectedNotifications": "",
+			"clearAllReadNotifications": "",
+			"clearSelectedConversations": "",
+			"clearAllFinishedConversations": ""
+		},
+		"chat": {
+			"blockUser": "",
+			"reportUser": ""
+		},
+		"orders": {
+			"title": "",
+			"instruction": {
+				"pending": {
+					"description": ""
+				},
+				"inPreparation": {
+					"description": " or ask him to give you the delivery code. This the only way we make sure that customer received his/her meal and we can unlock the money for withdrawal.'"
+				},
+				"delivered": {
+					"description": ""
+				}
+			},
+			"pending": {
+				"title": "",
+				"detail": {
+					"takeOrder": "",
+					"rejectOrder": ""
+				}
+			},
+			"inPreparation": {
+				"title": "",
+				"detail": {
+					"viewOrderDetails": "",
+					"contactTheCustomer": "",
+					"addressDirection": "",
+					"confirmDelivery": ""
+				}
+			},
+			"deliveryConfirmation": {
+				"title": "",
+				"theOrderNumber": "",
+				"isMarkedAsDelivered": ""
+			}
+		},
+		"wallet": {
+			"title": "",
+			"pendingAmount": "",
+			"availableAmount": "",
+			"recentTransactions": "",
+			"activeYourWallet": "",
+			"activeYourWalletDescription": "",
+			"walletInformation": {
+				"title": "",
+				"dataPolicy": "",
+				"transferPolicy": ""
+			},
+			"updateYourWallet": "",
+			"chefWalletEnabledDescription": "",
+			"chefWalletInVerificationDescription": "",
+			"chefWalletVerificationFailedDescription": "",
+			"chefWalletSuspendedDescription": ""
+		},
+		"vacation": {
+			"title": "",
+			"modeToggleDescription": "",
+			"definedPeriod": "",
+			"description": ""
+		},
+		"packaging": {
+			"title": "",
+			"description1": "",
+			"description2": "",
+			"copyCode": ""
+		},
+		"profile": {
+			"title": ""
+		}
+	},
+	"permission": {
+		"location": {
+			"title": "",
+			"description": ""
+		}
+	},
+	"phone": {
+		"verification": {
+			"title": "",
+			"enterPhoneNumber": "",
+			"typeSMSCode": ""
+		}
+	},
+	"order": {
+		"review": {
+			"question": ""
+		}
+	}
+}

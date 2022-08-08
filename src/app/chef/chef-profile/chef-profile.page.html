@@ -1,0 +1,61 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.profile.title' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end" class="right-btn-group">
+      <ion-button id="shareBtn" #settingBtn (click)="onClickShareButton($event)" class="share-button text-transform-none">
+        <div class="flex-container flex-direction-col align-items-center text-overflow-ellipsis">
+          <ion-icon src="../../assets/images/share.svg" class="share-btn-icon" color="secondary"></ion-icon>
+          <span>{{ 'global.label.share' | translate }}</span>
+        </div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <div class="upper-section p-15">
+      <div class="avatar">
+        <ion-avatar class="position-relative">
+          <img *ngIf="chefDetail.profilePicture" [src]="chefDetail.profilePicture" class="default-avatar"/>
+          <img *ngIf="!chefDetail.profilePicture" src="../../assets/images/avatar.png" class="default-avatar"/>
+        </ion-avatar>
+      </div>
+      <div class="profile flex-container flex-direction-col">
+        <div class="m-5 text-underline profile-name">{{ chefDetail.profileName }}</div>
+        <div class="m-5 review">
+          <img src="../../assets/images/Veelhoek.png" class="review-icon mr-5"/>
+          <span>{{ chefDetail.rating }} ({{ chefDetail.totalReviews }})</span>
+        </div>
+      </div>
+      <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 mr-10 ml-5">
+        <div class="round-score flex-container align-items-center justify-content-center">{{ chefDetail.activeOffers }}</div>
+        <div class="score-description">{{ 'global.label.activeOffers' | translate }}</div>
+      </div>
+      <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 ml-10 mr-10">
+        <div class="round-score flex-container align-items-center justify-content-center">{{ chefDetail.mealsServed }}</div>
+        <div class="score-description">{{ 'global.label.mealsServed' | translate }}</div>
+      </div>
+    </div>
+    <div class="tab-wrapper position-relative">
+      <ion-tabs #tabs (ionTabsWillChange)="tabWillChange($event)">
+        <ion-tab-bar slot="top">
+          <ion-tab-button tab="aboutme">
+            <ion-label class="ion-text-nowrap">{{ 'global.label.aboutMe' | translate }}</ion-label>
+            <div *ngIf="currentTab =='aboutme'" class="tab-decorator"></div>
+          </ion-tab-button>
+          <ion-tab-button tab="reviews">
+            <ion-label class="ion-text-nowrap">{{ 'global.label.reviews' | translate }}</ion-label>
+            <div *ngIf="currentTab =='reviews'" class="tab-decorator"></div>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>  
+    </div>
+  </div>
+
+</ion-content>

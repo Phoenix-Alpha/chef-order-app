@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <!-- <div class="offer-mode-item" (click)="onClickStartFromScratch()">
+      <div class="ion-margin-start offer-mode-label mb-10">{{ 'chef.offer.startFromScratch' | translate }}</div>
+      <img src="../assets/images/chef-dashboard/cooking.png">
+    </div>
+    <div class="offer-mode-item" (click)="onClickStartBasedOnExistingOffer()">
+      <div class="ion-margin-start offer-mode-label mb-10">{{ 'chef.offer.startBasedOnExistingOffer' | translate }}</div>
+      <img src="../assets/images/serving-dish.png">
+    </div> -->
+    <ion-list class="notification-list">
+      <ion-item class="notification-item" lines="none" detail="false">
+        <ion-img src="assets/images/chef-inbox/halal-logo.png" slot="start" class="notification-item-icon"></ion-img>
+        <div class="notification-info">
+          <div class="notification-title m-5">Order: Tajine Chicken</div>
+          <div class="notification-body text-overflow-ellipsis m-5">Karim B. has placed a new order.</div>
+        </div>
+        <ion-icon item-right src="assets/images/chef-inbox/inbox-item-detail.svg"></ion-icon>
+        <div class="notification-date">Mo. 15-02-2021</div>
+      </ion-item>
+      <ion-item class="notification-item" lines="none" detail="false">
+        <ion-img src="assets/images/chef-inbox/halal-logo-light.png" slot="start" class="notification-item-icon"></ion-img>
+        <div class="notification-info">
+          <div class="notification-title m-5">Review: Tajine Chicken</div>
+          <div class="notification-body text-overflow-ellipsis m-5">Sanaa L. posted a review about Tajine Chicken.</div>
+        </div>
+        <ion-icon item-right src="assets/images/chef-inbox/inbox-item-detail.svg"></ion-icon>
+        <div class="notification-date">Mo. 15-02-2021</div>
+      </ion-item>
+    </ion-list>
+    
+  </div>
+</ion-content>

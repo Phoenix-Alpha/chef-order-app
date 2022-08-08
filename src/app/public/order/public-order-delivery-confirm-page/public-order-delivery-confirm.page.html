@@ -1,0 +1,79 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.orders.deliveryConfirmation.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="order-list">
+      <ion-item class="order-item" button lines="none" detail="false">
+        <ion-avatar slot="start" class="order-item-avatar">
+          <img *ngIf="publicOrderDetail?.offer?.offerPictures[0]" [src]="publicOrderDetail?.offer?.offerPictures[0]" class="order-item-avatar">
+        </ion-avatar>
+        <div class="order-info">
+          <div class="order-header m-5">
+            <div class="order-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              {{ publicOrderDetail?.offer?.title }}
+            </div>
+          </div>
+          <div class="order-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.delivery' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge">
+                      {{ publicOrderDetail?.pickupDate | localizedDate:'ddd. DD MMM. HH:mm': 'en-US' :browserTimeZone | async }}
+                    </ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.quantity' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge mr-20">{{ publicOrderDetail?.quantity }}</ion-badge>
+                    <ion-icon *ngIf="publicOrderDetail?.deliveryMethod === 'PICKUP'" src="assets/images/pickup.svg" class="order-info-icon"></ion-icon>
+                    <ion-icon * ngIf="publicOrderDetail?.deliveryMethod === 'DELIVERY'" src="assets/images/scooter.svg" class="order-info-icon"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div #canvas></div>
+    <div>Code: {{ publicOrderDetail?.pickupCode }}</div>
+    <ion-grid [@fadeAnimation] *ngIf="confirmed" class="w-100 mt-auto mb-auto confirm-info">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="9">
+          <div class="w-100 flex-container flex-direction-col align-items-center justify-content-center">
+            <ion-img src="assets/images/checked.png" class="confirm-checked-img"></ion-img>
+            <div class="flex-container flex-direction-col justify-content-center ion-text-center mt-20">
+              <div>The order number <span class="primary-color-highlight">{{publicOrderDetail?.orderNumber}}</span></div>
+              <div><span class="primary-color-highlight">"{{ publicOrderDetail?.offer?.title }}"</span> is marked as delivered</div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid [@fadeAnimation] *ngIf="confirmed" class="mt-auto w-100 imb-50">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button class="auth-submit-btn" expand="block" (click)="onBack()">{{ 'global.button.back' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

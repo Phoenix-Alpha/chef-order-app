@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110" height="110" viewBox="0 0 110 110">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ovaal_1" data-name="Ovaal 1" cx="52" cy="52" r="52" fill="#cb652b" stroke="#fff" stroke-width="6"/>
+    </clipPath>
+  </defs>
+  <g id="Group_204" data-name="Group 204" transform="translate(-840 -57)">
+    <g id="Ovaal_1-2" data-name="Ovaal 1" transform="translate(843 60)">
+      <circle id="Ovaal_1-3" data-name="Ovaal 1" cx="52" cy="52" r="52" fill="#cb652b" stroke="#fff" stroke-width="6"/>
+    </g>
+    <text id="EN" transform="translate(857 135)" fill="#fff" font-size="65" font-family="Candara" letter-spacing="-0.025em"><tspan x="0" y="0">EN</tspan></text>
+  </g>
+</svg>

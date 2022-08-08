@@ -1,0 +1,132 @@
+<ion-header class="header-no-border transparent">
+  <ion-toolbar class="transparent position-relative">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'auth.signup.pageTitle' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="registerForm" (submit)="onSubmitSignup()" class="h-100">
+    <div class="page-wrapper">
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-top">
+          <ion-col size="9">
+            <ion-item button class="item-auth-btn" lines="none" detail="false" (click)="onClickSignupWithGoogle()">
+              <ion-icon slot="start" src="../../assets/images/google.svg"></ion-icon>
+              <ion-text class="ion-text-center ion-text-nowrap">{{ 'auth.signup.signupWithGoogle' | translate }}</ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="9">
+            <ion-item button class="item-auth-btn" lines="none" detail="false" (click)="onClickSignupWithFacebook()">
+              <ion-icon slot="start" src="../../assets/images/facebook.svg"></ion-icon>
+              <ion-text class="ion-text-center ion-text-nowrap">{{ 'auth.signup.signupWithFacebook' | translate }}</ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-bottom">
+          <div class="flex-container w-100">
+            <div class="divider w-100"></div>
+            <div class="or-divider">{{ 'global.divider.or' | translate }}</div>
+            <div class="divider w-100"></div>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-start ion-justify-content-start ion-padding-horizontal-5 ion-padding-bottom">
+          <ion-col>
+            <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.firstName' | translate }}</ion-label>
+            <div class="w-100"></div>
+            <ion-input class="light-brown-input" formControlName="firstName"></ion-input>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.firstName">
+                <div class="error-message" *ngIf="firstName.hasError(validation.type) && (firstName.dirty || firstName.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.lastName' | translate }}</ion-label>
+            <div class="w-100"></div>
+            <ion-input class="light-brown-input" formControlName="lastName"></ion-input>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.lastName">
+                <div class="error-message" *ngIf="lastName.hasError(validation.type) && (lastName.dirty || lastName.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-10 ion-padding-bottom">
+          <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.emailAddress' | translate }}</ion-label>
+          <div class="w-100"></div>
+          <ion-input class="light-brown-input" formControlName="email"></ion-input>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-10 ion-padding-bottom">
+          <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.password' | translate }}</ion-label>
+          <div class="w-100"></div>
+          <ion-input class="light-brown-input" placeholder="Minimum 8 characters" formControlName="password" type="password"></ion-input>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-10 ion-padding-bottom">
+          <ion-item class="checkbox-item" lines="none">
+            <ion-checkbox class="auth-checkbox" slot="start" formControlName="termsAndPolicy"></ion-checkbox>
+            <ion-text>I agree with the <a class="auth-label-small-link" routerLink="/public/terms-conditions">terms and conditions</a> and the <a class="auth-label-small-link" routerLink="/public/privacy-policy">privacy policy</a></ion-text>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.termsAndPolicy">
+              <div class="error-message" *ngIf="termsAndPolicy.hasError(validation.type) && (termsAndPolicy.dirty || termsAndPolicy.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="mt-auto w-100">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSubmitSignup()">
+              {{ 'global.button.signup' | translate }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="imb-50 w-100">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col>
+            <div class="flex-container align-items-center justify-content-center">
+              <ion-label class="mr-10 auth-label-light">{{ 'auth.signup.alreadyHaveAnAccount' | translate }}</ion-label>
+              <ion-button class="auth-submit-btn-small" routerLink="/auth/login">{{ 'global.button.login' | translate }}</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>
+
+<div class="background-gradient-wrapper"></div>

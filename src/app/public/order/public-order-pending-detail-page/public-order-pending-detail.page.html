@@ -1,0 +1,76 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.orders.pending.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="order-list">
+      <ion-item
+        class="order-item"
+        lines="none"
+        detail="false"
+      >
+        <ion-avatar slot="start" class="order-item-avatar">
+          <img [src]="publicOrderDetail?.offer?.offerPictures[0]" class="order-item-avatar">
+        </ion-avatar>
+        <div class="order-info">
+          <div class="order-header m-5">
+            <div class="order-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              {{ publicOrderDetail?.offer?.title }}
+            </div>
+            <div class="order-accept-time-remaining ion-text-nowrap">
+              <ion-icon src="assets/images/clock.svg" class="timer-icon"></ion-icon>
+              15 hours 17 minutes
+            </div>
+          </div>
+          <div class="order-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.delivery' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge">
+                      {{ publicOrderDetail?.pickupDate | localizedDate:'ddd. DD MMM. HH:mm': 'en-US' :browserTimeZone | async }}
+                    </ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.quantity' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge mr-20">{{ publicOrderDetail?.quantity }}</ion-badge>
+                    <ion-icon *ngIf="publicOrderDetail?.deliveryMethod === 'PICKUP'" src="assets/images/pickup.svg" class="order-info-icon"></ion-icon>
+                    <ion-icon *ngIf="publicOrderDetail?.deliveryMethod === 'DELIVERY'" src="assets/images/scooter.svg" class="order-info-icon"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- <div class="order-accept-time-remaining">
+          <ion-icon src="assets/images/clock.svg" class="timer-icon"></ion-icon>
+          15 hours 17 minutes
+        </div> -->
+      </ion-item>
+
+      <!-- <ion-item button class="order-operation-item ion-text-center" lines="none" detail="false" (click)="onTakeOrder()">
+        <ion-label>{{ 'chef.orders.pending.detail.takeOrder' | translate }}</ion-label>
+      </ion-item>
+      <ion-item button class="order-operation-item ion-text-center" lines="none" detail="false" (click)="onRejectOrder()">
+        <ion-label>{{ 'chef.orders.pending.detail.rejectOrder' | translate }}</ion-label>
+      </ion-item> -->
+    </ion-list>
+  </div>
+</ion-content>

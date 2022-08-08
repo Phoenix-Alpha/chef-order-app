@@ -1,0 +1,121 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title *ngIf="offerInfo.offerId == -1" color="secondary ion-text-center">{{ 'chef.offer.new.title' | translate }}</ion-title>
+      <ion-title *ngIf="offerInfo.offerId > 0" color="secondary ion-text-center">{{ 'chef.offer.list.editOffer' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="offerGeneralInfoForm" class="h-100">
+    <div class="page-wrapper">
+      <div class="upload-section" >
+        <ion-slides
+          *ngIf="offerPictures && offerPictures.length > 0"
+          id="slides"
+          #slides
+          pager="true"
+          [options]="slideOpts"
+          class="offer-picture-slides"
+          [ngClass]="(registrationStatus$ | async) === 'UPLOADINGOFFERPICTURE' ? 'loading-effect' : ''"
+          (click)="onClickSlides()">
+          <ion-slide *ngFor="let picture of offerPictures">
+            <img [src]="picture" class="offer-picture">
+          </ion-slide>
+        </ion-slides>
+        <ion-spinner *ngIf="(registrationStatus$ | async) === 'UPLOADINGOFFERPICTURE'" class="loading-spinner"></ion-spinner>
+        <div *ngIf="!(offerPictures && offerPictures.length > 0)" class="ion-text-center description" [ngStyle]="{color: (offerPictures && offerPictures.length > 0) ? 'white' : 'black'}">
+          {{ 'chef.offer.new.offerPictureDescription' | translate }}
+          <a (click)="onClickTips()">{{ 'global.label.tips' | translate }}</a>
+        </div>
+        <img *ngIf="!(offerPictures && offerPictures.length > 0)" src="../assets/images/photo-camera-interface-symbol-for-button.png" class="camera-icon" (click)="getAvatarFromCamera()">
+        <ion-button class="upload-btn" (click)="uploadPicture()">
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+          <ng-container *ngIf="!(offerPictures && offerPictures.length > 0)">{{ 'chef.offer.new.uploadPictures' | translate }}</ng-container>
+          <ng-container *ngIf="offerPictures && offerPictures.length > 0">{{ 'chef.offer.new.uploadMorePictures' | translate }}</ng-container>
+        </ion-button>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">{{ 'global.label.title' | translate }}*</ion-label>
+        <ion-input 
+          class="offer-title-input"
+          formControlName="title">
+        </ion-input>
+      </ion-item>
+      <div class="w-100"></div>
+      <div class="mr-16 ml-16 validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.title">
+          <div class="error-message" *ngIf="title.hasError(validation.type) && (title.dirty || title.touched)">
+            {{ validation.message | translate }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item class="mt-15">
+        <ion-label position="stacked">{{ 'global.label.description' | translate }}*</ion-label>
+        <ion-textarea
+          class="offer-description-input"
+          formControlName="description">
+        </ion-textarea>
+      </ion-item>
+      <div class="w-100"></div>
+      <div class="mr-16 ml-16 validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.description">
+          <div class="error-message" *ngIf="description.hasError(validation.type) && (description.dirty || description.touched)">
+            {{ validation.message | translate }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="w-100 mt-15"></div>
+      <ion-grid class="w-100 ion-no-padding">
+        <ion-item routerDirection="root" routerLink="/public/chef/offer/0/dish-detail" lines="full" detail="false" routerLinkActive="selected" class="new-offer-item">
+          <ion-label class="ion-margin-start menu-label">{{ 'chef.offer.new.dishAndOfferDetails' | translate }}*</ion-label>
+          <ion-icon item-right src="assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+        </ion-item>
+        <ion-item routerDirection="root" routerLink="/public/chef/offer/0/delivery-options" lines="full" detail="false" routerLinkActive="selected" class="new-offer-item">
+          <ion-label class="ion-margin-start menu-label">{{ 'chef.offer.new.deliveryOptions.title' | translate }}*</ion-label>
+          <ion-icon item-right src="assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+        </ion-item>
+        <ion-item routerDirection="root" routerLink="/public/chef/offer/0/price" lines="full" detail="false" routerLinkActive="selected" class="new-offer-item">
+          <ion-label class="ion-margin-start menu-label">{{ 'global.label.price' | translate }}*</ion-label>
+          <ion-icon item-right src="assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+        </ion-item>
+      </ion-grid>
+      <div class="m-10">
+        * {{ 'global.label.mandatoryFields' | translate }}
+      </div>
+      <ion-grid *ngIf="offerInfo.offerId > 0" class="mt-auto w-100 imb-50">
+        <ion-row *ngIf="offerInfo.generalInfo.status === OfferStatus.DRAFT" class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onPublishDraftOffer()">{{ 'chef.offer.new.publishOffer' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="offerInfo.generalInfo.status === OfferStatus.ACTIVE" class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSaveActiveOffer()">{{ 'global.button.saveOffer' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="offerInfo.generalInfo.status === OfferStatus.DRAFT" class="ion-align-items-center ion-margin-bottom">
+          <ion-col size="12" class="flex-container align-items-center justify-content-end">
+            <span class="draft-span">{{ 'global.label.or' | translate }} <a class="text-underline" (click)="onSaveDraftOffer()">{{ 'global.label.saveInDraft' | translate }}</a></span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngIf="offerInfo.offerId <= 0" class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onPublishOffer()">{{ 'chef.offer.new.publishOffer' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-margin-bottom">
+          <ion-col size="12" class="flex-container align-items-center justify-content-end">
+            <span class="draft-span">{{ 'global.label.or' | translate }} <a class="text-underline" (click)="onSaveInDraft()">{{ 'global.label.saveInDraft' | translate }}</a></span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

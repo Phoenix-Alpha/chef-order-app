@@ -1,0 +1,111 @@
+ion-toolbar {
+  --min-height: 20px !important;
+  --background: #CB652B;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.option {
+  text-decoration: underline;
+  color: #4A4949;
+  opacity: 0.3;
+}
+
+.active-option {
+  color: black;
+  opacity: 1;
+}
+
+// ion-searchbar {
+//   background-color: white;
+//   border: 1px solid #707070 !important;
+//   height: 40px;
+//   ::ng-deep {
+
+//     .searchbar-input-container {
+//       border-style: none;
+//       --box-shadow: none;
+//       width: 100%;
+//       height: 30px;
+//       font-family: 'Segoe UI Emoji', sans-serif;
+//       text-align: left;
+//       input{
+//         font-size: 22px !important;
+//       }
+//     }
+//     ion-icon {
+//       right: 16px !important;
+//       left: auto !important;
+//     }
+
+//     .searchbar-search-icon {
+//       top: 6px;
+//       width: 20px !important;
+//       height: 20px !important;
+//       background-image: url("../../../../../assets/icon/svg/search-2.svg") !important;
+//     }
+//     .searchbar-clear-icon {
+//       display: none !important;
+//     }
+//     .searchbar-input {
+//       padding: 0;
+//       background: none;
+//     }
+
+//   }
+
+// }
+
+.dishes-container {
+  ion-list {
+    min-height: 220px;
+    border: 1px solid #707070 !important;
+    ion-item {
+      //line-height: 19px;
+      --min-height: 35px;
+      height: 35px;
+      font-size: 1.6rem;
+      color: #4A4949;
+    }
+  }
+}
+
+ion-select.red-dropdown-icon {
+  flex-grow: 1;
+}
+
+ion-select.red-dropdown-icon::part(icon) {
+  color: var(--ion-color-primary) !important;
+  opacity: 1.0 !important;
+}
+
+ion-select {
+  --padding-end: 10px;
+  border: 1px solid #707070 !important;
+  font-size: 1.6rem;
+  color: #4A4949;
+  height: 40px;
+}

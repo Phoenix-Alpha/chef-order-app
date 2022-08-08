@@ -1,0 +1,41 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'account.setting.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+        <ion-col size="11" class="ion-no-padding">
+          <ion-item routerDirection="root" routerLink="/public/account/personal-details-edit" lines="none" detail="false" routerLinkActive="selected" class="primary-btn">
+            <img src="../assets/images/user.png" class="menu-img">
+            <ion-label class="ion-margin-start menu-label">{{ 'account.setting.personalDetails' | translate }}</ion-label>
+          </ion-item>    
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="11" class="ion-no-padding">
+          <ion-item routerDirection="root" routerLink="/public/account/payment-methods" lines="none" detail="false" routerLinkActive="selected" class="primary-btn">
+            <img src="../assets/images/credit-cards.png" class="menu-img">
+            <ion-label class="ion-margin-start menu-label">{{ 'account.setting.paymentMethods' | translate }}</ion-label>
+          </ion-item>    
+        </ion-col>
+      </ion-row> -->
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="11" class="ion-no-padding">
+          <ion-item routerDirection="root" routerLink="/public/account/notification-settings" lines="none" detail="false" routerLinkActive="selected" class="primary-btn">
+            <img src="../assets/images/notification.png" class="menu-img">
+            <ion-label class="ion-margin-start menu-label">{{ 'account.setting.notificationSettings' | translate }}</ion-label>
+          </ion-item>    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'account.personalDetails.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+        <ion-avatar class="position-relative flex-container align-items-center justify-content-center">
+          <img src="../../assets/images/avatar.png" class="default-avatar" />
+        </ion-avatar>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding mt-10">
+        <ion-label class="personal-detail-label-name font-poppins font-weight-heavy">{{ loggedInUser.firstName }} {{ loggedInUser.lastName }}</ion-label>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding mt-10">
+        <ion-label class="personal-detail-label font-poppins">{{ loggedInUser.email }}</ion-label>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding mt-15 mb-15">
+        <ion-label class="personal-detail-label font-poppins">Member since {{ loggedInUser.registeredAt | localizedDate:'DD/MM/YYYY': 'en-US' :browserTimeZone | async }}</ion-label>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="personal-detail-item" button (click)="onEdit()" >
+            <ion-icon slot="start" src="../../assets/images/edit.svg"></ion-icon>
+            <ion-label class="personal-detail-label font-poppins">Modify your profile</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+

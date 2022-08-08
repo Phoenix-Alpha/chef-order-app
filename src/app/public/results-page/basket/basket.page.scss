@@ -1,0 +1,74 @@
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute;
+    top: 0;
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+ion-icon, span {
+  font-size: 18px;
+}
+
+ion-button {
+  --border-color: #707070;
+  --border-width: 1px;
+}
+
+.date {
+  font-family: 'Perpetua', sans-serif;
+  color: #7F7F7F;
+}
+
+.price {
+  font-family: 'Perpetua', sans-serif;
+}
+
+.quantity, .name {
+  font-family: 'Sitka Heading', sans-serif;
+}
+
+.text-area-container {
+  ion-textarea {
+    border-radius: 5px;
+    border: 1px solid #707070;
+    margin-bottom: 10px;
+    font-family: 'Arabic Typesetting', sans-serif;
+    color: rgba(74, 73, 73, 0.5);
+  }
+}
+
+.text-note {
+  font-family: 'Sitka Heading', sans-serif;
+  opacity: 0.5;
+}
+
+.no-opacity {
+  opacity: 1;
+}
+
+ion-col.align-center {
+  margin-left: auto;
+}
+
+ion-button.full {
+  text-transform: none;
+   margin-left: 6rem;
+}

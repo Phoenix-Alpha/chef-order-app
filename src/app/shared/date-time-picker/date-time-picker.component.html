@@ -1,0 +1,55 @@
+<!-- <div class="base-picker" (click)="closePicker()"></div> -->
+
+<div class="picker-container position-relative" #pickerContainer>
+  <form [formGroup]="pickupForm">
+    <ion-icon class="close-btn" (click)="closePicker()" name="close-outline"></ion-icon>
+    <ion-grid>
+      <ion-row class="mt-20">
+        <ion-col size="12" class="mb-15">
+          <p>Confirm pickup date and time</p>
+        </ion-col>
+        <ion-col size="6">
+          <ion-icon name="calendar-filter"></ion-icon>
+          <!-- <input class="date-text" formControlName="pickupDate"> -->
+          
+            <input class="date-text ion-text-center" (click)="onClickDatePicker()" formControlName="pickupDate" readonly>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container>
+                <div class="error-message" *ngIf="pickupDate.hasError('required') && (pickupDate.dirty || pickupDate.touched)">
+                  Date is requried.
+                </div>
+              </ng-container>
+            </div>
+          
+        </ion-col>
+        <ion-col size="6">
+          <ion-icon name="watch"></ion-icon>
+          <input [ngxTimepicker]="timePicker" [format]="24" class="hour-text ion-text-center" readonly formControlName="timePickerInput" >
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container>
+              <div class="error-message" *ngIf="timePickerInput.hasError('required') && (timePickerInput.dirty || timePickerInput.touched)">
+                Date is requried.
+              </div>
+            </ng-container>
+          </div>
+          <ngx-material-timepicker
+            #timePicker
+            (timeChanged)="onTimeChanged($event)"
+            (opened)="onTimePickerOpened()"
+            (closed)="onTimePickerClosed()"
+            (timeSet)="onTimePickerTimeSet($event)"
+          >
+          </ngx-material-timepicker>
+        </ion-col>
+        <div class="w-100 flex-container flex-direction-row align-items-center justify-content-space-around mt-15">
+          <ion-button class="rounded-btn outline" (click)="closePicker()" size="small" >
+            {{ 'Cancel' | translate }}
+          </ion-button>
+          <ion-button class="rounded-btn filled" (click)="addToCart()" size="small" >
+            {{ 'Add to cart' | translate }}
+          </ion-button>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </form>
+</div>

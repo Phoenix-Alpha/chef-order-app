@@ -1,0 +1,103 @@
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-list-header {
+  --background: var(--ion-color-primary);
+}
+
+ion-list-header ion-label.menu-header-greetings {
+  font-size: 1.8rem !important;
+  font-weight: 400;
+  min-height: 1.8rem;
+}
+
+ion-list-header ion-label.menu-header-comments {
+  font-size: 1.4rem !important;
+  font-weight: 400;
+  min-height: 20px;
+}
+
+ion-list.menu-list {
+  padding: 0 !important;
+  height: 100%;
+}
+
+ion-grid.menu-toggle-group {
+  height: calc(100% - 78px) !important;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-menu-toggle ion-item {
+  --min-height: 40px;
+  --detail-icon-color: #707070;
+  --detail-icon-font-size: 2.8rem;
+  margin: 8px;
+  border-radius: 18px;
+  box-shadow: 0px 1px 2px #00000056;
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+ion-menu-toggle ion-item.language-item {
+  width: 50%;
+  margin: 8px auto 8px auto;
+  border-radius: 18px;
+  box-shadow: 0px 1px 2px #00000056;
+}
+
+// ion-menu-toggle ion-item ion-label {
+//   margin-top: 0;
+//   margin-bottom: 0;
+// }
+
+ion-list-header ion-avatar.header-avatar-margin-vertical {
+  --margin-top: var(--ion-margin, 8px);
+  --margin-bottom: var(--ion-margin, 8px);
+  margin-top: var(--ion-margin, 8px);
+  margin-bottom: var(--ion-margin, 8px);  
+  width: 40px !important;
+  height: 40px !important;
+}
+
+ion-menu-toggle ion-item ion-label.menu-label {
+  --color: #666461;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+ion-menu-toggle ion-item img.menu-img{
+  height: 2.2rem !important;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+///////////////////////////////
+
+ion-list-header .header-avatar-margin-vertical {
+  --margin-top: var(--ion-margin, 8px);
+  --margin-bottom: var(--ion-margin, 8px);
+  margin-top: var(--ion-margin, 8px);
+  margin-bottom: var(--ion-margin, 8px);  
+  width: 40px !important;
+  height: 40px !important;
+}
+
+ion-backdrop {
+  opacity: 0;
+  z-index: 999 !important;
+}

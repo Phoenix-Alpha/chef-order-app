@@ -1,0 +1,196 @@
+<ion-content [fullscreen]="true">
+  <div class="base-header position-relative">
+    <div class="custom-header">
+      <div class="corner-div-wrapper"></div>
+      <div class="corner-div" (click)="viewChefDetail()">
+        <div class="custom-header-text">
+          <div class="text-overflow-ellipsis">By {{ offerDetail.chefProfileName }}</div>
+          <p class="ion-no-margin"><ion-icon style="color: #FFD400;" name="star"></ion-icon> {{ offerDetail.chefRating }} (<u>{{ offerDetail.chefTotalReviews }} review</u>)</p>
+        </div>
+      </div>
+      <ion-avatar [class.custom-avatar]="true" (click)="viewChefDetail()">
+        <img [src]="offerDetail.chefProfilePicture">
+      </ion-avatar>
+    </div>
+    <div class="custom-paginator">
+      <ion-icon style="font-size: 22px" name="camera-outline" class="mr-5"></ion-icon>
+      <span>{{ currentPos }} / {{ offerDetail && offerDetail.offerPictures ? offerDetail.offerPictures.length : 0 }}</span>
+    </div>
+    <ion-slides
+      [hidden]="!viewEntered"
+      (click)="onClickSlides()"
+      [class.slide-container]="true"
+      [options]="slideOpts"
+      #imageSlider
+    >
+      <ion-slide *ngFor="let picture of offerDetail.offerPictures">
+        <img class="cover" [src]="picture" width="500" height="400">
+      </ion-slide>
+    </ion-slides>
+    <div class="custom-btn-list">
+      <ul>
+        <li><ion-icon name="arrow-forward-outline" (click)="onClickBack()"></ion-icon></li>
+        <li><ion-icon name="share-social-outline" (click)="onClickShare()"></ion-icon></li>
+        <li><ion-icon name="heart-outline" (click)="onClickAddToFavourites()"></ion-icon></li>
+      </ul>
+    </div>
+    <div class="navigation">
+      <div class="circle-btn" (click)="previous()"><ion-icon name="chevron-back-outline"></ion-icon></div>
+      <div class="circle-btn" (click)="next()"><ion-icon name="chevron-forward-outline"></ion-icon></div>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row class="detail p-10">
+      <ion-text class="detail-text mr-10">{{ offerDetail.title }}</ion-text>
+      <p class="detail-text-review"><ion-icon style="color: #FFD400;" name="star"></ion-icon> {{ offerDetail.chefRating }} ({{offerDetail.chefTotalReviews}} <u>reviews</u>)</p>
+    </ion-row>
+    <ion-row class="detail pl-10 pr-10 pb-10">
+      <div class="detail-description-container">
+        <p class="detail-description">
+          {{ offerDetail.description }}
+        </p>
+      </div>
+    </ion-row>
+    <div class="flex-container flex-direction-row align-items-center ml-10 mr-10">
+      <ion-text class="cat-text mr-5">Category</ion-text>
+      <app-ion-chip-checkable-list
+          [itemList]="tagList"
+          [isSmall]="true"
+          [isMultiple]="false"
+          [isCheckable]="false"
+          [selectedItems]="[]">
+        </app-ion-chip-checkable-list>
+    </div>
+    <div class="flex-container flex-direction-row align-items-center ml-10 mr-10">
+      <ion-text class="cat-text mr-5">Cuisine</ion-text>
+      <app-ion-chip-checkable-list
+          [itemList]="cuisineList"
+          [isSmall]="true"
+          [isMultiple]="false"
+          [isCheckable]="false"
+          [selectedItems]="[]">
+        </app-ion-chip-checkable-list>
+    </div>
+    <div class="flex-container flex-direction-row align-items-center ml-10 mr-10">
+      <ion-text class="cat-text mr-5">Allergens</ion-text>
+      <app-ion-chip-checkable-list
+          [itemList]="allergenList"
+          [isSmall]="true"
+          [isMultiple]="false"
+          [isCheckable]="false"
+          [selectedItems]="[]">
+        </app-ion-chip-checkable-list>
+    </div>
+    <ion-row class="detail flex-container flex-direction-row m-10">
+      <div class="mr-10">Offer details</div>
+      <div class="horizontal-line"></div>
+    </ion-row>
+    <ion-row class="detail flex-container align-items-center ml-10 mr-10">
+      <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-center">
+        <p *ngIf="offerDetail.offerType=='PREORDER'" class="offer-detail-text ion-no-margin pb-5">Serving</p>
+        <app-ion-chip-checkable *ngIf="offerDetail.offerType=='PREORDER'"
+          [id]="'servingDate'"
+          [label]="offerDetail.servingStart | localizedDate: 'MMM. DD.MM.YYYY': 'en' | async"
+          [isSmall]="true"
+          [isToggle]="false"
+          [isChecked]="false"
+          [isCheckable]="false"
+          class="flex-grow">
+        </app-ion-chip-checkable>
+        <app-ion-chip-checkable *ngIf="offerDetail.offerType=='PREORDER'"
+          [id]="'servingTimeRange'"
+          [label]="servingDateTimeRangeStr"
+          [isSmall]="true"
+          [isToggle]="false"
+          [isChecked]="false"
+          [isCheckable]="false"
+          class="flex-grow">
+        </app-ion-chip-checkable>
+      </ion-col>
+      <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-center">
+        <p *ngIf="offerDetail.offerType=='PREORDER'" class="offer-detail-text ion-no-margin pb-5">Order Until</p>
+        <app-ion-chip-checkable *ngIf="offerDetail.offerType=='PREORDER'"
+          [id]="'orderUntilDate'"
+          [label]="offerDetail.orderUntil | localizedDate: 'MMM. DD.MM.YYYY': 'en' | async"
+          [isSmall]="true"
+          [isToggle]="false"
+          [isChecked]="false"
+          [isCheckable]="false"
+          class="flex-grow">
+        </app-ion-chip-checkable>
+        <app-ion-chip-checkable *ngIf="offerDetail.offerType=='PREORDER'"
+          [id]="'orderUntilTime'"
+          [label]="offerDetail.orderUntil | localizedDate: 'HH:mm': 'en' | async"
+          [isSmall]="true"
+          [isToggle]="false"
+          [isChecked]="false"
+          [isCheckable]="false"
+          class="flex-grow">
+        </app-ion-chip-checkable>
+      </ion-col>
+      <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-center">
+        <p class="offer-detail-text ion-no-margin pb-5">Delivery</p>
+        <div *ngIf="offerDetail.isDelivery" class="pb-5">
+          <img src="assets/images/scooter.svg" height="25" width="25">
+        </div>
+        <div *ngIf="offerDetail.isPickup">
+          <img src="assets/img/deliver-icon.svg" height="25" width="25">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="detail ml-10 mr-10 mt-25 mb-25 align-items-center">
+      <ion-col size="4">
+        <div class="flex-container flex-direction-row w-100">
+          <div class="flex-grow flex-container align-items-center justify-content-center right-border-highlight">
+            <img src="assets/img/scale.svg" height="24" width="24">
+          </div>
+          <div class="detail-text-meta flex-grow flex-container align-items-center justify-content-center">
+            ~{{ offerDetail.weight }} g
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="flex-container flex-direction-row w-100" *ngIf="offerDetail.offerType=='PREORDER'">
+          <div class="flex-grow flex-container align-items-center justify-content-center right-border-highlight">
+            <img src="assets/img/serve.svg" height="24" width="24">
+          </div>
+          <div class="detail-text-meta flex-grow flex-container align-items-center justify-content-center">
+            {{ offerDetail.quantityAvailable}} left
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="flex-container flex-direction-row w-100">
+          <div class="flex-grow flex-container align-items-center justify-content-center right-border-highlight">
+            <img src="assets/images/distance.svg" height="24" width="24">
+          </div>
+          <div class="detail-text-meta flex-grow flex-container align-items-center justify-content-center">
+            {{ offerDetail.distance ? offerDetail.distance.toFixed(1) : '0.00' }} km
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <div class="flex-container flex-direction-row align-items-center ml-10 mr-10">
+      <div class="ml-15 flex-container flex-direction-col">
+        <ion-button class="cart-add-remove-btn ion-no-margin ion-no-padding m-5" (click)="onClickPlus()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="cart-add-remove-btn ion-no-margin ion-no-padding m-5" (click)="onClickMinus()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="corner-div-end-wrapper flex-container flex-grow align-items-center justify-content-center">
+        <div class="corner-div-end-wrapper position-relative">
+          <ion-item button lines="none" detail="false" class="corner-div-end" (click)="onClickPurchaseOffer()">
+            <ion-label class="ml-5 ion-no-margin">{{ amount }} {{ offerDetail.title }} </ion-label>
+            <ion-label class="price ion-no-margin">€{{ totalPrice }}</ion-label>
+          </ion-item>
+          <div class="circle-btn-end ion-text-center" (click)="onClickPurchaseOffer()">
+            <img src="assets/img/bag.png" height="30px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

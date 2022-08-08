@@ -1,0 +1,114 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.page-wrapper {
+  color: #4A4949;
+  font-size: 1.8rem;
+  .checkable-chip-list {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  ion-select.red-dropdown-icon {
+    flex-grow: 1;
+  }
+
+  ion-select.red-dropdown-icon::part(icon) {
+    color: var(--ion-color-primary) !important;
+    opacity: 1.0 !important;
+  }
+
+  .highlighted {
+    border-top: 1px solid rgba(112, 112, 112, 0.32);
+    border-bottom: 1px solid rgba(112, 112, 112, 0.32);
+    background: rgba(250, 238, 231, 0.32);
+    font-size: 1.6rem;
+  }
+
+  // ion-input.serving-date-range-input {
+  //   --background: white;
+  //   --color: var(--ion-color-primary);
+  //   --placeholder-color: var(--ion-color-primary);
+  //   --placeholder-opacity: 0.5;
+  //   --padding-top: 4px;
+  //   --padding-bottom: 4px;
+  //   margin: 5px 10px 5px 10px;
+  //   border: 1px solid #8E8E8E;
+  //   border-radius: 12px !important;
+  // }
+
+  input.serving-date-range-input {
+    background: white;
+    outline: none !important;
+    border: 1px solid #8E8E8E !important;
+    border-radius: 12px !important;
+    color: var(--ion-color-primary);
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px 10px 5px 10px;
+  }
+
+  ion-input.white-round-input {
+    background: white;
+    border: 1px solid #8E8E8E !important;
+    border-radius: 14px !important;
+    --color: #4A4949;
+    --placeholder-color: #4A4949;
+    --placeholder-opacity: 0.5;
+    --padding-top: 7px;
+    --padding-bottom: 7px;
+    --padding-start: 7px;
+    --padding-end: 7px;
+    margin: 10px !important;
+    font-size: 1.4rem;
+  }
+
+  ion-input.grey-underline-input {
+    --color: #888383;
+    --placeholder-color: #888383;
+    --placeholder-opacity: 0.5;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    margin: 10px !important;
+    border-bottom: 1px solid #707070;
+  }
+
+  img.delivery-option-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

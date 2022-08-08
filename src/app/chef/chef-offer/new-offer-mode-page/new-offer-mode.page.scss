@@ -1,0 +1,57 @@
+:host {
+  background: white;
+  background-image: url("../../../../assets/images/background logo light half left.png");
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  background-position: center right;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+
+
+ion-item.offer-mode-item {
+  --background: #ffffffbd;
+  border-radius: 18px;
+  box-shadow: 0px 1px 2px #00000056;
+  width: 90%;
+  margin: 15px;
+  div {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+  }
+  img {
+    width: 20%;
+  }
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

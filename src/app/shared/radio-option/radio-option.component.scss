@@ -1,0 +1,33 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input-container {
+  align-items: baseline;
+  span {
+    margin-left: 1em;
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 20px;
+    color: #4A4949;
+  }
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border: 1px solid #707070;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.active {
+  border: 1px solid #CB652B;
+  background-color: #CB652B;
+}
+
+ion-item {
+  height: 31px;
+}

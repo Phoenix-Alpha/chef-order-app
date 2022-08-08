@@ -1,0 +1,31 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.offer.list.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper position-relative">
+    <ion-tabs #tabs (ionTabsWillChange)="tabWillChange($event)">
+      <ion-tab-bar slot="top">
+        <ion-tab-button *ngIf="mode != 'existing'" tab="draft">
+          <ion-label>{{ 'global.label.draft' | translate }}</ion-label>
+          <div *ngIf="currentTab =='draft'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="active">
+          <ion-label>{{ 'global.label.active' | translate }}</ion-label>
+          <div *ngIf="currentTab =='active'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="archive">
+          <ion-label>{{ 'global.label.archive' | translate }}</ion-label>
+          <div *ngIf="currentTab =='archive'" class="tab-decorator"></div>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-content>

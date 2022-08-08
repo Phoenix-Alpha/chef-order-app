@@ -1,0 +1,125 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.dashboard.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <div class="upper-section p-15">
+      <div class="avatar">
+        <ion-avatar class="position-relative flex-container align-items-center justify-content-center">
+          <img *ngIf="chefDetail.profilePicture" [src]="chefDetail.profilePicture" class="default-avatar" [ngClass]="(chefDetailStatus$ | async) === 'UPDATINGPICTURE' ? 'loading-effect' : ''" (click)="onEditAvatar()" />
+          <img *ngIf="!chefDetail.profilePicture" src="../../assets/images/avatar.png" class="default-avatar" [ngClass]="(chefDetailStatus$ | async) === 'UPDATINGPICTURE' ? 'loading-effect' : ''" (click)="onEditAvatar()" />
+          <div class="take-photo" (click)="onEditAvatar()">
+            <img src="../../assets/images/chef-dashboard/edit-image.png" class="avatar-edit" [ngClass]="(chefDetailStatus$ | async) === 'UPDATINGPICTURE' ? 'loading-effect' : ''" />
+          </div>
+          <ion-spinner *ngIf="(chefDetailStatus$ | async) === 'UPDATINGPICTURE'" class="avatar-spinner"></ion-spinner>
+        </ion-avatar>
+      </div>
+      <div class="profile flex-container flex-direction-col">
+        <div class="m-5 text-underline profile-name">{{ chefDetail.profileName }}</div>
+        <div class="m-5 review">
+          <img src="../../assets/images/Veelhoek.png" class="review-icon mr-5"/>
+          <span>{{ chefDetail.rating }} ({{ chefDetail.totalReviews }})</span>
+        </div>
+      </div>
+      <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 mr-10 ml-5">
+        <div class="round-score flex-container align-items-center justify-content-center">{{ chefDetail.activeOffers }}</div>
+        <div class="score-description">{{ 'global.label.activeOffers' | translate }}</div>
+      </div>
+      <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 ml-10 mr-10">
+        <div class="round-score flex-container align-items-center justify-content-center">{{ chefDetail.mealsServed }}</div>
+        <div class="score-description">{{ 'global.label.mealsServed' | translate }}</div>
+      </div>
+    </div>
+    <div class="mid-section">
+      <table>
+        <tr>
+          <td class="right-border">
+            <div class="img-wrapper flex-container flex-direction-col align-items-center">
+              <img src="../../assets/images/chef-dashboard/cooking.png" class="open-orders-icon"/>
+              <span class="ion-text-center">{{ 'chef.dashboard.openOrders' | translate }}</span>
+            </div>
+          </td>
+          <td class="pl-5">
+            <div class="detail m-5">
+              <span class="text-color-primary">8</span> {{ 'global.label.toBeConfirmed' | translate }}
+            </div>
+          </td>
+          <td>
+            <div class="detail m-5">
+              <span class="text-color-primary">13</span> {{ 'global.label.toBePrepared' | translate }}
+            </div>
+          </td>
+        </tr>
+        <tr class="row-spacer"></tr>
+        <tr>
+          <td class="right-border">
+            <div class="img-wrapper flex-container flex-direction-col align-items-center">
+              <img src="../../assets/images/chef-dashboard/sales.png" class="sales-icon"/>
+              <span class="ion-text-center">{{ 'chef.dashboard.sales' | translate }}</span>
+            </div>
+          </td>
+          <td class="pl-5">
+            <div class="detail m-5">
+              <span class="text-color-primary">530,15€</span> {{ 'global.label.available' | translate }}
+            </div>
+          </td>
+          <td>
+            <div class="detail m-5">
+              <span class="text-color-primary">50,20€</span> {{ 'global.label.pending' | translate }}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <ion-grid class="menu-section imb-50">
+      <ion-item routerDirection="root" routerLink="/public/chef/offer/new" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/new-offer.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.newOffer' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/inbox" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/inbox.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.chefInbox' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/order" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/manage-incoming-orders.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.manageIncomingOrder' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/offer/list" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/my-offers.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.myOffers' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/profile" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/about-me.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.aboutMe' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/wallet" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/my-wallet.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.myWallet' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/packaging" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/packaging.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.packaging' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+      <ion-item routerDirection="root" routerLink="/public/chef/vacation" lines="none" detail="false" routerLinkActive="selected" class="dashboard-menu-item">
+        <img src="../assets/images/chef-dashboard/vacation.png" class="menu-img">
+        <ion-label class="ion-margin-start menu-label">{{ 'chef.dashboard.vacationMode' | translate }}</ion-label>
+        <ion-icon item-right src="../../assets/images/chef-dashboard/right-arrow-detail.svg"></ion-icon>
+      </ion-item>
+    </ion-grid>
+  </div>
+</ion-content>

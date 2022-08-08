@@ -1,0 +1,42 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.vacation.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-item lines="none" detail="false" class="vacation-item mt-30">
+      <ion-toggle></ion-toggle>
+      <div class="vacation-wrapper description font-poppins" color="primary">{{ 'chef.vacation.modeToggleDescription' | translate }}</div>
+    </ion-item>
+    <ion-item lines="none" detail="false" class="vacation-item mt-30">
+      <ion-toggle></ion-toggle>
+      <div class="vacation-wrapper font-poppins" color="primary">
+        <div class="description">{{ 'chef.vacation.definedPeriod' | translate }}</div>
+        <input
+          class="vacation-date-range-input" 
+          type="text"
+          mask="d0.M0.0000 - d0.M0.0000"
+          [leadZeroDateTime]="true"
+          placeholder="From 10.05.2021 to 25.05.2021"
+        >
+      </div>
+    </ion-item>
+    <div class="mt-auto mb-30 mr-20 ml-20 w-100 ion-text-center">
+      {{ 'chef.vacation.description' | translate }}
+    </div>
+    <ion-grid class="w-100">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button class="auth-submit-btn" expand="block" (click)="onConfirm()">{{ 'global.button.confirm' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

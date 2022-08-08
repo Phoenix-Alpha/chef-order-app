@@ -1,0 +1,30 @@
+ion-list {
+    padding: 0;
+    ion-item {
+        --padding-start: 30px;
+        --padding-end: 30px;
+        ion-label.selected-lang {
+            color: #CB652B;
+        }
+    }
+    ion-list-header {
+        padding: 0;
+        ion-item {
+            width: 100%;
+            --padding-start: 0;
+            --padding-end: 0;
+            --border-color: #707070;
+            --inner-padding-end: 25px;
+            ion-label {
+                margin-left: 20px;
+                color: #CB652B;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+            ion-img {
+                height: 30px !important;
+                width: 30px !important;
+            }
+        }
+    }
+}

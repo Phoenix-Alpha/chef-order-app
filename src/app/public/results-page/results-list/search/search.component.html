@@ -1,0 +1,97 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/results/tabs/results-list" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'Search' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-text-center ion-margin-top">
+      <ion-col size="6">
+        <h2 (click)="changeActive(0)" class="option" [ngClass]="activeOption === 0 ? 'active-option' : ''">Dish</h2>
+      </ion-col>
+      <ion-col size="6">
+        <h2 (click)="changeActive(1)" class="option" [ngClass]="activeOption === 1 ? 'active-option' : ''">Home-chef</h2>
+      </ion-col>
+      <ion-col *ngIf="activeOption === 0" size="12" class="ion-margin-top">
+        <div class="ng-autocomplete ion-text-left">
+          <form [formGroup]="offerNameForm">
+            <ng-autocomplete
+              [data]="offers"
+              [searchKeyword]="offerKeyword"
+              [customFilter]="filterFunc"
+              placeholder="Search offers by name"
+              (selected)="offerSelectedEvent($event)"
+              (inputChanged)="onChangeSearch($event)"
+              (inputCleared)="onInputCleared()"
+              historyIdentifier="offers"
+              [itemTemplate]="offerItemTemplate"
+              [notFoundTemplate]="offerNotFoundTemplate"
+              formControlName="offerName">
+            </ng-autocomplete>
+            <ng-template #offerItemTemplate let-item>
+              <a [innerHTML]="item.title"></a>
+            </ng-template>
+            <ng-template #offerNotFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </form>
+        </div>
+      </ion-col>
+      <ion-col *ngIf="activeOption === 1" size="12" class="ion-margin-top">
+        <div class="ng-autocomplete ion-text-left">
+          <form [formGroup]="chefNameForm">
+            <ng-autocomplete
+              [data]="chefs"
+              [searchKeyword]="chefKeyword"
+              [customFilter]="filterFunc"
+              placeholder="Search chefs by name"
+              (selected)="chefSelectedEvent($event)"
+              (inputChanged)="onChangeSearch($event)"
+              (inputCleared)="onInputCleared()"
+              historyIdentifier="chefs"
+              [itemTemplate]="chefItemTemplate"
+              [notFoundTemplate]="chefNotFoundTemplate"
+              formControlName="chefName">
+            </ng-autocomplete>
+            <ng-template #chefItemTemplate let-item>
+              <a [innerHTML]="item.chefProfileName"></a>
+            </ng-template>
+            <ng-template #chefNotFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </form>
+        </div>
+      </ion-col>
+      <ng-container *ngIf="activeOption === 0">
+        <ion-col size="12" class="ion-text-left">
+          <h2 class="title-text ion-align-items-center ion-padding-start">Popular</h2>
+        </ion-col>
+        <ion-col size="12" class="dishes-container">
+          <ion-list>
+            <ion-item button lines="none" *ngFor="let offer of topOffers" (click)="onClickTopOffer(offer)">
+              <span>{{ offer.title }}</span>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-top">
+          <ion-select 
+            class="red-dropdown-icon ion-text-left"
+            value="a"
+          >
+            <ion-select-option value="a">All</ion-select-option>
+            <ion-select-option value="b">Vegetarian</ion-select-option>
+            <ion-select-option value="c">Pastila</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

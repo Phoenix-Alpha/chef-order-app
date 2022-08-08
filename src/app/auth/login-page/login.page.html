@@ -1,0 +1,91 @@
+<ion-header class="header-no-border transparent">
+  <ion-toolbar class="transparent position-relative"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+        <!-- <ion-icon src="../../assets/images/back-button.svg" style="height: 54px; width: 42px;" class="ion-margin-start"></ion-icon> -->
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'auth.login.pageTitle' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="loginForm" (submit)="onSubmitLogin()" class="h-100">
+    <div class="page-wrapper">
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-top">
+          <ion-col size="9">
+            <ion-item button class="item-auth-btn" lines="none" detail="false" (click)="onClickLoginWithGoogle()">
+              <ion-icon slot="start" src="../../assets/images/google.svg"></ion-icon>
+              <ion-text class="ion-text-center ion-text-nowrap">{{ 'auth.login.loginWithGoogle' | translate }}</ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="9">
+            <ion-item button class="item-auth-btn" lines="none" detail="false" (click)="onClickLoginWithFacebook()">
+              <ion-icon slot="start" src="../../assets/images/facebook.svg"></ion-icon>
+              <ion-text class="ion-text-center ion-text-nowrap">{{ 'auth.login.loginWithFacebook' | translate }}</ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-bottom">
+          <div class="flex-container w-100">
+            <div class="divider w-100"></div>
+            <div class="or-divider">{{ 'global.divider.or' | translate }}</div>
+            <div class="divider w-100"></div>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-5 ion-padding-bottom">
+          <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.emailAddress' | translate }}</ion-label>
+          <div class="w-100"></div>
+          <ion-input class="light-brown-input" formControlName="email"></ion-input>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-5 ion-padding-bottom">
+          <ion-label class="ion-padding-horizontal-10 auth-label">{{ 'global.label.password' | translate }}</ion-label>
+          <div class="w-100"></div>
+          <ion-input class="light-brown-input" formControlName="password" type="password"></ion-input>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-10 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-start ion-padding-horizontal-5 ion-padding-bottom">
+          <a class="ion-padding-horizontal-10 auth-label-small-link" routerLink="/auth/password/reset">{{ 'auth.login.forgotPassword' | translate }}</a>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="mt-auto w-100">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSubmitLogin()">{{ 'global.button.login' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="imb-50 w-100">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col>
+            <div class="flex-container align-items-center justify-content-center">
+              <ion-label class="auth-label-light mr-10">{{ 'auth.login.doNotHaveAnAccount' | translate }}</ion-label>
+              <ion-button class="auth-submit-btn-small" routerLink="/auth/signup">{{ 'global.button.signup' | translate }}</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>
+<div class="background-gradient-wrapper"></div>

@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="review-list">
+      <ion-item class="review-item" button lines="full" detail="false" (click)="onClickItem()">
+        <div class="review-info">
+          <div>Adam B. 15.09.2019</div>
+          <div class="text-underline">Tajine Chicken</div>
+          <div>Quantity not enough. Taste very good</div>
+        </div>
+        <bar-rating 
+          [rate]="5"
+          [max]="5"
+          [theme]="'halal'"
+          [showText]="true"
+          [titles]="titles"
+          slot="end"
+          class="ion-align-self-start"
+        >
+        </bar-rating>
+      </ion-item>
+      <ion-item class="review-item" button lines="full" detail="false" (click)="onClickItem()">
+        <div class="review-info">
+          <div>Karim D. 21.01.2020</div>
+          <div class="text-underline">Green Salad</div>
+          <div>Very delicious </div>
+        </div>
+        <bar-rating 
+          [rate]="3"
+          [max]="5"
+          [theme]="'halal'"
+          [showText]="true"
+          [titles]="titles"
+          slot="end"
+          class="ion-align-self-start"
+        >
+        </bar-rating>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

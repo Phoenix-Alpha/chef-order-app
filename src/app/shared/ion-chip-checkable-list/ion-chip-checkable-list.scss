@@ -1,0 +1,12 @@
+:host {
+    width: 100%;
+}
+
+.checkable-chip-list {
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+}

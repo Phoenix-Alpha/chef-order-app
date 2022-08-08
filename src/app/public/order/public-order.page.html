@@ -1,0 +1,31 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'My orders' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper position-relative">
+    <ion-tabs #tabs (ionTabsWillChange)="tabWillChange($event)">
+      <ion-tab-bar slot="top">
+        <ion-tab-button tab="pending">
+          <ion-label>{{ 'global.label.pending' | translate }}</ion-label>
+          <div *ngIf="currentTab == 'pending'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="inprep">
+          <ion-label>{{ 'global.label.inPrep' | translate }}</ion-label>
+          <div *ngIf="currentTab == 'inprep'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="history">
+          <ion-label>{{ 'History' | translate }}</ion-label>
+          <div *ngIf="currentTab == 'history'" class="tab-decorator"></div>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-content>

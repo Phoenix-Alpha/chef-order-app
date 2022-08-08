@@ -1,0 +1,217 @@
+h1, h2, h3, h4 {
+  margin: 0 !important;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.option {
+  text-decoration: underline;
+  color: #4A4949;
+  opacity: 0.3;
+}
+
+.active-option {
+  color: black;
+  opacity: 1;
+}
+
+.text-container {
+  padding-left: 15px;
+  h2 {
+    color: black;
+  }
+  p {
+    font-size: 13px;
+    color: #636363;
+  }
+}
+
+ion-card {
+  border-radius: 50px;
+  height: 86px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  ion-card-content {
+    position: relative;
+    top: -22px;
+  }
+}
+
+ion-avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.cheff-name-container {
+  margin-top: 10px;
+  h1 {
+    font-style: italic;
+    text-decoration: underline;
+    color: var(--ion-color-primary);
+  }
+
+  .rating-container {
+    margin-top: 5px;
+  }
+}
+
+.detail {
+  margin-top: 5px;
+  h4 {
+    color: var(--ion-color-primary);
+  }
+  p {
+    margin-top: 12px;
+    color: #615F5D;
+    line-height: 13px;
+    font-size: 11px;
+  }
+}
+
+.detail-container {
+  position: relative;
+  right: -54px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  --border-radius: 32px;
+  border: 1px solid white;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+}
+
+.avatar-chef {
+  position: absolute;
+  top: 8px;
+  left: -14px;
+  height: 70px;
+  --border-radius: 40px;
+  border: 1px solid white;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+}
+
+////////////////////////////
+
+ion-list.offer-list {
+  width: 100%;
+  padding: 15px 10px 15px 10px;
+}
+
+ion-item.offer-item {
+  position: relative;
+  --color: black;
+  --padding-top: 0px !important;
+  --padding-bottom: 0px !important;
+  --inner-padding-top: 0px !important;
+  --inner-padding-bottom: 0px !important;
+  --detail-icon-color: var(--ion-color-primary);
+  --detail-icon-font-size: 2.8rem;
+  border-radius: 60px;
+  box-shadow: 1px 1px 2px 1px #00000033;
+  margin: 0 0 20px 0 !important;
+  ion-avatar{
+    width: 80px !important;
+    height: 80px !important;
+    margin: 10px 0 !important;
+    img.offer-item-avatar {
+      width: 80px !important;
+      height: 80px !important;
+    }
+  }
+  div.offer-info {
+    width: 100%;
+    height: 100%;
+    // padding: 15px 0 10px 0 !important;
+    div.offer-header {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      div.offer-title {
+        font-size: 1.6rem;
+        color: black;
+      }
+      div.offer-viewed {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        color: black;
+      }
+    }
+    div.offer-body {
+      font-size: 1.6rem;
+      color: #636363;
+    }
+  }
+}
+
+ion-badge.offer-info-badge {
+  --background: #FEC900;
+  --color: #636363;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 10px
+}
+
+ion-icon.offer-info-icon {
+  width: 20px;
+  height: 20px;
+}
+
+ion-button.offer-item-edit-btn {
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+  --ripple-color: var(--ion-color-primary);
+  border: none !important;
+  ion-icon.offer-item-edit-icon {
+    color: black !important;
+  }
+}
+
+.score-wrapper {
+  flex-grow: 0;
+  width: 40px;
+  text-align: center;
+  .round-score {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border: solid #CB652B 2px;
+    border-radius: 100%;
+    color: #CB652B;
+    font-weight: 600;;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 1.6rem;
+  }
+  .score-description {
+    font-size: 1.2rem;
+  }
+}

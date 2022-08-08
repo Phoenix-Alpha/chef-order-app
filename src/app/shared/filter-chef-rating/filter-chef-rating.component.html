@@ -1,0 +1,7 @@
+<ion-grid class="ion-no-margin ion-no-padding">
+  <ion-row class="ion-no-margin ion-no-padding">
+    <ion-col size="1" *ngFor="let x of dummyArray; let i=index" [ngClass]="forChefProfile === true ? 'chef-icon-container' : 'icon-container'">
+      <ion-icon [name]="getIconName(i)" (click)="changeActiveRating(i)"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>

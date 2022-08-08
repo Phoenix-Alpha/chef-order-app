@@ -1,0 +1,32 @@
+ion-content {
+  --background: #CB652B;
+}
+
+div.welcome-wrapper {
+  .welcome-greetings-section {
+    position: absolute;
+    bottom: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    ion-text {
+      font-size: 3.6rem !important;
+      color: white !important;
+    }
+    .welcome-emoticon {
+      height: 6rem !important;
+      width: 6rem !important;
+    }
+  }
+  
+
+  img.welcome-logo {
+    position: absolute;
+    bottom: 10% !important;
+    left: 60% !important;
+    width: 80%;
+    height: auto;
+  }
+
+}

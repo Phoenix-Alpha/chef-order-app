@@ -1,0 +1,58 @@
+// :host {
+//   background: linear-gradient(160deg, #CB652B 7%, #FFFFFF 67%) 0% 0% no-repeat padding-box !important;
+// }
+
+div.background-gradient-wrapper {
+  display: block !important;
+  width: 100%;
+  height: 1200px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: linear-gradient(160deg, #CB652B 7%, #FFFFFF 67%) 0% 0% no-repeat padding-box !important;
+  z-index: -1;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+ion-item {
+  ion-icon {
+    margin-inline-end: 10px !important;
+  }
+  ion-checkbox {
+    margin-inline-end: 10px !important;
+  }
+}
+
+.or-divider {
+  padding: 0 10px !important;
+  font-size: 1.9rem;
+}
+
+.divider {
+  height: 1.2rem !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}

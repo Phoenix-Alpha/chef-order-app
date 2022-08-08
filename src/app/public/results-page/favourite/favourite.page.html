@@ -1,0 +1,93 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/results/tabs/results-list" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'Favourite' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-text-center ion-margin">
+      <ion-col size="6">
+        <h2 (click)="changeActive(0)" class="option" [ngClass]="activeOption === 0 ? 'active-option' : ''">Dishes</h2>
+      </ion-col>
+      <ion-col size="6">
+        <h2 (click)="changeActive(1)" class="option" [ngClass]="activeOption === 1 ? 'active-option' : ''">Home-chefs</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col size="12" *ngIf="activeOption === 0">
+        <ion-list class="offer-list">
+          <ion-item
+            *ngFor="let offer of offers"
+            class="offer-item"
+            button
+            lines="none"
+            detail="false"
+            (click)="onClickOfferItem(offer)"
+          >
+            <ion-avatar slot="start" class="offer-item-avatar">
+              <img *ngIf="offer.offerPictures.length > 0 && offer.offerPictures[0]" [src]="offer.offerPictures[0]" class="offer-item-avatar">
+              <img *ngIf="offer.offerPictures.length === 0 || !offer.offerPictures[0]" src="assets/images/halal-logo.png" class="offer-item-avatar">
+            </ion-avatar>
+            <div class="offer-info ml-10">
+              <div class="offer-header m-5">
+                <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+                  {{ offer.title }}
+                </div>
+              </div>
+              <div class="offer-body text-overflow-ellipsis m-5">
+                <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+                  By {{ offer.chefProfileName }}
+                </div>
+                <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+                  Last time ordered: 
+                </div>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12" *ngIf="activeOption === 1">
+        <ion-list class="offer-list">
+          <ion-item
+            *ngFor="let chef of chefs"
+            class="offer-item"
+            button
+            lines="none"
+            detail="false"
+            (click)="onClickChefItem(chef)"
+          >
+            <ion-avatar slot="start" class="offer-item-avatar">
+              <img [src]="chef.profilePicture" class="offer-item-avatar">
+            </ion-avatar>
+            <div class="offer-info ml-10">
+              <div class="offer-header flex-container flex-direction-col align-items-flex-start justify-content-space-around p-5 h-100">
+                <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+                  {{ chef.profileName }}
+                </div>
+                <div class="rating-container">
+                  <ion-icon name="star"></ion-icon>
+                  <span>{{ chef.rating }}&nbsp;({{ chef.totalReviews }})</span>
+                </div>
+              </div>
+            </div>
+            <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 mr-10 ml-5">
+              <div class="round-score flex-container align-items-center justify-content-center">{{ chef.activeOffers }}</div>
+              <div class="score-description">{{ 'global.label.activeOffers' | translate }}</div>
+            </div>
+            <div class="score-wrapper flex-container flex-direction-col align-items-center mt-5 mb-5 ml-10 mr-10">
+              <div class="round-score flex-container align-items-center justify-content-center">{{ chef.mealsServed }}</div>
+              <div class="score-description">{{ 'global.label.mealsServed' | translate }}</div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

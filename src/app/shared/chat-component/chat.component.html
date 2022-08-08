@@ -1,0 +1,23 @@
+<ion-header class="header-no-border">
+    <ion-toolbar class="position-relative" color="primary"> 
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+        </ion-back-button>
+      </ion-buttons>
+      <div class="title-section">
+        <ion-title color="secondary ion-text-center chat-title">{{ chatTitle }}</ion-title>
+        <ion-title color="secondary ion-text-center chat-subtitle">{{ chatSubtitle }}</ion-title>
+      </div>
+      <ion-buttons slot="end" class="right-btn-group">
+        <ion-button id="settingBtn" #settingBtn (click)="onClickSettingButton($event)" class="setting-button">
+          <ion-icon src="../../assets/images/more.svg" class="setting-btn-icon" color="secondary"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+    <div class="page-wrapper">
+      
+    </div>
+  </ion-content>
+  

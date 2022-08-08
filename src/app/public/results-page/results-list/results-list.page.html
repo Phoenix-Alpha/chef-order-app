@@ -1,0 +1,161 @@
+<ion-header>
+  <div class="results-logo-container">
+    <ion-icon name="results-logo"></ion-icon>
+  </div>
+  <ion-grid class="header-container header-margin">
+    <ion-row class="flex-container flex-direction-row align-items-center">
+      <ion-backdrop
+        *ngIf="hideShowButton"
+        (ionBackdropTap)="onTapBackdrop()"
+      >
+      </ion-backdrop>
+      <form [formGroup]="searchBarForm" class="flex-grow">
+        <div class="search-bar-section position-relative">
+          <div class="search-bar" #searchBar>
+            <div class="address-input-wrapper">
+              <ion-input
+                class="white-round-input ml-10m mr-10"
+                placeholder="Address, example: mainstreet 23210"
+                type="text"
+                formControlName="address"
+                (ionChange)="updateSearchResults()"
+                (ionFocus)="onSearchInputFocus()"
+              >
+              </ion-input>
+            </div>
+            <div *ngIf="hideShowButton" class="popover-section">
+              <div class="divider w-100"></div>
+              <div class="dropdown-section">
+                <div *ngIf="locationPermissionAllowed" class="my-location-section" (click)="onClickMyLocation()">
+                  <div class="my-location-title-section mb-10">
+                    <ion-icon src="../../assets/images/compass.svg" class="my-location-icon mr-10"></ion-icon>
+                    <ion-label>{{ 'home.searchBar.myLocation' | translate }}</ion-label>
+                  </div>
+                  <div class="w-100"></div>
+                  <ion-label *ngIf="currentAddress">{{ currentAddress }}</ion-label>
+                </div>
+                <div *ngIf="autocompleteItems.length > 0" class="place-prediction-section">
+                  <div class="mb-10">
+                    <ion-label>{{ 'home.searchBar.suggestions' | translate }}</ion-label>
+                  </div>
+                  <ng-container *ngFor="let prediction of autocompleteItems">
+                    <div class="place-prediction-item mb-10" (click)="onClickPrediction(prediction)">
+                      <ion-icon src="../../assets/images/place-prediction-item-icon.svg" class="place-prediction-icon mr-10"></ion-icon>
+                      <ion-label>{{ prediction.description }}</ion-label>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="powered-by-google">
+                <ion-img src="../../assets/images/powered_by_google_on_white.png" class="powered-by-google-img mr-10"></ion-img>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <ion-menu-button class="menu-button-container">
+        <ion-icon src="../../../assets/images/hamburger-menu-button.svg"></ion-icon>
+      </ion-menu-button>
+    </ion-row>
+    <ion-row class="ion-margin-horizontal flex-container align-items-center">
+      <h1 class="ion-text-center font-poppins">Discovered {{ (offers$ | async).length }} offers in your area</h1>
+    </ion-row>
+    <ion-row class="align-items-flex-end justify-content-space-between">
+      <ion-icon name="search" class="search-icon" (click)="toggleShowSearch()"></ion-icon>
+      <ion-button class="button-option" [ngClass]="{'active': activeButton === 0}" (click)="changeActiveButton(0)">All</ion-button>
+      <ion-button class="button-option" [ngClass]="{'active': activeButton === 1}" (click)="changeActiveButton(1)">Pre-order</ion-button>
+      <ion-button class="button-option" [ngClass]="{'active': activeButton === 2}" (click)="changeActiveButton(2)">On-demand</ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content>
+  <ion-backdrop
+    *ngIf="hideShowButton"
+    (ionBackdropTap)="onTapBackdrop()"
+  >
+  </ion-backdrop>
+  <ion-grid class="ion-no-padding ion-no-margin">
+    <ion-row class="ion-no-padding ion-no-margin">
+      <ion-col size="12" class="ion-no-margin ion-no-padding">
+        <ion-list *ngFor="let offer of (offers$ | async)" class="ion-no-margin ion-no-padding">
+          <ion-card class="ion-margin">
+            <ion-card-content class="ion-no-padding">
+              <ion-grid class="ion-no-margin ion-no-padding">
+                <ion-row>
+                  <ion-col size="6" class="image-container">
+                    <div class="image-header">
+                      <ion-grid class="ion-no-padding ion-no-margin">
+                        <ion-row class="ion-no-margin ion-no-padding header-row ion-justify-content-between flex-direction-row">
+                          <ion-col size="8">
+                            <div class="flex-container flex-direction-row" (click)="onClickOfferChef(offer)">
+                              <ion-avatar class="place-image-container">
+                                <img [src]="offer.chefProfilePicture">
+                              </ion-avatar>
+                              <div class="text-overflow-ellipsis pl-5 pr-5 vertical-margin-auto">
+                                {{ offer.chefProfileName }}
+                              </div>
+                            </div>
+                          </ion-col>
+                          <ion-col size="4" class="star-container ion-text-right ion-align-items-baseline">
+                            <ion-icon name="star" class="mr-5"></ion-icon>
+                            <span class="mr-5">{{ offer.chefRating }} ({{ offer.chefTotalReviews }})</span>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </div>
+                    <img [src]="offer.offerPictures[0]" class="offer-image" (click)="onClickOfferDetail(offer)">
+                  </ion-col>
+                  <ion-col size="6" (click)="onClickOfferDetail(offer)">
+                    <ion-grid class="ion-no-margin ion-no-padding ion-text-center">
+                      <div class="card-title-row ml-5 flex-container align-items-center ion-text-left card-detail-title">
+                        <div class="text-overflow-ellipsis">
+                          {{ offer.title }}
+                        </div>
+                      </div>
+                      <div class="card-row ml-5 pt-5 ion-text-left card-detail-text">
+                        <div [clamp]="3">{{ offer.description }}</div>
+                      </div>
+                      <div class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ion-icon src="assets/images/calendar.svg" class="mr-10"></ion-icon>
+                        <ng-container *ngIf="offer.offerType === OfferType.PREORDER">{{ offer.servingStart | localizedDate: 'ddd DD MMM': lang | async }}</ng-container>
+                        <ng-container *ngIf="offer.offerType === OfferType.ONDEMAND">{{ 'On demand' }}</ng-container>
+                      </div>
+                      <div class="mr-10 flex-container flex-direction-row align-items-center justify-content-end font-size-1" [ngStyle]="{'margin-bottom' : (offer.offerType === OfferType.ONDEMAND) ? '15px' : '0px'}">
+                        <ng-container *ngIf="offer.offerType === OfferType.PREORDER">{{ offer.servingStart | localizedDate: 'HH:mm': lang | async }} - {{ offer.servingEnd | localizedDate: 'HH:mm': lang | async }}</ng-container>
+                      </div>
+                      <div *ngIf="offer.offerType === OfferType.PREORDER" class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ng-container><ion-icon src="assets/images/tray.svg" class="mr-10"></ion-icon>{{ offer.quantityAvailable }} available</ng-container>
+                      </div>
+                      <div *ngIf="offer.offerType === OfferType.ONDEMAND" class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ng-container><ion-icon src="assets/images/preorder.svg" class="mr-10"></ion-icon>{{ offer.minPreorderHours ? offer.minPreorderHours : 24 }} hours</ng-container>
+                      </div>
+                      <div class="card-row ml-5 flex-container flex-direction-row align-items-center font-size-1 mt-20">
+                        <ion-icon src="assets/images/distance.svg" class="mr-5"></ion-icon>
+                        <ng-container>{{ offer.distance ? offer.distance.toFixed(2) : '0.00' }} km</ng-container>
+                        <ion-icon *ngIf="offer.isDelivery" src="assets/images/scooter.svg" class="ml-5"></ion-icon>
+                      </div>
+                    </ion-grid>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+          <div class="price-container">
+            <ion-item class="rounded-container" button (click)="onClickPurchaseOffer(offer)">
+              <span slot="start">€{{ offer.price }}</span>
+            </ion-item>
+            <ion-button class="basket-btn ion-no-margin ion-no-padding" (click)="onClickPurchaseOffer(offer)">
+              <ion-icon name="basket-2"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-list>
+        <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

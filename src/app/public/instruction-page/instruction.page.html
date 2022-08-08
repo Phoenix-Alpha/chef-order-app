@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed" class="instruction-skip">
+    <ion-fab-button (click)="onClickSkip()">
+      <ion-label>{{ 'global.fab.skip' | translate }}</ion-label>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-slides id="slides" #slides pager="true" [options]="slideOpts" class="instruction-slides h-100">
+    <ion-slide>
+      <div class="instruction-slide">
+        <ion-img src="../../assets/images/instruction-page-slide1.png"></ion-img>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'instruction.slide1.title' | translate }} 
+          </div>
+          <div class="font-sanspro description m-15 ion-text-wrap ion-text-start" [innerHTML]="'instruction.slide1.description' | translate">
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="instruction-slide">
+        <ion-img src="../../assets/images/instruction-page-slide2.png"></ion-img>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'instruction.slide2.title' | translate}}
+          </div>
+          <div class="font-sanspro description m-15 ion-text-start" [innerHTML]="'instruction.slide2.description' | translate">
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="instruction-slide">
+        <ion-img src="../../assets/images/instruction-page-slide3.png"></ion-img>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'instruction.slide3.title' | translate}}
+          </div>
+          <div class="font-sanspro description m-15 ion-text-start">
+            {{ 'instruction.slide3.description' | translate }}
+            <br>
+            <a style="text-decoration: underline;" (click)="onClickLearnMore()">{{ 'instruction.slide3.commitmentLink' | translate }}</a>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onClickNext()">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>  
+</ion-content>

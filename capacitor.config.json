@@ -1,0 +1,19 @@
+{
+    "appId": "com.halalhomemade.app",
+    "appName": "halal-homemade-app",
+    "bundledWebRuntime": false,
+    "webDir": "www",
+    "plugins": {
+      "SplashScreen": {
+        "launchShowDuration": 3000,
+        "launchAutoHide": false,
+        "useDialog": true
+      }
+    },
+    "cordova": {
+      "preferences": {
+        "cordova.plugins.diagnostic.modules": "LOCATION"
+      }
+    }
+}
+  

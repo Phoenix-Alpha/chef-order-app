@@ -1,0 +1,140 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title class="ion-text-center">{{ 'chef.promote.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="chefPromoteForm" class="h-100">
+    <div class="page-wrapper">
+      <div class="avatar-section">
+        <div class="avatar position-relative mb-15">
+          <ion-avatar class="position-relative flex-container align-items-center justify-content-center">
+            <img *ngIf="imageData" [src]="imageData" class="default-avatar" [ngClass]="(chefRegistrationStatus$ | async) === 'UPLOADINGPICTURE' ? 'loading-effect' : ''" (click)="onClickAvatar()" />
+            <img *ngIf="!imageData" src="../../assets/images/avatar.png" class="default-avatar" [ngClass]="(chefRegistrationStatus$ | async) === 'UPLOADINGPICTURE' ? 'loading-effect' : ''" (click)="onClickAvatar()" />
+            <ion-spinner *ngIf="(chefRegistrationStatus$ | async) === 'UPLOADINGPICTURE'" class="avatar-spinner"></ion-spinner>
+            <!-- <ion-spinner class="avatar-spinner"></ion-spinner> -->
+          </ion-avatar>
+          <div class="take-photo" (click)="onClickAvatar()">
+            <ion-img src="../../assets/images/camera.png"></ion-img>
+          </div>
+        </div>
+        <div class="avatar-comment ion-text-center">
+          {{ 'chef.promote.avatar.comment' | translate }}
+        </div>
+      </div>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-bottom">
+          <ion-col class="ion-no-padding">
+            <div class="chef-profile-name-item">
+              <ion-label class="font-poppins" position="stacked">{{ 'global.label.profileName' | translate }}</ion-label>
+              <ion-input placeholder="This will be visible to the platform users" formControlName="profileName"></ion-input>
+            </div>
+            <div class="w-100"></div>
+            <div class="mr-16 ml-16 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.profileName">
+                <div class="error-message" *ngIf="profileName.hasError(validation.type) && (profileName.dirty || profileName.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-bottom">
+          <ion-col class="ion-no-padding">
+            <div class="chef-about-me-item">
+              <ion-label class="font-poppins" position="stacked">{{ 'global.label.aboutMe' | translate }}</ion-label>
+              <ion-textarea 
+                placeholder="Write a short description for the customers, to get to know more about you when they visit your profile (It can be modified later)"
+                rows="5"
+                formControlName="aboutMe"
+                class="about-me-textarea"
+              ></ion-textarea>
+            </div>
+            <div class="w-100"></div>
+            <div class="mr-16 ml-16 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.aboutMe">
+                <div class="error-message" *ngIf="aboutMe.hasError(validation.type) && (aboutMe.dirty || aboutMe.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-bottom">
+          <ion-col class="ion-no-padding">
+            <div class="chef-dropdown-item">
+              <ion-label position="stacked">{{ 'chef.promote.cusinesYouSpecialisedIn' | translate }}</ion-label>
+              <ion-select 
+                class="red-dropdown-icon"
+                placeholder="Select your specialities"
+                multiple="true"
+                formControlName="cuisines">
+                <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+                <ion-select-option value="Indian">Indian</ion-select-option>
+              </ion-select>
+            </div>
+            <div class="w-100"></div>
+            <div class="mr-16 ml-16 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.cuisines">
+                <div class="error-message" *ngIf="cuisines.hasError(validation.type) && (cuisines.dirty || cuisines.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-bottom">
+          <ion-col class="ion-no-padding">
+            <div class="chef-dropdown-item">
+              <ion-label position="stacked">{{ 'chef.promote.howOftenYouPlanToSell' | translate }}</ion-label>
+              <ion-select 
+                class="red-dropdown-icon" 
+                placeholder="Select how often you want to sell"
+                formControlName="sellPlan">
+                <ion-select-option value="Plan1">Plan1</ion-select-option>
+                <ion-select-option value="Plan2">Plan2</ion-select-option>
+              </ion-select>
+            </div>
+            <div class="w-100"></div>
+            <div class="mr-16 ml-16 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.sellPlan">
+                <div class="error-message" *ngIf="sellPlan.hasError(validation.type) && (sellPlan.dirty || sellPlan.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-bottom">
+          <ion-col class="ion-no-padding">
+            <div class="chef-referral-code-item">
+              <ion-label position="stacked">{{ 'chef.promote.referalCodeIfApplicable' | translate }}</ion-label>
+              <ion-input placeholder="Received in the invitation from a friend" formControlName="referalCode"></ion-input>
+            </div>
+            <div class="w-100"></div>
+            <div class="mr-16 ml-16 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.referalCode">
+                <div class="error-message" *ngIf="referalCode.hasError(validation.type) && (referalCode.dirty || referalCode.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

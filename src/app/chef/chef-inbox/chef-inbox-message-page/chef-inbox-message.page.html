@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="message-list">
+      <ion-item class="message-item" lines="none" detail="false" (click)="onClickMessage()">
+        <ion-avatar slot="start" class="message-item-avatar">
+          <img src="assets/images/chef-inbox/avatar.png" class="message-item-avatar">
+        </ion-avatar>
+        <div class="message-info">
+          <div class="message-title m-5">Inna<span class="primary-color ml-5">Tajine Chicken</span></div>
+          <div class="message-body text-overflow-ellipsis m-5">I will show up a little bit late...</div>
+        </div>
+        <ion-icon item-right src="assets/images/chef-inbox/inbox-item-detail.svg"></ion-icon>
+        <div class="message-date">Mo. 15-02-2021</div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

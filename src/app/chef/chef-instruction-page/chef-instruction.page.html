@@ -1,0 +1,80 @@
+<ion-fab vertical="top" horizontal="end" slot="fixed" class="chef-instruction-skip">
+  <ion-fab-button (click)="onClickSkip()">
+    <ion-label>{{ 'global.fab.skip' | translate }}</ion-label>
+  </ion-fab-button>
+</ion-fab>
+<ion-header class="header-no-border transparent">
+  <ion-toolbar class="position-relative transparent">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- <ion-content [fullscreen]="true" class="transparent"> -->
+<ion-content [fullscreen]="true" class="transparent">
+  <ion-slides id="slides" #slides pager="true" [options]="slideOpts" class="chef-instruction-slides h-100">
+    <ion-slide>
+      <div class="chef-instruction-slide">
+        <div class="image-section">
+          <ion-img src="../../assets/images/chef-instruction-page-slide1.png" class="width-first"></ion-img>
+        </div>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'chef.instruction.slide1.title' | translate }} 
+          </div>
+          <div class="font-sanspro description m-15 ion-text-wrap ion-text-start">
+            {{ 'chef.instruction.slide1.description' | translate }}
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="chef-instruction-slide">
+        <div class="image-section">
+          <ion-img src="../../assets/images/chef-instruction-page-slide2.png" class="width-first"></ion-img>
+        </div>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'chef.instruction.slide2.title' | translate}}
+          </div>
+          <div class="font-sanspro description m-15 ion-text-start">
+            {{ 'chef.instruction.slide2.description' | translate }}
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="chef-instruction-slide">
+        <div class="image-section">
+          <ion-img src="../../assets/images/chef-instruction-page-slide3.png" class="width-first"></ion-img>
+        </div>
+        <div class="description-section">
+          <div class="font-poppins title m-15">
+            {{ 'chef.instruction.slide3.title' | translate}}
+          </div>
+          <div class="font-sanspro description m-15 ion-text-start">
+            {{ 'chef.instruction.slide3.description' | translate }}
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onClickNext()">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>  
+</ion-content>
+
+<div class="background-gradient-wrapper"></div>

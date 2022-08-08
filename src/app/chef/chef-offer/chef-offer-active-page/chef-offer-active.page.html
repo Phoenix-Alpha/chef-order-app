@@ -1,0 +1,131 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="offer-list">
+      <ion-item
+        *ngFor="let offer of activeOfferList"
+        class="offer-item"
+        button
+        lines="none"
+        detail="false"
+        (click)="onClickOfferItem(offer)"
+      >
+        <ion-avatar slot="start" class="offer-item-avatar">
+          <img *ngIf="offer.offerPictures.length > 0 && offer.offerPictures[0]" [src]="offer.offerPictures[0]" class="offer-item-avatar">
+          <img *ngIf="offer.offerPictures.length === 0 || !offer.offerPictures[0]" src="assets/images/halal-logo.png" class="offer-item-avatar">
+        </ion-avatar>
+        <div class="offer-info">
+          <div class="offer-header m-5">
+            <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              {{ offer.title }}
+            </div>
+            <div class="offer-viewed ion-text-nowrap">
+              <ion-icon src="assets/images/view.svg" class="view-icon mr-5"></ion-icon>
+              {{ 0 }}
+            </div>
+          </div>
+          <div class="offer-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.serving' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <!-- <ion-badge class="offer-info-badge">Sun. 29 Feb. 13:00</ion-badge> -->
+                    <ion-badge *ngIf="offer.offerType === 'PREORDER'" class="offer-info-badge">
+                      {{ offer.servingStart | localizedDate:'ddd. DD MMM. HH:mm': 'en-US' :browserTimeZone | async}}
+                    </ion-badge>
+                    <ion-badge *ngIf="offer.offerType === 'ONDEMAND'" class="offer-info-badge">
+                      {{ 'global.label.onDemand' | translate }}
+                    </ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10 ion-text-nowrap">
+                  {{ 'global.label.preorder' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="offer-info-badge">{{ offer.minPreorderHours }} {{ 'global.label.hoursLowercase' | translate }}</ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.orders' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="offer-info-badge mr-20">{{ offer.maxQuantity - offer.quantityAvailable }} / {{ offer.maxQuantity }}</ion-badge>
+                    <ion-icon *ngIf="offer.isDelivery" src="assets/images/scooter.svg" class="offer-info-icon mr-5"></ion-icon>
+                    <ng-container *ngIf="offer.isDelivery && offer.isPickup">/</ng-container>
+                    <ion-icon *ngIf="offer.isPickup" src="assets/images/pickup.svg" class="offer-info-icon ml-5"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <ion-button item-right class="offer-item-edit-btn" (click)="onClickOfferItemDropDownMenu($event, offer)">
+          <ion-icon src="assets/images/more-black.svg" class="offer-item-edit-icon"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <!-- <ion-item class="offer-item" button lines="none" detail="false">
+        <ion-avatar slot="start" class="offer-item-avatar">
+          <img src="assets/images/tajine chicken.png" class="offer-item-avatar">
+        </ion-avatar>
+        <div class="offer-info">
+          <div class="offer-header m-5">
+            <div class="offer-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              Tajine Chicken
+            </div>
+            <div class="offer-viewed ion-text-nowrap">
+              <ion-icon src="assets/images/view.svg" class="view-icon mr-5"></ion-icon>
+              {{ 122 }}
+            </div>
+          </div>
+          <div class="offer-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.serving' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="offer-info-badge">On demand</ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10 ion-text-nowrap">
+                  {{ 'global.label.preorder' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="offer-info-badge">24 {{ 'global.label.hoursLowercase' | translate }}</ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.orders' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="offer-info-badge mr-20">0</ion-badge>
+                    <ion-icon src="assets/images/pickup.svg" class="offer-info-icon ml-5"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <ion-button item-right class="offer-item-edit-btn" (click)="onClickOfferItem($event)">
+          <ion-icon src="assets/images/more-black.svg" class="offer-item-edit-icon"></ion-icon>
+        </ion-button>
+      </ion-item> -->
+    </ion-list>
+  </div>
+</ion-content>

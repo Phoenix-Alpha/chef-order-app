@@ -1,0 +1,40 @@
+<div class="clock-face" #clockFace>
+    <div *ngIf="unit !== timeUnit.MINUTE;else minutesFace" class="clock-face__container">
+        <div class="clock-face__number clock-face__number--outer"
+             [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg) translateX(-50%)'}"
+             *ngFor="let time of faceTime | slice: 0 : 12; trackBy: trackByTime">
+			<span [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+                  [ngClass]="{'active': time.time | activeHour: selectedTime.time : isClockFaceDisabled,
+                   'disabled': time.disabled}">
+                {{time.time | timeLocalizer: timeUnit.HOUR}}
+            </span>
+        </div>
+        <div class="clock-face__inner" *ngIf="faceTime.length > 12"
+             [style.top]="'calc(50% - ' + innerClockFaceSize + 'px)'">
+            <div class="clock-face__number clock-face__number--inner"
+                 [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg) translateX(-50%)'}"
+                 [style.height.px]="innerClockFaceSize"
+                 *ngFor="let time of faceTime | slice: 12 : 24; trackBy: trackByTime">
+			<span [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+                  [ngClass]="{'active': time.time | activeHour: selectedTime?.time : isClockFaceDisabled,
+                   'disabled': time.disabled}">
+                {{time.time | timeLocalizer: timeUnit.HOUR}}</span>
+            </div>
+        </div>
+    </div>
+
+    <span class="clock-face__clock-hand" [ngClass]="{'clock-face__clock-hand_minute': unit === timeUnit.MINUTE}"
+          #clockHand [hidden]="isClockFaceDisabled"></span>
+</div>
+<ng-template #minutesFace>
+    <div class="clock-face__container">
+        <div class="clock-face__number clock-face__number--outer"
+             [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg) translateX(-50%)'}"
+             *ngFor="let time of faceTime; trackBy: trackByTime">
+	<span [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+          [ngClass]="{'active': time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled,
+           'disabled': time.disabled}">
+	{{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}</span>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,110 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/results/tabs/results-list" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'Filter' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end" *ngIf="shouldDisplayApplyResetBtn()">
+      <ion-button class="btn-apply-reset" (click)="onClickApplyResetBtn()">
+        {{ applyResetBtnTitle | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="filterForm">
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{'Sort by' | translate}}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-no-margin sort-container">
+          <ion-select
+            class="red-dropdown-icon"
+            formControlName="sortMode"
+          >
+            <ion-select-option *ngFor="let s of resultSortModes" value="{{ s.mode }}">{{ s.label }}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{'Distance' | translate}}</h4>
+          <ion-item class="no-border range-container flex-container align-items-center justify-content-center" lines="none">
+            <ion-range
+              class="range-color"
+              min="1"
+              max="30"
+              #distanceRange
+              formControlName="distance"
+            >
+            </ion-range>
+            <p class="distance">{{ distanceRange.value }} km</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{ 'Chef rating' | translate }}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <app-filter-chef-rating [number]="5" [startNumber]="filterState.chefRating" (currentRatingChanged)="chefRatingChanged($event)"></app-filter-chef-rating>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{ 'Offer type' | translate }}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <app-radio-option [items]="orderOptions" [activeItem]="activeOfferTypeItem" (radioChanged)="offerTypeFilterChanged($event)"></app-radio-option>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{ 'Serving date' | translate }}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row class="align-items-center">
+        <ion-item lines="none" class="calendar-container ml-5 mr-5 flex-grow">
+          <ion-icon name="calendar-filter" class="ion-margin-end"></ion-icon>
+          <ion-datetime
+            displayFormat="DD-MM-YYYY"
+            formControlName="servingDate"
+            [min]="getNow()"
+          >
+          </ion-datetime>
+        </ion-item>
+        <ion-button class="serving-date-delete-btn ion-no-margin ion-no-padding" (click)="onRemoveServingDateFilter()">
+          <ion-icon name="close" slot="icon-only" class="ion-no-margin"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left ion-no-margin">
+          <h4 class="title">{{ 'Delivery' | translate }}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-no-margin">
+          <app-radio-option [items]="deliveryOptions" [activeItem]="activeDeliveryMethodItem" (radioChanged)="deliveryMethodFilterChanged($event)"></app-radio-option>
+        </ion-col>
+      </ion-row>
+      <ion-row class="align-items-center justify-content-center">
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onApplyFilter()">{{ 'Apply filter' | translate }}</ion-button>
+          </div>
+        </div>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

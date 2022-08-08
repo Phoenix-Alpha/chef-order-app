@@ -1,0 +1,6 @@
+<ion-chip 
+    [ngClass]="{ 'chip-active': checked, 'chip-small': isSmall }"
+    (click)="onClickChip()" >
+    <ion-icon [@fadeAnimation] *ngIf="checked" name="checkmark-outline" color="primary"></ion-icon>
+    <ion-label class="ion-text-nowrap">{{ label }}</ion-label>
+</ion-chip>

@@ -1,0 +1,54 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.orders.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <div class="order-instruction-wrapper">
+      <div class="order-instruction-subtitle">
+        <ion-img src="assets/images/chef-order/1.png" class="order-instruction-number-icon mr-15"></ion-img>
+        <span>{{ 'global.label.pending' | translate }}</span>
+        <ion-img src="assets/images/chef-order/24-hours.png" class="order-instruction-side-icon"></ion-img>
+      </div>
+      <div
+        class="order-instruction-description border-left-primary-3"
+        [innerHTML]="'chef.orders.instruction.pending.description' | translate"
+      >
+      </div>
+      <div class="order-instruction-subtitle">
+        <ion-img src="assets/images/chef-order/2.png" class="order-instruction-number-icon mr-15"></ion-img>
+        <span>{{ 'chef.orders.inPreparation.title' | translate }}</span>
+        <ion-img src="assets/images/chef-order/cooking.png" class="order-instruction-side-icon"></ion-img>
+      </div>
+      <div
+        class="order-instruction-description border-left-primary-3"
+        [innerHTML]="'chef.orders.instruction.inPreparation.description' | translate"
+      >
+      </div>
+      <div class="order-instruction-subtitle">
+        <ion-img src="assets/images/chef-order/3.png" class="order-instruction-number-icon mr-15"></ion-img>
+        <span>{{ 'global.label.delivered' | translate }}</span>
+        <ion-img src="assets/images/chef-order/take-away.png" class="order-instruction-side-icon"></ion-img>
+      </div>
+      <div
+        class="order-instruction-description"
+        [innerHTML]="'chef.orders.instruction.delivered.description' | translate"
+      >
+      </div>
+    </div>
+    <ion-grid class="mt-auto w-100">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button class="auth-submit-btn" expand="block" (click)="onClose()">{{ 'global.button.close' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

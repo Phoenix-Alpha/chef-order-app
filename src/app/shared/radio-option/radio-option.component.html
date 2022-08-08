@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let item of items">
+    <ion-item lines="none" class="input-container" (click)="onOptionSelected(item)">
+      <span class="dot" [class.active]="(activeItem == item) || (activeItem && item.id === activeItem.id)"></span>
+      <span>{{ item.label }}</span>
+    </ion-item>
+  </li>
+</ul>

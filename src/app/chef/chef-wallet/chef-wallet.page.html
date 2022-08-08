@@ -1,0 +1,66 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.wallet.title' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end" class="right-btn-group">
+      <ion-button id="settingBtn" #settingBtn (click)="onClickWalletSettingButton($event)" class="setting-button">
+        <ion-icon src="../../assets/images/setting.svg" class="setting-btn-icon" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-item class="wallet-subtitle-item" lines="none">
+      <ion-label slot="start">{{'chef.wallet.pendingAmount' | translate }}</ion-label>
+      <ion-label slot="end" class="ion-text-end">{{ walletInfo.hold ? walletInfo.hold.toFixed(2) : '0.00' }}€</ion-label>
+    </ion-item>
+    <div class="balance ion-text-center p-20">
+      <div class="balance-amount">
+        {{ walletInfo.balance ? walletInfo.balance.toFixed(2) : '0.00' }}€
+      </div>
+      <div>
+        {{ 'chef.wallet.availableAmount' | translate}}
+      </div>
+      <ng-container *ngIf="walletInfo.status !== 'ENABLED'">
+        <ion-button (click)="activateWallet()" class="text-transform-none m-10">
+          {{ 'chef.wallet.activeYourWallet' | translate }}
+        </ion-button>
+        {{ 'chef.wallet.activeYourWalletDescription' | translate }}
+        <ng-container *ngIf="walletInfo.status === 'INVERIFICATION'">
+          {{ 'chef.wallet.chefWalletInVerificationDescription' | translate }}
+        </ng-container>
+        <ng-container *ngIf="walletInfo.status === 'VERIFICATIONFAILED'">
+          {{ 'chef.wallet.chefWalletVerificationFailedDescription' | translate }}
+        </ng-container>
+        <ng-container *ngIf="walletInfo.status === 'SUSPENDED'">
+          {{ 'chef.wallet.chefWalletSuspendedDescription' | translate }}
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="walletInfo.status === 'ENABLED'">
+        <ion-button *ngIf="walletInfo.status === 'ENABLED'" (click)="goToDashboard()" class="text-transform-none m-10">
+          <!-- {{ 'chef.wallet.updateYourWallet' | translate }} -->
+          Full dashboard
+        </ion-button>
+        <ng-container *ngIf="walletInfo.status === 'ENABLED'">
+          {{ 'chef.wallet.chefWalletEnabledDescription' | translate }}
+        </ng-container>
+      </ng-container>
+    </div>
+    <ion-item class="wallet-subtitle-item" lines="none">
+      <ion-label slot="start">{{'chef.wallet.recentTransactions' | translate }}</ion-label>
+    </ion-item>
+    <ion-item class="transaction-item" lines="none">
+      <div slot="start" class="flex-container flex-direction-col">
+        <ion-label>Tajine chicken</ion-label>
+        <ion-label class="transaction-time">22.05.2021</ion-label>
+      </div>
+      <ion-label slot="end" class="ion-text-end">0,00€</ion-label>
+    </ion-item>
+  </div>
+</ion-content>

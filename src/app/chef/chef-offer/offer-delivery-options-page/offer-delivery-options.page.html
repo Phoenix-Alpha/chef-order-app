@@ -1,0 +1,192 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/offer/0" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.offer.new.deliveryOptions.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <div class="flex-container flex-direction-col mt-25 ml-10 mr-10">
+      <div class="font-weight-heavy ion-text-nowrap mr-10">{{ 'global.label.option' | translate }}</div>
+      <app-ion-chip-checkable-list
+        [itemList]="deliveryTypeList"
+        [isSmall]="false"
+        [isMultiple]="false"
+        [isCheckable]="true"
+        [selectedItems]="deliveryType"
+        (onChanged)="onDeliveryTypeChanged($event)">
+      </app-ion-chip-checkable-list>
+    </div>
+    <form [formGroup]="offerDeliveryOptionsPickupForm" class="h-100">
+      <div class="flex-container flex-direction-row align-items-baseline mt-20 ml-10 mr-10 mb-5">
+        <div *ngIf="deliveryType == 'PICKUP'" class="font-weight-heavy pr-10 vertical-align-baseline">{{ 'global.label.pickupAddress' | translate }}*</div>
+        <div *ngIf="deliveryType == 'DELIVERY'" class="font-weight-heavy pr-10 vertical-align-baseline">{{ 'global.label.chefAddress' | translate }}*</div>
+        <div *ngIf="deliveryType == 'BOTH'" class="font-weight-heavy pr-10 vertical-align-baseline">{{ 'global.label.pickupAddress' | translate }}*</div>
+        <img src="../assets/images/pickup-address.png" class="delivery-option-icon">
+      </div>
+      <div class="highlighted p-5">
+        <div class="flex-container flex-direction-col">
+          <div class="w-100 flex-container flex-direction-row ml-5 mr-5">
+            <ion-input
+              class="white-round-input no-margin"
+              placeholder="Street and house number"
+              formControlName="servingAddress">
+            </ion-input>
+          </div>
+          <div class="w-100"></div>
+          <div class="mr-16 ml-16 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.servingAddress">
+              <div class="error-message" *ngIf="servingAddress.hasError(validation.type) && (servingAddress.dirty || servingAddress.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+          <div class="w-100 flex-container flex-direction-row align-items-center ml-5 mr-5">
+            <table>
+              <tr>
+                <td>
+                  <div class="flex-container flex-direction-row">
+                    <ion-input
+                      class="white-round-input"
+                      placeholder="Postcode"
+                      formControlName="servingPostcode">
+                    </ion-input>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex-container flex-direction-row">
+                    <ion-input
+                      class="white-round-input"
+                      placeholder="City"
+                      formControlName="servingCity">
+                    </ion-input>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mr-16 ml-16 validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.servingPostcode">
+                      <div class="error-message" *ngIf="servingPostcode.hasError(validation.type) && (servingPostcode.dirty || servingPostcode.touched)">
+                        {{ validation.message | translate }}
+                      </div>
+                    </ng-container>
+                  </div>
+                </td>
+                <td>
+                  <div class="mr-16 ml-16 validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.servingCity">
+                      <div class="error-message" *ngIf="servingCity.hasError(validation.type) && (servingCity.dirty || servingCity.touched)">
+                        {{ validation.message | translate }}
+                      </div>
+                    </ng-container>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="m-10 minor-description">
+        * {{ 'chef.offer.new.deliveryOptions.pickupAddressDescription' | translate }}
+      </div>
+    </form>
+    <form *ngIf="deliveryOptionsInfo.isDelivery" [formGroup]="offerDeliveryOptionsDeliveryForm" class="h-100">
+      <div class="flex-container flex-direction-row align-items-baseline mt-20 ml-10 mr-10 mb-5">
+        <div class="font-weight-heavy pr-10">{{ 'global.label.delivery' | translate }}*</div>
+        <img src="../assets/images/scooter-primary.png" class="delivery-option-icon">
+      </div>
+      <div class="highlighted p-5">
+        <div class="flex-container flex-direction-row align-items-center ml-15 mr-15">
+          <div class="mr-10">{{ 'global.label.zone' | translate }}1</div>
+          <ion-input
+            class="white-round-input"
+            placeholder="Distance"
+            type="number"
+            formControlName="zone1MaxDistance">
+          </ion-input>
+          <span class="mr-10">km</span>
+          <ion-input 
+            class="white-round-input"
+            placeholder="Price"
+            type="number"
+            formControlName="zone1DeliveryPrice">
+          </ion-input>
+          <span>€</span>
+        </div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.zone1MaxDistance">
+            <div class="error-message" *ngIf="zone1MaxDistance.hasError(validation.type) && (zone1MaxDistance.dirty || zone1MaxDistance.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+          <ng-container *ngFor="let validation of validation_messages.zone1DeliveryPrice">
+            <div class="error-message" *ngIf="zone1DeliveryPrice.hasError(validation.type) && (zone1DeliveryPrice.dirty || zone1DeliveryPrice.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex-container flex-direction-row align-items-center ml-15 mr-15">
+          <div class="mr-10">{{ 'global.label.zone' | translate }}2</div>
+          <ion-input
+            class="white-round-input"
+            placeholder="Distance"
+            type="number"
+            formControlName="zone2MaxDistance">
+          </ion-input>
+          <span class="mr-10">km</span>
+          <ion-input
+            class="white-round-input"
+            placeholder="Price"
+            type="number"
+            formControlName="zone2DeliveryPrice">
+          </ion-input>
+          <span>€</span>
+        </div>
+        <div class="flex-container flex-direction-row align-items-center ml-15 mr-15">
+          <div class="mr-10">{{ 'global.label.zone' | translate }}3</div>
+          <ion-input
+            class="white-round-input"
+            placeholder="Distance"
+            type="number"
+            formControlName="zone3MaxDistance">
+          </ion-input>
+          <span class="mr-10">km</span>
+          <ion-input
+            class="white-round-input"
+            placeholder="Price"
+            type="number"
+            formControlName="zone3DeliveryPrice">
+          </ion-input>
+          <span>€</span>
+        </div>
+        <div class="flex-container flex-direction-row align-items-center ml-10 mr-10">
+          <ion-checkbox 
+            class="white-checkbox mr-5"
+            formControlName="isMinFreeDeliveryAmountEnabled">
+          </ion-checkbox>
+          <div class="mr-5 minor-description">{{ 'chef.offer.new.deliveryOptions.freeDeliveryForMinimum' | translate }}</div>
+          <ion-input
+            class="grey-underline-input ion-text-center"
+            placeholder="Price"
+            type="number"
+            formControlName="minFreeDeliveryAmount">
+          </ion-input>
+          <span>€</span>
+        </div>
+      </div>
+    </form>
+    <ion-grid class="mt-auto w-100 imb-50">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

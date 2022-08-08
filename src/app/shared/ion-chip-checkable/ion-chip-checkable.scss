@@ -1,0 +1,27 @@
+ion-chip {
+    --background: white;
+    border: 1px solid #636363;
+    color: #636363;
+    font-size: 1.6rem;
+    ion-icon {
+        margin-inline-end: 3px !important;
+        margin-right: 3px !important;
+    }
+}
+
+ion-chip.chip-active {
+    box-shadow: 2px 2px 4px #0000004D;
+    border: 1px solid #CB652B;
+    color: black;
+    ion-icon {
+        margin-inline-end: 3px !important;
+        margin-right: 3px !important;
+    }
+}
+
+ion-chip.chip-small {
+    font-size: 1.2rem;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    height: 28px !important;
+}

@@ -1,0 +1,15 @@
+.date-picker-wrapper {
+    height: auto;
+    .date-picker-top {
+        height: 100px;
+        background-color: #CB652B;
+        color: white;
+        .year-part {
+            font-size: 1.4rem;
+        }
+        .day-part {
+            font-size: 2.4rem;
+            font-weight: 600;
+        }
+    }
+}

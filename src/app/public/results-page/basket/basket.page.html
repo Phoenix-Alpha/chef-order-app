@@ -1,0 +1,58 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/results/tabs/results-list" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'Basket' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-row>
+          <ng-container *ngFor="let order of orders; let i=index;">
+            <ion-col size="1" class="quantity"><span>{{ order.amount }}</span></ion-col>
+            <ion-col size="8" class="name"><span>{{ order.offer.title }}</span></ion-col>
+            <ion-col size="3"><span class="price">{{ order.nonDiscountedTotal }}€</span></ion-col>
+            <ion-col size="1"><ion-icon name="hand-basket"></ion-icon></ion-col>
+            <ion-col size="8"><span class="date">{{ order.pickupDate }}</span></ion-col>
+            <ion-col size="3">
+              <ion-button fill="outline" size="small" (click)="reduceOrderAmount(order)">-</ion-button>
+              <ion-button fill="outline" size="small" (click)="incrementOrderAmount(order)">+</ion-button>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item class="text-area-container">
+                <ion-textarea
+                  placeholder="{{'Add special notes...' | translate }}"
+                  (ionChange)="onSepcialNoteChange(order, $event)"
+                >
+                </ion-textarea>
+              </ion-item>
+            </ion-col>
+            <!-- <ion-col size="12"><span class="date">{{ order.discountedTotal }}</span></ion-col> -->
+            <!-- <ion-col size="12"><span class="date">{{ order.nonDiscountedTotal}}</span></ion-col> -->
+          </ng-container>
+        </ion-row>
+        <ion-row>
+          <ion-col size="9"><h3 class="text-note">Subtotal</h3></ion-col>
+          <ion-col size="3"><h3 class="text-note ion-text-right">{{subTotal}} €</h3></ion-col>
+          <ion-col size="9"><h3 class="text-note">Delivery</h3></ion-col>
+          <ion-col size="3"><h3 class="text-note ion-text-right">{{delivery}} €</h3></ion-col>
+          <ion-col size="9"><h3 class="text-note no-opacity">Total</h3></ion-col>
+          <ion-col size="3"><h3 class="ion-text-right">{{total}} €</h3></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-row>
+  <ion-col size="10" class="align-center">
+    <ion-button color="primary" (click) = "checkout()" class="full">Checkout ({{total}}€)</ion-button>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,11 @@
+ion-list {
+    padding: 0;
+    ion-item {
+        --padding-start: 10px;
+        --padding-end: 10px;
+        --min-height: 32px;
+        ion-label {
+            margin: 5px !important;
+        }
+    }
+}

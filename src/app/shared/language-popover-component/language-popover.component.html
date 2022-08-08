@@ -1,0 +1,20 @@
+<ion-list>
+  <ion-list-header>
+    <ion-item>
+      <ion-label>{{ 'global.label.language' | translate }}</ion-label>
+      <ion-img src="../../assets/images/language.png"></ion-img>
+    </ion-item>
+  </ion-list-header>
+  <ion-item button (click)="onSelection('fr')">
+    <ion-label class="ion-text-center" [ngClass]="{'selected-lang': translateService.currentLang === 'fr'}">Français</ion-label>
+  </ion-item>
+  <ion-item button (click)="onSelection('en')">
+    <ion-label class="ion-text-center" [ngClass]="{'selected-lang': translateService.currentLang === 'en'}">English</ion-label>
+  </ion-item>
+  <ion-item button (click)="onSelection('de')">
+    <ion-label class="ion-text-center" [ngClass]="{'selected-lang': translateService.currentLang === 'de'}">Deutsch</ion-label>
+  </ion-item>
+  <ion-item button (click)="onSelection('nl')" lines="none">
+    <ion-label class="ion-text-center" [ngClass]="{'selected-lang': translateService.currentLang === 'nl'}">Dutch</ion-label>
+  </ion-item>
+</ion-list>

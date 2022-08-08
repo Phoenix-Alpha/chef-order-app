@@ -1,0 +1,7 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true" (click)="onTap()">
+  <ion-img class="background" src = "../../../assets/images/background logo light half left.png"></ion-img>
+  <ion-img src = "../../../assets/images/chef1.png"></ion-img>
+  <div class="large">Thank you for your order</div>
+  <ion-img src = "../../../assets/images/checked1.png"></ion-img>
+  <div class="small ion-padding-horizontal-20">Your order number <a>{{ orderNumber ? orderNumber : 'XXXXXX' }}</a> has been successfully placed. We have sent you an email with a summary of your order details.</div>
+</ion-content>

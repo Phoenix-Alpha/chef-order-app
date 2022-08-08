@@ -1,0 +1,12 @@
+<ion-list>
+  <ion-item button (click)="onSelection('Selected')" lines="full">
+    <ion-label class="ion-text-nowrap">
+      {{ 'chef.inbox.clearSelectedConversations' | translate }}
+    </ion-label>
+  </ion-item>
+  <ion-item button (click)="onSelection('All')" lines="none">
+    <ion-label class="ion-text-nowrap">
+      {{ 'chef.inbox.clearAllFinishedConversations' | translate }}
+    </ion-label>
+  </ion-item>
+</ion-list>

@@ -1,0 +1,359 @@
+<ion-header class="header-no-border status-bar-padding">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon src="../../assets/images/logo.svg" class="logo" color="secondary"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <div color="secondary" class="title">Halal-Homemade.com</div>
+    <ion-buttons slot="end" class="right-btn-group">
+      <ion-button id="languageBtn" #languageBtn (click)="onClickLanguageButton($event)" class="language-button">
+        <ion-icon src="../../assets/images/lang-{{translateService.currentLang}}-button.svg" class="lang-btn" color="secondary"></ion-icon>
+      </ion-button>
+      <ion-menu-button>
+        <ion-icon src="../../assets/images/hamburger-menu-button.svg" class="hamburger" color="secondary"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="transparent">
+  <ion-backdrop
+    *ngIf="hideShowButton"
+    (ionBackdropTap)="onTapBackdrop()"
+  >
+  </ion-backdrop>
+  <form [formGroup]="searchBarForm">
+    <ion-grid class="no-padding-grid">
+      <ion-row class="ion-padding">
+        <ion-text color="secondary" class="ion-text-center w-100">
+          <h1> {{ 'home.title.timeToEat' | translate }}</h1>
+          <h3>{{ 'home.title.findOffer' | translate }}</h3>
+        </ion-text>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <div class="search-bar-section w-100 position-relative">
+          <div class="search-bar" #searchBar>
+            <div class="address-input-wrapper">
+              <ion-input
+                class="address-input"
+                placeholder="ADRESS, EXAMPLE: MAINSTREET 23210"
+                type="text"
+                formControlName="address"
+                (ionChange)="updateSearchResults()"
+                (ionFocus)="onSearchInputFocus()"
+              >
+                <ion-icon class="location-icon" src="../../assets/images/location.svg"></ion-icon>
+              </ion-input>
+            </div>
+            <div *ngIf="hideShowButton" class="popover-section">
+              <div class="divider w-100"></div>
+              <div class="dropdown-section">
+                <div *ngIf="locationPermissionAllowed" class="my-location-section" (click)="onClickMyLocation()">
+                  <div class="my-location-title-section mb-10">
+                    <ion-icon src="../../assets/images/compass.svg" class="my-location-icon mr-10"></ion-icon>
+                    <ion-label>{{ 'home.searchBar.myLocation' | translate }}</ion-label>
+                  </div>
+                  <div class="w-100"></div>
+                  <ion-label *ngIf="currentAddress">{{ currentAddress }}</ion-label>
+                </div>
+                <div *ngIf="autocompleteItems.length > 0" class="place-prediction-section">
+                  <div class="mb-10">
+                    <ion-label>{{ 'home.searchBar.suggestions' | translate }}</ion-label>
+                  </div>
+                  <ng-container *ngFor="let prediction of autocompleteItems">
+                    <div class="place-prediction-item mb-10" (click)="onClickPrediction(prediction)">
+                      <ion-icon src="../../assets/images/place-prediction-item-icon.svg" class="place-prediction-icon mr-10"></ion-icon>
+                      <ion-label>{{ prediction.description }}</ion-label>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="powered-by-google">
+                <ion-img src="../../assets/images/powered_by_google_on_white.png" class="powered-by-google-img mr-10"></ion-img>
+              </div>
+            </div>
+          </div>
+          <div class="ion-text-center show" *ngIf="!hideShowButton" routerLink="/public/transition">
+            {{ 'home.searchBar.show' | translate }}
+          </div>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-img src="../../assets/images/home-pic1.png" width="100%" ></ion-img>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <div id="how-it-works" class="flex-container w-100">
+          <div class="title-how-it-works">
+            {{ 'home.slides.title' | translate }}
+          </div>
+          <div class="grey-bottom-border w-100 h-20p"></div>
+        </div>
+      </ion-row>
+      <ion-row class="slide-padding mb-25">
+        <ion-col size="2">
+          <div class="flex-container align-items-center justify-content-center w-100 h-100">
+            <ion-img src="../../assets/images/left-arrow.png" class="arrow-btn" (click)="onClickLeftArrow()"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col size="8">
+          <ion-slides id="slides" #slides pager="true" [options]="slideOpts" class="home-slides">
+            <ion-slide>
+              <div class="home-slide">
+                <ion-img src="../../assets/images/slide1-map.png"></ion-img>
+                <div class="font-sanspro description">{{ 'home.slides.locationDescription' | translate }}</div>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="home-slide">
+                <ion-img src="../../assets/images/slide2-serve.svg"></ion-img>
+                <div class="font-sanspro description">{{ 'home.slides.exploreDescription' | translate }}</div>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="home-slide">
+                <ion-img src="../../assets/images/slide3-shopping-bag.svg"></ion-img>
+                <div class="font-sanspro description">{{ 'home.slides.orderDescription' | translate }}</div>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+        <ion-col size="2">
+          <div class="flex-container align-items-center justify-content-center w-100 h-100">
+            <ion-img src="../../assets/images/right-arrow.png" class="arrow-btn" (click)="onClickRightArrow()"></ion-img>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <div class="background-gradient-wrapper"></div>
+</ion-content>
+
+<!-- <ion-split-pane contentId="main-content">
+  <ion-menu side="end" contentId="main-content" type="overlay">
+    <ion-content>
+      <ion-list class="menu-list">
+        <ion-list-header slots="start" class="side-menu-header">
+          <img *ngIf="!loggedInUser || loggedInUser.id < 0" class="header-avatar-margin-vertical" src="../assets/images/default-avatar.png">
+          <img *ngIf="loggedInUser && !loggedInUser.isChef" class="header-avatar-margin-vertical" src="../assets/images/default-avatar.png" >
+          <img *ngIf="loggedInUser && loggedInUser.isChef && chefDetail && !chefDetail.profilePicture" class="header-avatar-margin-vertical" src="../assets/images/chef-default-avatar.png" >
+          <ion-avatar *ngIf="loggedInUser && loggedInUser.isChef && chefDetail && chefDetail.profilePicture" class="header-avatar-margin-vertical">
+            <img [src]="chefDetail.profilePicture" >
+          </ion-avatar>
+          <ion-grid class="ion-margin-start">
+            <ion-row>
+              <ion-label *ngIf="!loggedInUser || loggedInUser.id < 0" color="secondary" class="menu-header-greetings">{{ 'home.menu.greeting' | translate }}</ion-label>
+              <ion-label *ngIf="loggedInUser" color="secondary" class="menu-header-greetings">
+                {{ getUserName() }}
+              </ion-label>
+            </ion-row>
+            <ion-row *ngIf="!loggedInUser">
+              <ion-label color="secondary" class="menu-header-comments">{{ 'home.menu.subtitle' | translate }}</ion-label>
+            </ion-row>
+          </ion-grid>
+        </ion-list-header>
+        <ion-grid class="menu-toggle-group">
+          <ion-menu-toggle auto-hide="false" *ngIf="!loggedInUser || loggedInUser.id < 0">
+            <ion-item routerDirection="root" routerLink="/auth/login" lines="none" detail="false" routerLinkActive="selected">
+              <img src="../assets/images/menu/login.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.login' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="!loggedInUser || loggedInUser.id < 0">
+            <ion-item routerDirection="root" routerLink="/auth/signup" lines="none" detail="false" routerLinkActive="selected">
+              <img src="../assets/images/menu/signup.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.signup' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="loggedInUser">
+            <ion-item routerDirection="root" routerLink="/public/account" lines="none" detail="false" routerLinkActive="selected">
+              <img src="../assets/images/menu/profile.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.myAccount' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detail="false">
+              <img src="../assets/images/menu/myorders.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.myOrders' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detail="false">
+              <img src="../assets/images/menu/inbox.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.inbox' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="loggedInUser && !loggedInUser.isChef">
+            <ion-item routerDirection="root" routerLink="/public/chef" lines="none" detail="false" routerLinkActive="selected">
+              <img src="../assets/images/menu/chef.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.becomeAHomeChef' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="loggedInUser && loggedInUser.isChef">
+            <ion-item routerDirection="root" routerLink="/public/chef/dashboard" lines="none" detail="false" routerLinkActive="selected">
+              <img src="../assets/images/menu/chef.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.chefDashboard' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" [ngStyle]="{visibility: (loggedInUser && loggedInUser.id > 0) ? 'visible' : 'hidden' }">
+            <ion-item lines="none" lines="none" detailIcon="chevron-down-outline" detail="true">
+              <img src="../assets/images/menu/share.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.shareAndEarn' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detailIcon="chevron-down-outline" detail="true">
+              <img src="../assets/images/menu/help.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.needHelp' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detail="false" class="language-item" (click)="onClickMenuLanguageButton($event)">
+              <img src="../assets/images/menu/language.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ currentLanguage | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="loggedInUser && loggedInUser.id > 0" class="mt-auto imb-50">
+            <ion-item lines="none" detail="false" (click)="onLogout()">
+              <img src="../assets/images/menu/logout.png" class="menu-img">
+              <ion-label class="ion-margin-start menu-label">{{ 'home.menu.logout' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-grid>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <div id="main-content" class="ion-page">
+    <ion-header class="header-no-border status-bar-padding">
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button>
+            <ion-icon src="../../assets/images/logo.svg" class="logo" color="secondary"></ion-icon>
+          </ion-menu-button>
+        </ion-buttons>
+        <div color="secondary" class="title">Halal-Homemade.com</div>
+        <ion-buttons slot="end" class="right-btn-group">
+          <ion-button id="languageBtn" #languageBtn (click)="onClickLanguageButton($event)" class="language-button">
+            <ion-icon src="../../assets/images/lang-{{translateService.currentLang}}-button.svg" class="lang-btn" color="secondary"></ion-icon>
+          </ion-button>
+          <ion-menu-button>
+            <ion-icon src="../../assets/images/hamburger-menu-button.svg" class="hamburger" color="secondary"></ion-icon>
+          </ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content [fullscreen]="true" class="transparent">
+      <ion-backdrop
+        *ngIf="hideShowButton"
+        (ionBackdropTap)="onTapBackdrop()"
+      >
+      </ion-backdrop>
+      <form [formGroup]="searchBarForm">
+        <ion-grid class="no-padding-grid">
+          <ion-row class="ion-padding">
+            <ion-text color="secondary" class="ion-text-center w-100">
+              <h1> {{ 'home.title.timeToEat' | translate }}</h1>
+              <h3>{{ 'home.title.findOffer' | translate }}</h3>
+            </ion-text>
+          </ion-row>
+          <ion-row class="ion-padding">
+            <div class="search-bar-section w-100 position-relative">
+              <div class="search-bar" #searchBar>
+                <div class="address-input-wrapper">
+                  <ion-input
+                    class="address-input"
+                    placeholder="ADRESS, EXAMPLE: MAINSTREET 23210"
+                    type="text"
+                    formControlName="address"
+                    (ionChange)="updateSearchResults()"
+                    (ionFocus)="onSearchInputFocus()"
+                  >
+                    <ion-icon class="location-icon" src="../../assets/images/location.svg"></ion-icon>
+                  </ion-input>
+                </div>
+                <div *ngIf="hideShowButton" class="popover-section">
+                  <div class="divider w-100"></div>
+                  <div class="dropdown-section">
+                    <div *ngIf="locationPermissionAllowed" class="my-location-section" (click)="onClickMyLocation()">
+                      <div class="my-location-title-section mb-10">
+                        <ion-icon src="../../assets/images/compass.svg" class="my-location-icon mr-10"></ion-icon>
+                        <ion-label>{{ 'home.searchBar.myLocation' | translate }}</ion-label>
+                      </div>
+                      <div class="w-100"></div>
+                      <ion-label *ngIf="currentAddress">{{ currentAddress }}</ion-label>
+                    </div>
+                    <div *ngIf="autocompleteItems.length > 0" class="place-prediction-section">
+                      <div class="mb-10">
+                        <ion-label>{{ 'home.searchBar.suggestions' | translate }}</ion-label>
+                      </div>
+                      <ng-container *ngFor="let prediction of autocompleteItems">
+                        <div class="place-prediction-item mb-10" (click)="onClickPrediction(prediction)">
+                          <ion-icon src="../../assets/images/place-prediction-item-icon.svg" class="place-prediction-icon mr-10"></ion-icon>
+                          <ion-label>{{ prediction.description }}</ion-label>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <div class="powered-by-google">
+                    <ion-img src="../../assets/images/powered_by_google_on_white.png" class="powered-by-google-img mr-10"></ion-img>
+                  </div>
+                </div>
+              </div>
+              <div class="ion-text-center show" *ngIf="!hideShowButton" routerLink="/public/transition">
+                {{ 'home.searchBar.show' | translate }}
+              </div>
+            </div>
+          </ion-row>
+          <ion-row>
+            <ion-img src="../../assets/images/home-pic1.png" width="100%" ></ion-img>
+          </ion-row>
+          <ion-row class="ion-padding">
+            <div id="how-it-works" class="flex-container w-100">
+              <div class="title-how-it-works">
+                {{ 'home.slides.title' | translate }}
+              </div>
+              <div class="grey-bottom-border w-100 h-20p"></div>
+            </div>
+          </ion-row>
+          <ion-row class="slide-padding mb-25">
+            <ion-col size="2">
+              <div class="flex-container align-items-center justify-content-center w-100 h-100">
+                <ion-img src="../../assets/images/left-arrow.png" class="arrow-btn" (click)="onClickLeftArrow()"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="8">
+              <ion-slides id="slides" #slides pager="true" [options]="slideOpts" class="home-slides">
+                <ion-slide>
+                  <div class="home-slide">
+                    <ion-img src="../../assets/images/slide1-map.png"></ion-img>
+                    <div class="font-sanspro description">{{ 'home.slides.locationDescription' | translate }}</div>
+                  </div>
+                </ion-slide>
+                <ion-slide>
+                  <div class="home-slide">
+                    <ion-img src="../../assets/images/slide2-serve.svg"></ion-img>
+                    <div class="font-sanspro description">{{ 'home.slides.exploreDescription' | translate }}</div>
+                  </div>
+                </ion-slide>
+                <ion-slide>
+                  <div class="home-slide">
+                    <ion-img src="../../assets/images/slide3-shopping-bag.svg"></ion-img>
+                    <div class="font-sanspro description">{{ 'home.slides.orderDescription' | translate }}</div>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-col>
+            <ion-col size="2">
+              <div class="flex-container align-items-center justify-content-center w-100 h-100">
+                <ion-img src="../../assets/images/right-arrow.png" class="arrow-btn" (click)="onClickRightArrow()"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      <div class="background-gradient-wrapper"></div>
+    </ion-content>
+  </div>
+</ion-split-pane>
+ -->
+
+

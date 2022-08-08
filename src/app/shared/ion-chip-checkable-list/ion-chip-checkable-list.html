@@ -1,0 +1,12 @@
+<div class="checkable-chip-list">
+    <app-ion-chip-checkable
+        *ngFor="let state of states"
+        [id]="state.id"
+        [label]="state.label"
+        [isSmall]="isSmall"
+        [isToggle]="isMultiple"
+        [isChecked]="state.checked"
+        [isCheckable]="isCheckable"
+        (onCheckChanged)="onClickChip($event)">
+    </app-ion-chip-checkable>
+</div>

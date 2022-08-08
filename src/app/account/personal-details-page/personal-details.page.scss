@@ -1,0 +1,164 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.page-wrapper {
+  margin-bottom: 40vh;
+}
+
+ion-item.account-section-item {
+  --min-height: 50px;
+  --color: #4A4949;
+  font-size: 2rem;
+  font-weight: 500;
+  ion-icon {
+    font-size: 2rem;
+  }
+}
+
+ion-item.account-section-item ion-label.account-section-title {
+  --color: #4A4949;
+  margin: 0 !important;
+}
+
+ion-item.account-input-item {
+  position: relative;
+  --min-height: 50px;
+  --padding-start: 10px;
+}
+
+ion-item.account-input-item ionic-selectable.account-input {
+  width: 100% !important;
+  max-width: 100% !important;
+  --min-height: 40px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --padding-start: 20px;
+  --color: #4A4949;
+  height: 40px !important;
+  border: 1px solid #707070;
+  border-radius: 6px;
+  font-size: 1.6rem !important;
+}
+
+.ionic-selectable {
+  &-label-default,
+  &-label-fixed {
+      max-width: 100%;
+  }
+
+  /* Keep an eye out for depreciated ::ng-deep replacement*/
+  &:not(&-label-stacked):not(&-label-floating) {
+      ::ng-deep {
+          .ionic-selectable-inner {
+              .ionic-selectable-value {
+                  padding-left: 5px !important;
+                  padding-top: 10px !important;
+                  padding-bottom: 10px !important;
+              }
+          }
+
+          .ionic-selectable-icon {
+              &-inner {
+                  top: 17px;
+              }
+          }
+      }
+
+  }
+}
+
+ion-item.account-input-item ion-datetime.account-input {
+  width: 100% !important;
+  --min-height: 40px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --padding-start: 20px;
+  --color: #4A4949;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+ion-item.account-input-item ion-input.account-input {
+  --min-height: 40px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --padding-start: 20px;
+  --color: #4A4949;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+ion-item.account-input-item input.account-input {
+  width: 100%;
+  min-height: 40px;
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: #4A4949;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+ion-item.account-input-item ion-input.account-input.has-focus {
+  border: 1px solid var(--ion-color-primary);
+}
+
+ion-item.account-input-item ion-label.account-input-placeholder {
+  --color: #4A4949;
+  font-size: 1.4rem !important;
+  margin: 0 !important;
+  padding: 0 5px 0 5px !important;
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  z-index: 5;
+  opacity: 1.0 !important;
+  background-color: white;
+}
+
+ion-item.account-input-item.item-has-focus ion-label.account-input-placeholder {
+  --color: var(--ion-color-primary);
+}
+
+ion-avatar {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.default-avatar {
+  width: 120px !important;
+  height: 120px !important;
+}

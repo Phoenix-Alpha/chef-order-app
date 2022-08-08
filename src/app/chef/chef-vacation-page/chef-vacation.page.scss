@@ -1,0 +1,87 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 1.2rem;
+
+  ion-item.vacation-item {
+    --min-height: 44px;
+    --color: #4A4949;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inline-padding-end: 0;
+
+    font-size: 1.6rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+
+    ion-toggle {
+      --handle-width: 21px;
+      --handle-height: 21px;
+      padding: 0;
+      margin: 0 12px;
+      min-width: 50px !important;
+      max-width: 50px !important;
+      min-height: 25px !important;
+      max-height: 25px !important;
+    }
+    
+    div.description {
+      min-height: 25px;
+      vertical-align: center;
+    }
+
+    div.vacation-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      input.vacation-date-range-input {
+        background: white;
+        outline: none !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid #CB652B !important;
+        color: var(--ion-color-primary);
+        width: 100%;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        margin: 0px 10px 5px 0px;
+      }
+    }
+  }
+
+  
+}

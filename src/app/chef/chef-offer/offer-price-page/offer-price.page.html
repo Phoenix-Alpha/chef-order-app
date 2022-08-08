@@ -1,0 +1,34 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/offer/0" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'global.label.price' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="offerPriceForm" class="h-100">
+    <div class="page-wrapper">
+      <div class="price-item">
+        <ion-label class="font-poppins">{{ 'global.label.price' | translate }}*</ion-label>
+        <ion-input 
+          type="number"
+          placeholder="0,00 €"
+          formControlName="price">
+        </ion-input>
+      </div>
+      <div class="m-20 minor-description" [innerHTML]="'chef.offer.new.price.description' | translate ">
+      </div>
+      <ion-grid class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

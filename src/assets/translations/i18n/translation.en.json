@@ -1,0 +1,519 @@
+{
+	"global": {
+		"language": {
+			"english": "English",
+			"french": "Français",
+			"dutch": "Dutch",
+			"german": "Deutsch"
+		},
+		"fab": {
+			"skip": "Skip"
+		},
+		"button": {
+			"next": "Next",
+			"login": "Log in",
+			"confirm": "Confirm",
+			"signup": "Sign up",
+			"send": "Send",
+			"save": "Save",
+			"allow": "Allow",
+			"skip": "Skip",
+			"startSelling": "Start selling",
+			"continue": "Continue",
+			"remove": "Remove",
+			"edit": "Edit",
+			"back": "Back",
+			"close": "Close",
+			"saveOffer": "Save offer",
+			"submit": "Submit"
+		},
+		"divider": {
+			"or": "OR"
+		},
+		"label": {
+			"or": "Or",
+			"emailAddress": "Email Address",
+			"password": "Password",
+			"resendCode": "Resend code",
+			"resend": "Resend",
+			"login": "Login",
+			"firstName": "First name",
+			"lastName": "Last name",
+			"personalInformation": "Personal information",
+			"city": "City",
+			"postCode": "Postcode",
+			"streetAndHouseNumber": "Street and house number",
+			"address": "Address",
+			"phoneNumber": "Phone number",
+			"profileName": "Profile name",
+			"aboutMe": "About me",
+			"language": "Language",
+			"available": "Available",
+			"pending": "Pending",
+			"toBeConfirmed": "To be confirmed",
+			"toBePrepared": "To be prepared",
+			"activeOffers": "Active offers",
+			"mealsServed": "Meals served",
+			"tips": "Tips",
+			"title": "Title",
+			"description": "Description",
+			"price": "Price",
+			"mandatoryFields": "Mandatory fields",
+			"tags": "Tags",
+			"allergens": "Allergens",
+			"portionWeight": "Portion weight",
+			"offerType": "Offer type",
+			"preorder": "Pre-order",
+			"ondemand": "On-demand",
+			"servingDate": "Serving date",
+			"orderUntil": "Order until",
+			"noticePeriod": "Notice period",
+			"quantity": "Quantity",
+			"dishes": "Dishes",
+			"hours": "Hours",
+			"hoursLowercase": "hours",
+			"gramm": "Gramm",
+			"option": "Option",
+			"onlyPickup": "Only Pick-up",
+			"onlyDelivery": "Only Delivery",
+			"deliveryAndPickup": "Delivery & Pickup",
+			"pickupAddress": "Pickup address",
+			"chefAddress": "Chef's address",
+			"review": "Leave a review",
+			"delivery": "Delivery",
+			"pickup": "Pickup",
+			"zone": "Zone",
+			"distance": "Distance",
+			"euroSign": "€",
+			"notifications": "Notifications",
+			"messages": "Messages",
+			"inPreparation": "In-preparation",
+			"delivered": "Delivered",
+			"inPrep": "In-prep.",
+			"enter6DigitCode": "Enter 6 digits code",
+			"scanQRCode": "Scan QR code",
+			"reviews": "Reviews",
+			"edit": "Edit",
+			"draft": "Draft",
+			"active": "Active",
+			"archive": "Archive",
+			"firstAndLastName": "First and last name",
+			"birthdate": "Birthdate",
+			"billingAddress": "Billing address",
+			"attachYourAddress": "Attach your address",
+			"bankAccount": "Bank account",
+			"attachYourIBAN": "Attach your IBAN",
+			"inactive": "Inactive",
+			"off": "off",
+			"saveInDraft": "Save in draft",
+			"estimation": "estimation",
+			"customer": "Customer",
+			"specialNote": "Special note",
+			"serving": "Serving",
+			"orders": "Orders",
+			"cuisines": "Cuisines",
+			"share": "Share",
+			"top": "Top",
+			"okay": "Okay",
+			"onDemand": "On demand",
+			"save": "Save",
+			"notSet": "Not set"
+		}
+	},
+	"validation": {
+		"email": {
+			"required": "Email is required.",
+			"notValid": "Not a valid email."
+		},
+		"password": {
+			"required": "Password is required.",
+			"minLength": "Password must be at least 8 characters long.",
+			"maxLength": "Password cannot be more than 32 characters long.",
+			"containNumber": "Password must contain a number.",
+			"containSpecial": "Password must contain a special character.",
+			"containUppercase": "Password must contain a uppercase character.",
+			"containLowercase": "Password must contain a lowercase character."
+		},
+		"newPasswordConfirm": {
+			"required": "Please retype the password here.",
+			"notMatching": "Password is not matching."
+		},
+		"firstName": {
+			"required": "First name is required.",
+			"minLength": "First name must be at least 2 characters long.",
+			"maxLength": "First name cannot be more than 32 characters long."
+		},
+		"lastName": {
+			"required": "Last name is required.",
+			"minLength": "Last name must be at least 2 characters long.",
+			"maxLength": "Last name cannot be more than 32 characters long."
+		},
+		"termsAndPolicy": {
+			"required": "You must accept the terms and policy to sign up."
+		},
+		"phoneNumber": {
+			"required": "Phone number is required.",
+			"invalid": "Phone number is not valid."
+		},
+		"chef": {
+			"profileName": {
+				"required": "Profile name is required.",
+				"minLength": "Profile name must be more than 5 characters long.",
+				"maxLength": "Profile name cannot be more than 32 characters long."
+			},
+			"aboutMe": {
+				"required": "This field is required.",
+				"minLength": "This field must be more than 5 characters long.",
+				"maxLength": "This field cannot be more than 32 characters long."
+			},
+			"cuisines": {
+				"required": "This field is required."
+			},
+			"sellPlan": {
+				"required": "This field is required."
+			}
+		},
+		"offer": {
+			"title": {
+				"maxLength": "This field cannot be more than 64 characters long."
+			},
+			"description": {
+				"maxLength": "This field cannot be more than 512 characters long."
+			}
+		},
+		"global": {
+			"required": "This field is required.",
+			"maxDistance": {
+				"required": "Max distance is required."
+			},
+			"deliveryPrice": {
+				"required": "Delivery price is required."
+			}
+		}
+	},
+	"instruction": {
+		"slide1": {
+			"title": "Fresh authentic homemade food",
+			"description": "Order from a variety of authentic Halal homemade food, cooked by your next door Home-Chef specially for you.<br/>Enjoy the taste of home..."
+		},
+		"slide2": {
+			"title": "Choose from 2 different order types",
+			"description": "<b>Pre-order:</b> Book yourself a meal the Home-Chef is planning to cook on a specific date.<br/><b>On demand:</b> Ask the Home-Chef to prepare a dish specially for you."
+		},
+		"slide3": {
+			"title": "We make sure that you only get the best",
+			"description": "We regularly audit the Home-Chefs for the Halal meat sourcing, Hygienic rules and more.",
+			"commitmentLink": "Click here to learn more about our commitments."
+		}
+	},
+	"home": {
+		"menu": {
+			"greeting": "Hi there!",
+			"subtitle": "View personal information",
+			"login": "Log-In",
+			"signup": "Sign-Up",
+			"myAccount": "My Account",
+			"myOrders": "My Orders",
+			"inbox": "Inbox",
+			"becomeAHomeChef": "Become a Home-Chef",
+			"chefDashboard": "Chef Dashboard",
+			"shareAndEarn": "Share & Earn",
+			"needHelp": "Need help?",
+			"logout": "Logout"
+		},
+		"title": {
+			"timeToEat": "Time to eat proper food!",
+			"findOffer": "Find offers in your area"
+		},
+		"slides": {
+			"locationDescription": "Enter your location or let us do it for you",
+			"exploreDescription": "Explore a variety of Halal dishes made by Home-Chefs in your area",
+			"orderDescription": "Place your orders and enter your pickup date/time and quantities",
+			"title": "This is how it works"
+		},
+		"searchBar": {
+			"myLocation": "My location",
+			"poweredBy": "Powered by",
+			"show": "Show",
+			"suggestions": "Suggestions"
+		}
+	},
+	"auth": {
+		"emailVerification": {
+			"verifiyYourEmail": "Verify your email",
+			"pleaseEnterCode": "Please enter the 6 digits code sent to:"
+		},
+		"login": {
+			"pageTitle": "Log in to your account",
+			"loginWithGoogle": "Log in with Google",
+			"loginWithFacebook": "Log in with Facebook",
+			"forgotPassword": "Forgot password?",
+			"doNotHaveAnAccount": "Don't have an account?"
+		},
+		"passwordResetConfirm": {
+			"emailSent": "Email has been sent!",
+			"pleaseCheckYourInbox": "Please check your inbox and enter the 6 digits code below",
+			"didNotReceiveCode": "Didn't receive the code?"
+		},
+		"passwordReset": {
+			"forgotYourPassword": "Forgot your password?",
+			"enterRegisteredEmail": "Enter your registered email below to receive password reset instructions",
+			"rememberPassword": "Remember password?"
+		},
+		"passwordUpdate": {
+			"passwordReset": "Password reset",
+			"setupNewPassword": "Set up your new password"
+		},
+		"signup": {
+			"pageTitle": "Create an account",
+			"signupWithGoogle": "Sign up with Google",
+			"signupWithFacebook": "Sign up with Facebook",
+			"alreadyHaveAnAccount": "Already have an account?"
+		}
+	},
+	"account": {
+		"setting": {
+			"title": "My account",
+			"personalDetails": "Personal details",
+			"paymentMethods": "Payment methods",
+			"notificationSettings": "Notification settings"
+		},
+		"notificationSettings": {
+			"title": "Notification settings",
+			"turnOffAll": "Turn off all notifications",
+			"importantNotifications": "Important notifications",
+			"newMessage": "New message",
+			"newOrder": "New order",
+			"orderUpdate": "Order update",
+			"newReview": "New review",
+			"marketingNotification": "Marketing notifications",
+			"newFollower": "New follower",
+			"favouriteChefOffers": "Favourite Chef's offers",
+			"discountActions": "Discount actions",
+			"customerServiceNotifications": "Customer service notifications",
+			"customerService": "Customer service"
+		},
+		"paymentMethods": {
+			"title": "Payment methods"
+		},
+		"personalDetails": {
+			"title": "Personal details"
+		}
+	},
+	"chef": {
+		"engagements": {
+			"yourEngagements": "Your engagements",
+			"ourEngagements": "Our engagements",
+			"keepItClean": {
+				"title": "Keep it clean",
+				"description": "During food preparation, keep the working surface clean and wash your hands regularly (we recommend to use gloves and a hairnet).<br/>Do not handle food if you feel ill."
+			},
+			"storeItWell": {
+				"title": "Store it well",
+				"description": "Make sure to store in the fridge the food that requires low storage temperatures.<br/>Always pay attention to the expiry dates of each ingredient."
+			},
+			"cookItThrough": {
+				"title": "Cook it through",
+				"description": "Cook the food to proper temperatures."
+			},
+			"keepItHalal": {
+				"title": "Keep it Halal",
+				"description": "You engage to only use Halal ingredients when preparing the food to be sold on Halal-Homemade.<br/>Please make sure to buy the meat from a Halal certified butcher or store."
+			},
+			"keepItProfessional": {
+				"title": "Keep it professional",
+				"description": "Each customer will have the right to review your offer after receiving their orders. Make sure to respect the communicated timings.<br/>Use a proper packaging for each dish (we will support you to get the right packaging for your dishes. Find more under tips and tricks section)"
+			},
+			"findCustomers": {
+				"title": "Find customers",
+				"description": "We will connect you to customers in your area. We take care of the marketing and advertisement so you can boost your sales."
+			},
+			"managePayments": {
+				"title": "Manange payments",
+				"description": "We are securely managing the payments and transaction with our partner Stripe.<br/>Every two weeks"
+			},
+			"customerSupport": {
+				"title": "Customer support",
+				"description": "Our service team is always ready to assist you with your questions."
+			},
+			"getApprovedSign": {
+				"title": "Get the approved sign",
+				"description": "You have the option to make your profile approved. Just let us know. Our team will get in touch with you to check the following points:<br/>- Halal meat sourcing.<br/>- Respect of hygienic standards.<br/>- Kitchen equipment quality."
+			},
+			"freeOfCharge": {
+				"title": "Free of charge",
+				"description": "Our platform is free and will stay free, there are no hidden costs to be charged for the Home-Chefs. You will receive 100% of your selling prices.<br/>We only charge the final customers 15% fees to keep our platform up and running."
+			}
+		},
+		"instruction": {
+			"slide1": {
+				"title": "Flexibility",
+				"description": "You control everything! You decide how often you want to sell, what you want to sell, the quantity as well as the price of each dish! Our task is to find you hungry customers."
+			},
+			"slide2": {
+				"title": "Comfort & convienience",
+				"description": "Halal-Homemade makes it easy to manage your orders, costumers and payments all in one place."
+			},
+			"slide3": {
+				"title": "Privacy",
+				"description": "Your personal information and transactions are completely secured and we don't share it with third parties."
+			}
+		},
+		"promote": {
+			"title": "My profile",
+			"avatar": {
+				"comment": "Adding your picture will increase your customers trust and boost your sells."
+			},
+			"cusinesYouSpecialisedIn": "Cuisines you are specialised in",
+			"howOftenYouPlanToSell": "How often you plan to sell",
+			"referalCodeIfApplicable": "Referal code (if applicable)",
+			"selectAvatarSource": "Choose picture from"
+		},
+		"dashboard": {
+			"title": "Chef dashboard",
+			"newOffer": "New offer",
+			"chefInbox": "Chef's inbox",
+			"manageIncomingOrder": "Manage incoming orders",
+			"myOffers": "My offers",
+			"aboutMe": "About me",
+			"myWallet": "My wallet",
+			"packaging": "Packaging",
+			"vacationMode": "Vacation mode",
+			"openOrders": "Open orders",
+			"sales": "Sales",
+			"avatar": {
+				"uploadNew": "Upload new"
+			}
+		},
+		"offer": {
+			"startFromScratch": "Start from scratch",
+			"startBasedOnExistingOffer": "Start based on existing offer",
+			"new": {
+				"title": "New offer",
+				"publishOffer": "Publish offer",
+				"offerPictureDescription": "Make your offer shine and attach up to 3 pictures.",
+				"uploadPictures": "Upload pictures",
+				"uploadMorePictures": "Upload more pictures",
+				"dishAndOfferDetails": "Dish and offer details",
+				"dishDetails": {
+					"title": "Dish details",
+					"dishOrigin": "Dish origin"
+				},
+				"deliveryOptions": {
+					"title": "Delivery options",
+					"pickupAddressDescription": "This information will only be available to the customer after you receive the order",
+					"freeDeliveryForMinimum": "Free delivery for a minimum order price of"
+				},
+				"price": {
+					"description": "* As matter of transparency we want to inform you that the price you indicate here is what you will get as a seller.<br/>The customer will be charged an additional commission. This commission is used to cover the cost of the platform infrastructure as well as the marketing activities to reach out to new customers."
+				}
+			},
+			"list": {
+				"title": "My offers",
+				"showOffer": "Show offer",
+				"viewOrders": "View orders",
+				"editOffer": "Edit offer",
+				"cancelOffer": "Cancel offer",
+				"deleteOffer": "Delete offer"
+			}
+		},
+		"inbox": {
+			"title": "Chef's inbox",
+			"typeInYourMessage": "Type in your message",
+			"clearSelectedNotifications": "Clear selected notifications",
+			"clearAllReadNotifications": "Clear all read notifications",
+			"clearSelectedConversations": "Clear selected conversartions",
+			"clearAllFinishedConversations": "Clear all finished conversations"
+		},
+		"chat": {
+			"blockUser": "Block user",
+			"reportUser": "Report user"
+		},
+		"orders": {
+			"title": "Incoming orders",
+			"instruction": {
+				"pending": {
+					"description": "When a customer make an on-demand order, you have 24 hours to respond by either rejecting or approving the order. Once the order is approved it moves to in-preparation status. If you don't answer within the 24 hours the order is automatically cancelled."
+				},
+				"inPreparation": {
+					"description": "'The "
+				},
+				"delivered": {
+					"description": "After handing over the meal, the orders will be stored under this section for archiving. The customer will be then ask to leave you a review."
+				}
+			},
+			"pending": {
+				"title": "Pending orders",
+				"detail": {
+					"takeOrder": "Take order",
+					"rejectOrder": "Reject order"
+				}
+			},
+			"inPreparation": {
+				"title": "In-preparation",
+				"detail": {
+					"viewOrderDetails": "View order details",
+					"contactTheCustomer": "Contact the customer",
+					"addressDirection": "Address direction",
+					"confirmDelivery": "Confirm delivery"
+				}
+			},
+			"deliveryConfirmation": {
+				"title": "Delivery confirmation",
+				"theOrderNumber": "The order number",
+				"isMarkedAsDelivered": "is marked as delivered"
+			}
+		},
+		"wallet": {
+			"title": "My wallet",
+			"pendingAmount": "Pending amount",
+			"availableAmount": "Available amount",
+			"recentTransactions": "Recent transactions",
+			"activeYourWallet": "Active your wallet",
+			"activeYourWalletDescription": "Activate your wallet so we can start sending you the money to the indicated bank account",
+			"walletInformation": {
+				"title": "Wallet information",
+				"dataPolicy": "Your data is completely secured. We only share it with our financial partner to enable automatic pay-outs.",
+				"transferPolicy": "* In order to be able to proceed with the money transfer, the first and last name provided here needs to be matching with the account's holder."
+			},
+			"updateYourWallet": "Update your wallet",
+			"chefWalletEnabledDescription": "Your wallet is enabled and withdrawal is possible!",
+			"chefWalletInVerificationDescription": "Your wallet is in verification process. Please wait until it's completed.",
+			"chefWalletVerificationFailedDescription": "More information is needed to activate your wallet. Please tap update button above to provide more information.",
+			"chefWalletSuspendedDescription": "Your wallet is suspended now. Please contact support to activate it agian."
+		},
+		"vacation": {
+			"title": "Vacation mode",
+			"modeToggleDescription": "Open vacation: Put all your offers on-hold and stop receiving new orders.",
+			"definedPeriod": "For a defined period*: ",
+			"description": "The customers will still be able to place new orders that should be prepared after the vacation time is over."
+		},
+		"packaging": {
+			"title": "Packaging",
+			"description1": "In order to support you with the packaging for the meals that you will be offering in our platform. We have secured an exclusive deal with our partner",
+			"description2": "Please apply the following code at the checkout to secure 20% discount on all your future orders.",
+			"copyCode": "Copy code"
+		},
+		"profile": {
+			"title": "Chef profile"
+		}
+	},
+	"permission": {
+		"location": {
+			"title": "Use your location",
+			"description": "Give location access so we can check for available offers in your area."
+		}
+	},
+	"phone": {
+		"verification": {
+			"title": "Phone number verification",
+			"enterPhoneNumber": "Enter your phone number to verify your account",
+			"typeSMSCode": "Type in the 4 digit code we have sent you per SMS"
+		}
+	},
+	"order": {
+		"review": {
+			"question": "How would you rate this dish and contact with the chef?"
+		}
+	}
+}

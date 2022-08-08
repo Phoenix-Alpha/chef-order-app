@@ -1,0 +1,228 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <!-- <ion-title color="secondary ion-text-center">{{ 'checkout.checkout.title' | translate }}</ion-title> -->
+      <ion-title color="secondary ion-text-center">Checkout</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+  <form [formGroup]="checkoutForm" class="mh-100">
+    <ion-grid>
+      <ng-container *ngIf="!loggedInUser">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="checkout-section-item">
+              <ion-label class="font-poppins menu">Do you have an checkout?</ion-label>
+              <ion-button size="small" (click)="signIn()" color="primary">Sign-in</ion-button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <div class="border-bottom ion-margin-horizontal"></div>
+      </ng-container>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+        <ion-col size="12" class="ion-no-padding checkout-label">
+          <ion-item lines="none" detail="false" class="checkout-section-item">
+            <ion-list-header class="checkout-section-title font-poppins">Personal details</ion-list-header>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-poppins" position="stacked">First name</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName="firstName"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.firstName">
+              <div class="error-message" *ngIf="firstName.hasError(validation.type) && (firstName.dirty || firstName.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-poppins" position="stacked">Last name</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName="lastName"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.lastName">
+              <div class="error-message" *ngIf="lastName.hasError(validation.type) && (lastName.dirty || lastName.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-poppins" position="stacked">Email address</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName="email"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-gadugi" position="stacked">Phone number</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName = "phoneNumber"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.phoneNumber">
+              <div class="error-message" *ngIf="phoneNumber.hasError(validation.type) && (phoneNumber.dirty || phoneNumber.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+        <ion-col size="12" class="ion-no-padding checkout-label">
+          <ion-item lines="none" detail="false" class="checkout-section-item">
+            <ion-list-header class="checkout-section-title font-poppins">Address</ion-list-header>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-gadugi" position="stacked">Street and house number</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName = "streetHouseNumber"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.streetHouseNumber">
+              <div class="error-message" *ngIf="streetHouseNumber.hasError(validation.type) && (streetHouseNumber.dirty || streetHouseNumber.touched)">
+                Street and house number is required.
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="6" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-gadugi" position="stacked">Postcode</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName = "postcode"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.postcode">
+              <div class="error-message" *ngIf="postcode.hasError(validation.type) && (postcode.dirty || postcode.touched)">
+                Postcode is required.
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-label class="checkout-input-placeholder font-gadugi" position="stacked">City</ion-label>
+            <ion-input class="white-round-inputl no-margin" formControlName = "city"></ion-input>
+          </ion-item>
+          <div class="w-100"></div>
+          <div class="ion-padding-horizontal-20 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.city">
+              <div class="error-message" *ngIf="city.hasError(validation.type) && (city.dirty || city.touched)">
+                City is required.
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-radio-group value="CREDIT_CARD_STRIPE" >
+            <ion-list-header>Pay with</ion-list-header>
+            <ion-item lines="none">
+              <ion-radio class="radio radio-inline radio-gray" value="CREDIT_CARD_STRIPE"></ion-radio>
+              <ion-label>Credit cards</ion-label>
+              <ion-img slot="end" src="../../../assets/images/credit-cards.png"></ion-img>
+            </ion-item>
+            <ion-item [disabled] = true lines="none">
+              <ion-radio class="radio radio-inline radio-gray" value="PAYPAL"></ion-radio>
+              <ion-label>Paypal</ion-label>
+              <ion-img slot="end" src="../../../assets/images/paypal.png"></ion-img>
+            </ion-item>
+            <ion-item [disabled] = true lines="none">
+              <ion-radio class="radio radio-inline radio-gray" value="STRIPE_GPAY"></ion-radio>
+              <ion-label>Google pay</ion-label>
+              <ion-img slot="end" src="../../../assets/images/google.png"></ion-img>
+            </ion-item>
+            <ion-item [disabled] = true lines="none">
+              <ion-radio class="radio radio-inline radio-gray" value="STRIPE_APAY"></ion-radio>
+              <ion-label>Apple pay</ion-label>
+              <ion-img slot="end" src="../../../assets/images/apple.png"></ion-img>
+            </ion-item>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+        <ion-col size="12" class="ion-no-padding checkout-label">
+          <ion-item lines="none" detail="false" class="checkout-section-item">
+            <ion-list-header class="checkout-section-title font-poppins">Voucher</ion-list-header>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-item lines="none" detail="false" class="checkout-input-item">
+            <ion-input
+              class="white-round-inputl no-margin"
+              placeholder="XP123654"
+              formControlName="coupon"
+              (ionChange)="onCouponInputChanged($event)"
+            ></ion-input>
+            <ion-icon *ngIf="isCouponValid" slot="end" src = "../../../assets/images/checked.svg" ></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item lines="none" detail="false">
+        <ion-checkbox color="primary"></ion-checkbox>
+        <ion-label>Use my "Share and Earn" credit to pay for this order</ion-label>
+      </ion-item>
+      <div class="border-bottom ion-margin-horizontal"></div>
+      <ion-row class="ion-align-items-center ion-justify-content-center imb-50 ion-margin-horizontal">
+        <ion-col size="12">
+          <ion-label>
+            By clicking on Order and Pay you agree with the contents
+            of the shopping cart, the data you filled out, our <a color = "primary">privacy
+            statement</a> and <a color = "primary">terms of use</a>.
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <!-- <section class="full-width position-fixed">
+        <ion-button expand="full" color="primary">Order and Pay 36,90€</ion-button>
+      </section> -->
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-button
+  expand="full"
+  class="full"
+  (click)="checkout()"
+  color="primary"
+  [disabled]="(checkoutState$ | async).basketInfo.status === 'SUBMITTING' || (checkoutState$ | async).basketInfo.status === 'PAYMENTPROGRESS'"
+>
+  Order and Pay {{ discountedTotal$ | async }}€
+</ion-button>

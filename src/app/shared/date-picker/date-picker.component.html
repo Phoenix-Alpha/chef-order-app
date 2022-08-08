@@ -1,0 +1,19 @@
+<div class="date-picker-wrapper">
+  <div class="date-picker-top flex-container flex-direction-col align-items-center justify-content-center pt-10 pb-10 pl-20 pr-20">
+    <div class="year-part w-100 mb-5">
+      {{ selectedDate | localizedDate: 'YYYY' : 'en' | async }}
+    </div>
+    <div class="day-part w-100">
+      {{ selectedDate | localizedDate: 'ddd, MMM D' : 'en' | async }}
+    </div>
+  </div>
+  <mat-calendar (selectedChange)="dateSelected($event)" [minDate]="today"></mat-calendar>
+  <div class="w-100 flex-container align-items-center justify-content-end p-10">
+    <ion-button class="mr-10" (click)="onClickCancel()">
+      {{ 'Cancel' | translate }}
+    </ion-button>
+    <ion-button (click)="onClickOk()" >
+      {{ 'Ok' | translate }}
+    </ion-button>
+  </div>
+</div>

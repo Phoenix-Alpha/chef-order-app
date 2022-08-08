@@ -1,0 +1,78 @@
+<ion-content>
+  <ion-grid class="ion-no-padding ion-no-margin">
+    <ion-row class="ion-no-padding ion-no-margin">
+      <ion-col size="12" class="ion-no-margin ion-no-padding">
+        <ion-list *ngFor="let offer of chefDetail.offers" class="ion-no-margin ion-no-padding">
+          <ion-card class="ion-margin">
+            <ion-card-content class="ion-no-padding">
+              <ion-grid class="ion-no-margin ion-no-padding">
+                <ion-row>
+                  <ion-col size="6" class="image-container">
+                    <div class="image-header">
+                      <ion-grid class="ion-no-padding ion-no-margin">
+                        <ion-row class="ion-no-margin ion-no-padding header-row ion-justify-content-between flex-direction-row">
+                          <ion-col size="8">
+                            <div class="flex-container flex-direction-row">
+                              <ion-avatar class="place-image-container">
+                                <img [src]="offer.chefProfilePicture">
+                              </ion-avatar>
+                              <div class="text-overflow-ellipsis pl-5 pr-5 vertical-margin-auto">
+                                {{ offer.chefProfileName }}
+                              </div>
+                            </div>
+                          </ion-col>
+                          <ion-col size="4" class="star-container ion-text-right ion-align-items-baseline">
+                            <ion-icon name="star" class="mr-5"></ion-icon>
+                            <span class="mr-5">{{ offer.chefRating }} ({{ offer.chefTotalReviews }})</span>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </div>
+                    <img [src]="offer.offerPictures[0]" class="offer-image">
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-grid class="ion-no-margin ion-no-padding ion-text-center">
+                      <div class="card-title-row ml-5 flex-container align-items-center ion-text-left card-detail-title">
+                        {{ offer.title }}
+                      </div>
+                      <div class="card-row ml-5 pt-5 ion-text-left card-detail-text">
+                        <div [clamp]="3">{{ offer.description }}</div>
+                      </div>
+                      <div class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ion-icon src="assets/images/calendar.svg" class="mr-10"></ion-icon>
+                        <ng-container *ngIf="offer.offerType === OfferType.PREORDER">{{ offer.servingStart | localizedDate: 'ddd DD MMM' | async }}</ng-container>
+                        <ng-container *ngIf="offer.offerType === OfferType.ONDEMAND">{{ 'On demand' }}</ng-container>
+                      </div>
+                      <div class="mr-10 flex-container flex-direction-row align-items-center justify-content-end font-size-1" [ngStyle]="{'margin-bottom' : (offer.offerType === OfferType.ONDEMAND) ? '15px' : '0px'}">
+                        <ng-container *ngIf="offer.offerType === OfferType.PREORDER">{{ offer.servingStart | localizedDate: 'HH:mm' | async }} - {{ offer.servingEnd | localizedDate: 'HH:mm': lang | async }}</ng-container>
+                      </div>
+                      <div *ngIf="offer.offerType === OfferType.PREORDER" class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ng-container><ion-icon src="assets/images/tray.svg" class="mr-10"></ion-icon>{{ offer.quantityAvailable }} available</ng-container>
+                      </div>
+                      <div *ngIf="offer.offerType === OfferType.ONDEMAND" class="card-row ml-15 flex-container flex-direction-row align-items-center">
+                        <ng-container><ion-icon src="assets/images/preorder.svg" class="mr-10"></ion-icon>{{ offer.minPreorderHours ? offer.minPreorderHours : 24 }} hours</ng-container>
+                      </div>
+                      <div class="card-row ml-5 flex-container flex-direction-row align-items-center font-size-1 margin">
+                        <ion-icon src="assets/images/distance.svg" class="mr-5"></ion-icon>
+                        <ng-container>{{ offer.distance ? offer.distance.toFixed(2) : '0.00' }} km</ng-container>
+                        <ion-icon *ngIf="offer.isDelivery" src="assets/images/scooter.svg" class="ml-5"></ion-icon>
+                      </div>
+                    </ion-grid>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+          <div class="price-container">
+            <ion-item class="rounded-container" button (click)="onClickPurchaseOffer(offer)">
+              <span slot="start">€{{ offer.price }}</span>
+            </ion-item>
+            <ion-button class="basket-btn ion-no-margin ion-no-padding" (click)="onClickPurchaseOffer(offer)">
+              <ion-icon name="basket-2"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

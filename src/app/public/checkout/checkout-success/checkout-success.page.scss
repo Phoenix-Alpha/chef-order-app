@@ -1,0 +1,24 @@
+
+ion-img {
+  width: 33%;
+  margin: auto;
+}
+
+.large {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.small {
+  font-size: 2.1rem;
+  margin-top: 10rem;
+  text-align: center;
+}
+
+ion-img.background {
+  height: 50%;
+  float: right;
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}

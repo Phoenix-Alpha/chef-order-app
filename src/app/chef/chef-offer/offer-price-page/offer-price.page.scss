@@ -1,0 +1,52 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.page-wrapper {
+  color: #4A4949;
+  font-size: 1.8rem;
+  .price-item {
+    margin: 15px 16px 5px 16px !important;
+    ion-label {
+      font-size: 1.8rem !important;
+    }
+    ion-input {
+      font-size: 1.8rem !important;
+      --padding-top: 0;
+      --padding-bottom: 0;
+      --padding-start: 0;
+      --padding-end: 0;
+      --placeholder-opacity: 0.2;
+      margin-top: 5px;
+      border-bottom: 1px solid #707070;
+    }
+    ion-input.has-focus {
+      border-bottom: 1px solid #CB652B !important;
+    }
+  }  
+}

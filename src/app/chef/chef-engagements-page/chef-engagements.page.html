@@ -1,0 +1,193 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title class="ion-text-center">{{ title | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-slides id="slides" #slides [options]="slideOpts" class="chef-engagements-slides h-100">
+    <ion-slide>
+      <div class="chef-engagements-slide-wrapper">
+        <ion-progress-bar color="primary" value="0.25"></ion-progress-bar>
+        <div class="chef-engagements-slide overflow-y-auto">
+          <div class="side-card">
+            <div class="side-card-description-section mr-10" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.keepItClean.title' | translate }}
+              </div>
+              <div class="side-card-description" [innerHTML]="'chef.engagements.keepItClean.description' | translate">
+              </div>
+            </div>
+            <div class="side-card-image-section" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/hand-hands-clean-protect-protection.png" ></ion-img>
+            </div>
+          </div>
+          <div class="side-card mt-30">
+            <div class="side-card-image-section mr-10" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/store-well.png" ></ion-img>
+            </div>
+            <div class="side-card-description-section" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.storeItWell.title' | translate }}
+              </div>
+              <div class="side-card-description" [innerHTML]="'chef.engagements.storeItWell.description' | translate">
+              </div>
+            </div>
+          </div>
+          <div class="side-card mt-30">
+            <div class="side-card-description-section mr-10" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.cookItThrough.title' | translate }}
+              </div>
+              <div class="side-card-description">
+                {{ 'chef.engagements.cookItThrough.description' | translate }}
+              </div>
+            </div>
+            <div class="side-card-image-section" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/fried.png" ></ion-img>
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="chef-engagements-slide-wrapper">
+        <ion-progress-bar color="primary" value="0.5"></ion-progress-bar>
+        <div class="chef-engagements-slide overflow-y-auto">
+          <div class="top-card">
+            <div class="top-card-title-section">
+              <div class="top-card-title" style="flex: 0 1 50%;">
+                {{ 'chef.engagements.keepItHalal.title' | translate }}
+              </div>
+              <div class="top-card-image-section" style="flex: 0 1 20%;">
+                <ion-img src="../../assets/images/halal.png" ></ion-img>
+              </div>
+            </div>
+            <div class="top-card-description mt-10" [innerHTML]="'chef.engagements.keepItHalal.description' | translate">
+            </div>
+          </div>
+          <div class="top-card">
+            <div class="top-card-title-section">
+              <div class="top-card-title" style="flex: 1 1 50%;">
+                {{ 'chef.engagements.keepItProfessional.title' | translate }}
+              </div>
+              <div class="top-card-image-section" style="flex: 0 1 20%;">
+                <ion-img src="../../assets/images/customer-review.png" ></ion-img>
+              </div>
+            </div>
+            <div class="top-card-description mt-10" [innerHTML]="'chef.engagements.keepItProfessional.description' | translate">
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="chef-engagements-slide-wrapper">
+        <ion-progress-bar color="primary" value="0.75"></ion-progress-bar>
+        <div class="chef-engagements-slide overflow-y-auto">
+          <div class="side-card">
+            <div class="side-card-description-section mr-10" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.findCustomers.title' | translate }}
+              </div>
+              <div class="side-card-description" [innerHTML]="'chef.engagements.findCustomers.description' | translate">
+              </div>
+            </div>
+            <div class="side-card-image-section" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/value.png" ></ion-img>
+            </div>
+          </div>
+          <div class="side-card mt-30">
+            <div class="side-card-image-section mr-10" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/payment-method.png" ></ion-img>
+            </div>
+            <div class="side-card-description-section" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.managePayments.title' | translate }}
+              </div>
+              <div class="side-card-description" [innerHTML]="'chef.engagements.managePayments.description' | translate">
+              </div>
+            </div>
+          </div>
+          <div class="side-card mt-30">
+            <div class="side-card-description-section mr-10" style="flex: 1 1 75%;">
+              <div class="side-card-title">
+                {{ 'chef.engagements.customerSupport.title' | translate }}
+              </div>
+              <div class="side-card-description" [innerHTML]="'chef.engagements.customerSupport.description' | translate">
+              </div>
+            </div>
+            <div class="side-card-image-section" style="flex: 1 1 20%;">
+              <ion-img src="../../assets/images/support.png" ></ion-img>
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="chef-engagements-slide-wrapper">
+        <ion-progress-bar color="primary" value="1.0"></ion-progress-bar>
+        <div class="chef-engagements-slide overflow-y-auto">
+          <div class="top-card position-relative mt-10">
+            <div class="absolute-image-section">
+              <ion-img src="../../assets/images/checkmark.png" style="width: 55px; height: 55px;"></ion-img>
+            </div>
+            <div class="top-card-title-section">
+              <div class="top-card-title">
+                {{ 'chef.engagements.getApprovedSign.title' | translate }}
+              </div>
+            </div>
+            <div class="top-card-description" [innerHTML]="'chef.engagements.getApprovedSign.description' | translate">
+            </div>
+          </div>
+          <div class="top-card mt-10">
+            <div class="top-card-title-section">
+              <div class="top-card-title">
+                {{ 'chef.engagements.freeOfCharge.title' | translate }}
+              </div>
+            </div>
+            <div class="top-card-description" [innerHTML]="'chef.engagements.freeOfCharge.description' | translate">
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="agreementForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item class="agreement-item" lines="none">
+                  <ion-checkbox class="agreement-checkbox" slot="start" formControlName="agreement"></ion-checkbox>
+                  <ion-text>By clicking on Start selling you agree with  the data you filled out, our <a class="agreement-label-small-link" routerLink="/public">privacy statement</a> and <a class="agreement-label-small-link" routerLink="/public">terms of use</a>.</ion-text>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+        <div class="btn-wrapper">
+          <div class="btn-block-wrapper">
+            <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.startSelling' | translate }}</ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>  
+</ion-content>

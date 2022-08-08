@@ -1,0 +1,13 @@
+ion-list {
+    padding: 0;
+    ion-item {
+        --inner-padding-end: 0;
+        --padding-start: 10px;
+        --padding-end: 10px;
+        --min-height: 26px;
+        font-size: 1.4rem;
+        ion-label {
+            margin: 5px !important;
+        }
+    }
+}

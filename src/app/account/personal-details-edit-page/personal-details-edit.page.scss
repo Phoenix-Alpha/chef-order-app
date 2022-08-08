@@ -1,0 +1,56 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+ion-item.personal-detail-item {
+  --min-height: 50px;
+  --color: #4A4949;
+  font-size: 2rem;
+  font-weight: 500;
+  ion-icon {
+    font-size: 2rem;
+  }
+
+  border-top: 1px solid #4A4949;
+  border-bottom: 1px solid #4A4949;
+}
+
+ion-avatar {
+  width: 30vw !important;
+  height: 30vw !important;
+}
+
+.personal-detail-label {
+  font-size: 1.4rem;
+  color: #4A4949;
+}
+
+.personal-detail-label-name {
+  font-size: 1.8rem;
+  color: #4A4949;
+}

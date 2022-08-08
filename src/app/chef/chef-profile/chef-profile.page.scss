@@ -1,0 +1,135 @@
+:host {
+  background: white;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-icon {
+    font-size: 3rem;
+  }
+  div.title-section {
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+ion-button.share-button {
+  max-width: 60px;
+  min-height: 54px;
+  font-size: 1.2rem;
+  ion-icon {
+    margin-inline-end: 0px !important;
+  }
+}
+
+.page-wrapper {
+  .upper-section {
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid #D9D9D9 1px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.16);
+    .avatar {
+      flex-grow: 0;
+      height: 85px;
+      width: 90px;
+      margin-right: 10px;
+      ion-avatar {
+        height: 80px !important;
+        width: 80px !important;
+        img.default-avatar {
+          height: 80px !important;
+          width: 80px !important;
+        }
+        div.take-photo {
+          position: absolute;
+          right: -9px;
+          bottom: -5px;
+          width: 22px;
+          height: 18px;
+        }
+      }
+    }
+    .score-wrapper {
+      flex-grow: 0;
+      width: 40px;
+      text-align: center;
+      .round-score {
+        margin: 5px;
+        width: 40px;
+        height: 40px;
+        border: solid #CB652B 2px;
+        border-radius: 100%;
+        color: #CB652B;
+        font-weight: 600;;
+        line-height: 40px;
+        vertical-align: middle;
+        font-size: 1.6rem;
+      }
+      .score-description {
+        font-size: 1.2rem;
+      }
+    }
+    .profile {
+      flex-grow: 1;
+      .profile-name {
+        color: #CB652B;
+        font-size: 1.6rem !important;
+      }
+      .review {
+        display: flex;
+        align-items: center;
+        color: #615F5D;
+        font-size: 1.4rem !important;
+        .review-icon {
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+  }
+  div.tab-wrapper  {
+    flex-grow: 1;
+
+    ion-tabs {
+      ion-tab-bar {
+        --background: white;
+        --color: white;
+        border: none !important;
+        height: 42px !important;
+        ion-tab-button {
+          max-width: none !important;
+          --background: white;
+          --color: rgba(97, 95, 93, 0.3);
+          --color-selected: #615F5D;
+          --color-focused: #615F5D;
+          position: relative;
+          width: 100%;
+          font-size: 2.0rem;
+          font-weight: 500;
+          .tab-decorator {
+            position: absolute;
+            bottom: -1px;
+            background: #615F5D;
+            width: 90%;
+            height: 4px;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}

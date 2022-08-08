@@ -1,0 +1,27 @@
+.background {
+  position: absolute;
+  z-index: 99999;
+  --ion-background-color: #CC652B;
+}
+
+.primary-text {
+  margin-top: 50%;
+  color: white;
+}
+.primary-text span {
+  font-size: 5rem;
+}
+
+.icon-container {
+  font-size: 18rem;
+}
+
+.secondary-text {
+  position: relative;
+  top: -90px;
+  color: white;
+}
+
+.secondary-text span {
+  font-size: 5rem;
+}

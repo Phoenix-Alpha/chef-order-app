@@ -1,0 +1,102 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'Review' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper">
+    <ion-list class="order-list">
+      <ion-item class="order-item" button lines="none" detail="false">
+        <ion-avatar slot="start" class="order-item-avatar">
+          <img *ngIf="publicOrderDetail?.offer?.offerPictures[0]" [src]="publicOrderDetail?.offer?.offerPictures[0]" class="order-item-avatar">
+        </ion-avatar>
+        <div class="order-info">
+          <div class="order-header m-5">
+            <div class="order-title text-overflow-ellipsis ion-text-nowrap mr-5">
+              {{ publicOrderDetail?.offer?.title }}
+            </div>
+          </div>
+          <div class="order-body text-overflow-ellipsis m-5">
+            <table>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.delivery' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge">
+                      {{ publicOrderDetail?.pickupDate | localizedDate:'ddd. DD MMM. HH:mm': 'en-US' :browserTimeZone | async }}
+                    </ion-badge>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="pr-10">
+                  {{ 'global.label.quantity' | translate }}
+                </td>
+                <td>
+                  <div class="w-100 h-100 flex-container align-items-center pb-5 pt-5">
+                    <ion-badge class="order-info-badge mr-20">{{ publicOrderDetail?.quantity }}</ion-badge>
+                    <ion-icon *ngIf="publicOrderDetail?.deliveryMethod === 'PICKUP'" src="assets/images/pickup.svg" class="order-info-icon"></ion-icon>
+                    <ion-icon * ngIf="publicOrderDetail?.deliveryMethod === 'DELIVERY'" src="assets/images/scooter.svg" class="order-info-icon"></ion-icon>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    
+    <div [@fadeAnimation] class="review-wrapper w-100">
+      <ion-slides id="slides" #slides [options]="slideOpts" class="review-slides h-100">
+        <ion-slide>
+          <div class="review-slide-wrapper">
+            <div class="review-text">
+              {{ 'order.review.question' | translate }}
+            </div>
+            <bar-rating 
+              [rate]="selectedRating"
+              [max]="5"
+              [theme]="'halal-large'"
+              [showText]="true"
+              [titles]="titles"
+              (rateChange)="onRateChange($event)"
+              slot="end"
+              class="ion-align-self-center"
+            >
+            </bar-rating>
+            <div class="btn-wrapper ion-align-self-end">
+              <div class="btn-block-wrapper">
+                <ion-button class="auth-submit-btn" (click)="onClickNext()" expand="block">{{ 'global.button.next' | translate }}</ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="review-slide-wrapper">
+            <form [formGroup]="reviewForm" class="h-100">
+              <div class="review-text">{{ 'global.label.review' | translate }}*</div>
+              <ion-textarea
+                rows="6"
+                class="review-textarea"
+                formControlName="review">
+              </ion-textarea>
+            </form>
+            <div class="btn-wrapper">
+              <div class="btn-block-wrapper">
+                <ion-button class="auth-submit-btn" (click)="onSubmit()" expand="block">{{ 'global.button.submit' | translate }}</ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slides>  
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,519 @@
+{
+	"global": {
+		"language": {
+			"english": "English",
+			"french": "Français",
+			"dutch": "Dutch",
+			"german": "Deutsch"
+		},
+		"fab": {
+			"skip": "Passer"
+		},
+		"button": {
+			"next": "Suivant",
+			"login": "Connexion",
+			"confirm": "Confirmer",
+			"signup": "S'inscrire",
+			"send": "Envoyer",
+			"save": "Enregistrer",
+			"allow": "Autoriser",
+			"skip": "Plus tard",
+			"startSelling": "Commencez",
+			"continue": "Continuer",
+			"remove": "Supprimer",
+			"edit": "Modifier",
+			"back": "Back",
+			"close": "Close",
+			"saveOffer": "Save offer",
+			"submit": "Submit"
+		},
+		"divider": {
+			"or": "OU"
+		},
+		"label": {
+			"or": "Or",
+			"emailAddress": "E-mail",
+			"password": "Mot de passe",
+			"resendCode": "Renvoyer le code",
+			"resend": "Renvoyer",
+			"login": "Connexion",
+			"firstName": "Prénom",
+			"lastName": "Nom",
+			"personalInformation": "Informations Personnelles",
+			"city": "Ville",
+			"postCode": "Code postal",
+			"streetAndHouseNumber": "N° et nom de rue",
+			"address": "Adresse",
+			"phoneNumber": "Téléphone",
+			"profileName": "Nom de profil",
+			"aboutMe": "A propos de moi",
+			"language": "Langue",
+			"available": "Available",
+			"pending": "Pending",
+			"toBeConfirmed": "To be confirmed",
+			"toBePrepared": "To be prepared",
+			"activeOffers": "Active offers",
+			"mealsServed": "Meals served",
+			"tips": "Tips",
+			"title": "Title",
+			"description": "Description",
+			"price": "Price",
+			"mandatoryFields": "Mandatory fields",
+			"tags": "Tags",
+			"allergens": "Allergens",
+			"portionWeight": "Portion weight",
+			"offerType": "Offer type",
+			"preorder": "Pre-order",
+			"ondemand": "On-demand",
+			"servingDate": "Serving date",
+			"orderUntil": "Order until",
+			"noticePeriod": "Notice period",
+			"quantity": "Quantity",
+			"dishes": "Dishes",
+			"hours": "Hours",
+			"hoursLowercase": "hours",
+			"gramm": "Gramm",
+			"option": "Option",
+			"onlyPickup": "Only Pick-up",
+			"onlyDelivery": "Only Delivery",
+			"deliveryAndPickup": "Delivery & Pickup",
+			"pickupAddress": "Pickup address",
+			"chefAddress": "Chef's address",
+			"review": "Leave a review",
+			"delivery": "Delivery",
+			"pickup": "Pickup",
+			"zone": "Zone",
+			"distance": "Distance",
+			"euroSign": "€",
+			"notifications": "Notifications",
+			"messages": "Messages",
+			"inPreparation": "In-preparation",
+			"delivered": "Delivered",
+			"inPrep": "In-prep.",
+			"enter6DigitCode": "Enter 6 digits code",
+			"scanQRCode": "Scan QR code",
+			"reviews": "Reviews",
+			"edit": "Edit",
+			"draft": "Draft",
+			"active": "Active",
+			"archive": "Archive",
+			"firstAndLastName": "First and last name",
+			"birthdate": "Birthdate",
+			"billingAddress": "Billing address",
+			"attachYourAddress": "Attach your address",
+			"bankAccount": "Bank account",
+			"attachYourIBAN": "Attach your IBAN",
+			"inactive": "Inactive",
+			"off": "off",
+			"saveInDraft": "Save in draft",
+			"estimation": "estimation",
+			"customer": "Customer",
+			"specialNote": "Special note",
+			"serving": "Serving",
+			"orders": "Orders",
+			"cuisines": "Cuisines",
+			"share": "Share",
+			"top": "Top",
+			"okay": "Okay",
+			"onDemand": "On demand",
+			"save": "Enregistrer",
+			"notSet": "Not set"
+		}
+	},
+	"validation": {
+		"email": {
+			"required": "",
+			"notValid": ""
+		},
+		"password": {
+			"required": "",
+			"minLength": "",
+			"maxLength": "",
+			"containNumber": "",
+			"containSpecial": "",
+			"containUppercase": "",
+			"containLowercase": ""
+		},
+		"newPasswordConfirm": {
+			"required": "",
+			"notMatching": ""
+		},
+		"firstName": {
+			"required": "",
+			"minLength": "",
+			"maxLength": ""
+		},
+		"lastName": {
+			"required": "",
+			"minLength": "",
+			"maxLength": ""
+		},
+		"termsAndPolicy": {
+			"required": ""
+		},
+		"phoneNumber": {
+			"required": "",
+			"invalid": ""
+		},
+		"chef": {
+			"profileName": {
+				"required": "",
+				"minLength": "",
+				"maxLength": ""
+			},
+			"aboutMe": {
+				"required": "",
+				"minLength": "",
+				"maxLength": ""
+			},
+			"cuisines": {
+				"required": ""
+			},
+			"sellPlan": {
+				"required": ""
+			}
+		},
+		"offer": {
+			"title": {
+				"maxLength": ""
+			},
+			"description": {
+				"maxLength": ""
+			}
+		},
+		"global": {
+			"required": "",
+			"maxDistance": {
+				"required": ""
+			},
+			"deliveryPrice": {
+				"required": ""
+			}
+		}
+	},
+	"instruction": {
+		"slide1": {
+			"title": "Des plats authentiques, faits maison",
+			"description": "Commandez des plats Halal authentiques, cuisinez spécialement pour vous par vos voisins Home-Chef.<br/>Profitez des saveurs faits maison..."
+		},
+		"slide2": {
+			"title": "Choisissez parmi 2 types de commande",
+			"description": "<b>Précommande :</b> Réserver un repas que le Home-Chef aura planifié de cuisiner.<br/><b>Sur demande:</b> Demandez au  Home-Chef de préparer un repas spécialement pour vous."
+		},
+		"slide3": {
+			"title": "Nous vous garantissons le meilleur",
+			"description": "Nous vérifions régulièrement auprès de nos Home-Chefs les normes d'hygiènes, le respect des normes Halal, etc.",
+			"commitmentLink": "Cliquez ici pour en savoir plus sur nos engagements."
+		}
+	},
+	"home": {
+		"menu": {
+			"greeting": "Bonjour",
+			"subtitle": "Voir mes informations",
+			"login": "Se connecter",
+			"signup": "S'inscrire",
+			"myAccount": "Mon compte",
+			"myOrders": "Mes commandes",
+			"inbox": "Messagerie",
+			"becomeAHomeChef": "Devenir un Home-Chef",
+			"chefDashboard": "Tableau de bord",
+			"shareAndEarn": "Partager",
+			"needHelp": "Besoin d'aide?",
+			"logout": "Déconnexion"
+		},
+		"title": {
+			"timeToEat": "Que du fait maison!",
+			"findOffer": "Trouvez les offres près de chez vous"
+		},
+		"slides": {
+			"locationDescription": "Entrez votre localisation ou utilisez la géolocalisation",
+			"exploreDescription": "",
+			"orderDescription": "",
+			"title": "Comment ça marche"
+		},
+		"searchBar": {
+			"myLocation": "Ma localisation",
+			"poweredBy": "",
+			"show": "Afficher",
+			"suggestions": "Suggestions"
+		}
+	},
+	"auth": {
+		"emailVerification": {
+			"verifiyYourEmail": "Vérification de l'email",
+			"pleaseEnterCode": "Veuillez entrer les 4 chiffres du code envoyé à :"
+		},
+		"login": {
+			"pageTitle": "Connexion à votre compte",
+			"loginWithGoogle": "S'identifier avec Google",
+			"loginWithFacebook": "S'identifier avec Facebook",
+			"forgotPassword": "Mot de passe oublié?",
+			"doNotHaveAnAccount": "Vous n'avez pas de compte?"
+		},
+		"passwordResetConfirm": {
+			"emailSent": "Email envoyé!",
+			"pleaseCheckYourInbox": "Veuillez vérifier votre boîte mail et cliquez sur le lien reçu pour réinitialiser le mot de passe",
+			"didNotReceiveCode": "vous n'avez pas reçu le lien?"
+		},
+		"passwordReset": {
+			"forgotYourPassword": "Mot de passe oublié?",
+			"enterRegisteredEmail": "Veuillez entrer votre email d'enregistrement ci-dessous pour recevoir les instructions de réinitialisation du  mot de passe",
+			"rememberPassword": "Mot de passe retrouvé?"
+		},
+		"passwordUpdate": {
+			"passwordReset": "Réinitialisation du mot de passe",
+			"setupNewPassword": "Configurez votre nouveau mot de passe"
+		},
+		"signup": {
+			"pageTitle": "Créer un nouveau compte",
+			"signupWithGoogle": "S'inscrire avec Google",
+			"signupWithFacebook": "S'inscrire avec Facebook",
+			"alreadyHaveAnAccount": "Vous avez déjà un compte"
+		}
+	},
+	"account": {
+		"setting": {
+			"title": "Mon compte",
+			"personalDetails": "Mes Informations",
+			"paymentMethods": "Moyens de paiement",
+			"notificationSettings": "Paramètre des notifications"
+		},
+		"notificationSettings": {
+			"title": "Paramètre ded notifications",
+			"turnOffAll": "Désactiver toutes les notifications",
+			"importantNotifications": "Notifications importantes",
+			"newMessage": "Nouveau message",
+			"newOrder": "Nouvelle commande",
+			"orderUpdate": "Informations sur votre commande",
+			"newReview": "Nouvelle avis",
+			"marketingNotification": "Notifications commercial",
+			"newFollower": "Nouvel abonné",
+			"favouriteChefOffers": "Offres de vos Chefs favoris",
+			"discountActions": "Réductions",
+			"customerServiceNotifications": "Notifications du service client",
+			"customerService": "Service client"
+		},
+		"paymentMethods": {
+			"title": "Moyens de paiement"
+		},
+		"personalDetails": {
+			"title": "Mes informations"
+		}
+	},
+	"chef": {
+		"engagements": {
+			"yourEngagements": "Vos Engagements",
+			"ourEngagements": "Nos Engagements",
+			"keepItClean": {
+				"title": "Propreté",
+				"description": "Pendant la préparation des repas, garder la surface de préparation propre, laver vos mains régulièrement (nous recommandons l'utilisation de gants et d'une charlotte).<br/>Ne cuisinez pas si vous vous sentez malade."
+			},
+			"storeItWell": {
+				"title": "Stockage",
+				"description": "Assurez-vous que la nourriture conservée au réfrigérateur est à bonne température.<br/>Vérifier les dates de péremption de chaque ingrédient."
+			},
+			"cookItThrough": {
+				"title": "Cuisson",
+				"description": "Cuisinez les aliments à bonne température"
+			},
+			"keepItHalal": {
+				"title": "Halal",
+				"description": "Vous vous engagez à utiliser uniquement des ingrédients Halals pour préparer les repas vendus sur Halal-Homemade.<br/>Assurez-vous d'acheter la viande auprès d'une boucherie Halal."
+			},
+			"keepItProfessional": {
+				"title": "Soyez professionnel",
+				"description": "Chaque client a le droit de poster un avis après avoir reçu leur commande. Respecter les horaires annoncés.<br/>Emballer convenablement chaque plat (nous vous aiderons à obtenir l'emballage adéquat. Trouvez plus d'informations dans la section trucs et astuces)."
+			},
+			"findCustomers": {
+				"title": "Trouver des clients",
+				"description": "Nous allons vous connecter aux clients dans votre secteur. Nous prenons en charge le marketing et la publicité pour booster vos ventes."
+			},
+			"managePayments": {
+				"title": "Règlement",
+				"description": " the money will be automatically sent"
+			},
+			"customerSupport": {
+				"title": "Support client",
+				"description": "Notre équipe se tient à votre disposition."
+			},
+			"getApprovedSign": {
+				"title": "Obtenir le signe certifier",
+				"description": "Vous pouvez faire certifier votre profil si vous le souhaitez. Tenez-nous au courant"
+			},
+			"freeOfCharge": {
+				"title": "Accès gratuit",
+				"description": "Notre plateforme est gratuite et le restera. Les Home-Chef n'ont aucune charge à régler. Vous recevrez 100% du montant de vos ventes.<br/>Nous faisons payer au client 15% de frais sur le prix de la commande, pour gérer la maintenance et la continuité de l'application."
+			}
+		},
+		"instruction": {
+			"slide1": {
+				"title": "Flexibilité",
+				"description": "Tout est sous votre contrôle! Choisissez ce que vous voulez vendre, à quelle fréquence, quelle quantité et déterminer vous-même le prix de vos plat! Notre rôle est de vous trouver des clients."
+			},
+			"slide2": {
+				"title": "Pratique & facile",
+				"description": "Halal-Homemade permet de mieux gérer vos commandes, les clients et les paiements tout cela dans un même endroit."
+			},
+			"slide3": {
+				"title": "Confidentialité",
+				"description": "Vos informations personnelles et vos transactions sont entièrement sécurisées et nous ne les partageons pas avec des tiers."
+			}
+		},
+		"promote": {
+			"title": "Mon Profil",
+			"avatar": {
+				"comment": "Ajouter une photo augmente la confiance des clients et boostra vos ventes."
+			},
+			"cusinesYouSpecialisedIn": "Cuisines you are specialised in",
+			"howOftenYouPlanToSell": "À quelle fréquence pensez-vous vendre",
+			"referalCodeIfApplicable": "Code de parrainage (si applicable)",
+			"selectAvatarSource": "Choose picture from"
+		},
+		"dashboard": {
+			"title": "Chef dashboard",
+			"newOffer": "New offer",
+			"chefInbox": "Chef's inbox",
+			"manageIncomingOrder": "Manage incoming orders",
+			"myOffers": "My offers",
+			"aboutMe": "About me",
+			"myWallet": "My wallet",
+			"packaging": "Packaging",
+			"vacationMode": "Vacation mode",
+			"openOrders": "Open orders",
+			"sales": "Sales",
+			"avatar": {
+				"uploadNew": "Upload new"
+			}
+		},
+		"offer": {
+			"startFromScratch": "Start from scratch",
+			"startBasedOnExistingOffer": "Start based on existing offer",
+			"new": {
+				"title": "New offer",
+				"publishOffer": "Publish offer",
+				"offerPictureDescription": "Make your offer shine and attach up to 3 pictures.",
+				"uploadPictures": "Upload pictures",
+				"uploadMorePictures": "Upload more pictures",
+				"dishAndOfferDetails": "Dish and offer details",
+				"dishDetails": {
+					"title": "Dish details",
+					"dishOrigin": "Dish origin"
+				},
+				"deliveryOptions": {
+					"title": "Delivery options",
+					"pickupAddressDescription": "This information will only be available to the customer after you receive the order",
+					"freeDeliveryForMinimum": "Free delivery for a minimum order price of"
+				},
+				"price": {
+					"description": "* As matter of transparency we want to inform you that the price you indicate here is what you will get as a seller.<br/>The customer will be charged an additional commission. This commission is used to cover the cost of the platform infrastructure as well as the marketing activities to reach out to new customers."
+				}
+			},
+			"list": {
+				"title": "My offers",
+				"showOffer": "Show offer",
+				"viewOrders": "View orders",
+				"editOffer": "Edit offer",
+				"cancelOffer": "Cancel offer",
+				"deleteOffer": "Delete offer"
+			}
+		},
+		"inbox": {
+			"title": "Chef's inbox",
+			"typeInYourMessage": "Type in your message",
+			"clearSelectedNotifications": "Clear selected notifications",
+			"clearAllReadNotifications": "Clear all read notifications",
+			"clearSelectedConversations": "Clear selected conversartions",
+			"clearAllFinishedConversations": "Clear all finished conversations"
+		},
+		"chat": {
+			"blockUser": "Block user",
+			"reportUser": "Report user"
+		},
+		"orders": {
+			"title": "Incoming orders",
+			"instruction": {
+				"pending": {
+					"description": ""
+				},
+				"inPreparation": {
+					"description": " you can contact the customer through the chat function and discuss any special arrangements if needed. Upon handover of the meal"
+				},
+				"delivered": {
+					"description": ""
+				}
+			},
+			"pending": {
+				"title": "Pending orders",
+				"detail": {
+					"takeOrder": "Take order",
+					"rejectOrder": "Reject order"
+				}
+			},
+			"inPreparation": {
+				"title": "In-preparation",
+				"detail": {
+					"viewOrderDetails": "View order details",
+					"contactTheCustomer": "Contact the customer",
+					"addressDirection": "Address direction",
+					"confirmDelivery": "Confirm delivery"
+				}
+			},
+			"deliveryConfirmation": {
+				"title": "Delivery confirmation",
+				"theOrderNumber": "The order number",
+				"isMarkedAsDelivered": "is marked as delivered"
+			}
+		},
+		"wallet": {
+			"title": "My wallet",
+			"pendingAmount": "Pending amount",
+			"availableAmount": "Available amount",
+			"recentTransactions": "Recent transactions",
+			"activeYourWallet": "Active your wallet",
+			"activeYourWalletDescription": "Activate your wallet so we can start sending you the money to the indicated bank account",
+			"walletInformation": {
+				"title": "Wallet information",
+				"dataPolicy": "Your data is completely secured. We only share it with our financial partner to enable automatic pay-outs.",
+				"transferPolicy": ""
+			},
+			"updateYourWallet": "Update your wallet",
+			"chefWalletEnabledDescription": "Your wallet is enabled and withdrawal is possible!",
+			"chefWalletInVerificationDescription": "Your wallet is in verification process. Please wait until it's completed.",
+			"chefWalletVerificationFailedDescription": "More information is needed to activate your wallet. Please tap update button above to provide more information.",
+			"chefWalletSuspendedDescription": "Your wallet is suspended now. Please contact support to activate it agian."
+		},
+		"vacation": {
+			"title": "Vacation mode",
+			"modeToggleDescription": "Open vacation: Put all your offers on-hold and stop receiving new orders.",
+			"definedPeriod": "For a defined period*: ",
+			"description": "The customers will still be able to place new orders that should be prepared after the vacation time is over."
+		},
+		"packaging": {
+			"title": "Packaging",
+			"description1": "In order to support you with the packaging for the meals that you will be offering in our platform. We have secured an exclusive deal with our partner",
+			"description2": "Please apply the following code at the checkout to secure 20% discount on all your future orders.",
+			"copyCode": "Copy code"
+		},
+		"profile": {
+			"title": "Chef profile"
+		}
+	},
+	"permission": {
+		"location": {
+			"title": "Utiliser votre localisation",
+			"description": "Partagez votre localisation, nous trouverons les offres disponible près de chez vous."
+		}
+	},
+	"phone": {
+		"verification": {
+			"title": "Vérification du numéro de téléphone",
+			"enterPhoneNumber": "Entrer votre numéro de téléphone pour vérifier votre compte",
+			"typeSMSCode": "Taper les 4 chiffres du code reçu par SMS"
+		}
+	},
+	"order": {
+		"review": {
+			"question": "How would you rate this dish and contact with the chef?"
+		}
+	}
+}

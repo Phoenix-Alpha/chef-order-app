@@ -1,0 +1,10 @@
+{
+  "name": "halal-homemade-app",
+  "integrations": {
+    "cordova": {
+      "enabled": false
+    },
+    "capacitor": {}
+  },
+  "type": "angular"
+}

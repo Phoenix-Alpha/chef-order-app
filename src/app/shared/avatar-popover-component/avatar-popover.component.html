@@ -1,0 +1,13 @@
+<ion-list>
+  <ion-list-header>
+    <ion-item>
+      <ion-label>{{ 'chef.promote.selectAvatarSource' | translate }}</ion-label>
+    </ion-item>
+  </ion-list-header>
+  <ion-item button (click)="onSelection('PhotoGallery')" lines="full">
+    Photo Gallery
+  </ion-item>
+  <ion-item button (click)="onSelection('Camera')" lines="none">
+    Camera
+  </ion-item>
+</ion-list>

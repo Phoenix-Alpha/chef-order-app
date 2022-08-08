@@ -1,0 +1,42 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title class="ion-text-center">{{ 'phone.verification.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="page-wrapper">
+    <div class="phone-verification-slide">
+      <div class="image-section">
+        <ion-img src="../../assets/images/Group 936.png" class="phone-image"></ion-img>
+      </div>
+      <div class="description-section font-sanspro description m-15 ion-text-wrap ion-text-center">
+        {{ 'phone.verification.typeSMSCode' | translate }}
+      </div>
+      <ion-grid class="phone-verification-grid m-10">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-top">
+          <ion-col size="12">
+            <div class="code-input-section">
+              <code-input
+                [codeLength]="6"
+                (codeCompleted)="onCodeCompleted($event)">
+              </code-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-top">
+          <ion-col size="12">
+            <ion-button (click)="onClickPhoneCodeContinue()" class="item-continue-btn ion-no-margin" expand="block">
+              {{ 'global.button.continue' | translate }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

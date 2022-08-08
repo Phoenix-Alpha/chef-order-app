@@ -1,0 +1,106 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/wallet" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.wallet.walletInformation.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper p-20">
+    <div>
+      {{ 'chef.wallet.walletInformation.dataPolicy' | translate }}
+    </div>
+    <form [formGroup]="walletInfoForm" class="w-100" >
+      <ion-grid class="w-100 ion-no-padding">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.firstName' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Karim" formControlName="firstName" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.lastName' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Ahmed" formControlName="lastName" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.birthdate' | translate }}*</ion-label>
+              <!-- <ion-input class="wallet-input font-sanspro" placeholder="Karim Ahmed" formControlName="birthdate" > </ion-input>-->
+              <ion-datetime
+                displayFormat="DD-MM-YYYY"
+                formControlName="birthdate"
+                class="wallet-input font-sanspro"
+                placeholder="Karim Ahmed"
+              >
+              </ion-datetime>
+              <ion-icon src="assets/images/down-arrow.svg" class="input-arrow-icon ion-align-self-end" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.streetAndHouseNumber' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Attach your address line" formControlName="billingAddressLine" >
+              </ion-input>
+              <ion-icon src="assets/images/right-arrow.svg" class="input-arrow-icon ion-align-self-end" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.city' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Attach your city" formControlName="billingAddressCity" >
+              </ion-input>
+              <ion-icon src="assets/images/right-arrow.svg" class="input-arrow-icon ion-align-self-end" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.postCode' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Attach your postcode" formControlName="billingAddressPostcode" >
+              </ion-input>
+              <ion-icon src="assets/images/right-arrow.svg" class="input-arrow-icon ion-align-self-end" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item lines="full" detail="false" class="wallet-input-item">
+              <ion-label class="wallet-input-placeholder font-poppins" position="stacked">{{ 'global.label.bankAccount' | translate }}*</ion-label>
+              <ion-input class="wallet-input font-sanspro" placeholder="Attach your IBAN" formControlName="IBAN" >
+              </ion-input>
+              <ion-icon src="assets/images/right-arrow.svg" class="input-arrow-icon ion-align-self-end" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <div class="mt-auto mb-30 w-100">
+      {{ 'chef.wallet.walletInformation.transferPolicy' | translate }}
+    </div>
+    <ion-grid class="w-100 imb-50">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button class="auth-submit-btn" expand="block" (click)="onConfirm()" [disabled]="(apiStatus$ | async) === 'LOADING'">{{ 'global.button.confirm' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

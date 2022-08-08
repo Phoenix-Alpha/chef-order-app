@@ -1,0 +1,475 @@
+<!-- <ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'account.personalDetails.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="personalDetailsForm" class="mh-100">
+    <div class="page-wrapper">
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <ion-icon slot="end" src="../../assets/images/edit.svg" (click)="onClickPersonalInfoEdit()"></ion-icon>
+              <ion-label class="account-section-title font-poppins">{{ 'global.label.personalInformation' | translate }}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.firstName' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="Karim" formControlName="firstName"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.firstName">
+                <div class="error-message" *ngIf="firstName.hasError(validation.type) && (firstName.dirty || firstName.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.lastName' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="Nasser" formControlName="lastName"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.lastName">
+                <div class="error-message" *ngIf="lastName.hasError(validation.type) && (lastName.dirty || lastName.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.phoneNumber' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="+3361258699685" formControlName="phoneNumber"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.phoneNumber">
+                <div class="error-message" *ngIf="phoneNumber.hasError(validation.type) && (phoneNumber.dirty || phoneNumber.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.emailAddress' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="nasser.karim@gmail.com" formControlName="email"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message" *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.password' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="**********" type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.password">
+                <div class="error-message" *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <ion-icon slot="end" src="../../assets/images/edit.svg" (click)="onClickAddressEdit()"></ion-icon>
+              <ion-label class="account-section-title font-poppins">{{ 'global.label.address' | translate }}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.streetAndHouseNumber' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="mainstreet 123" formControlName="address"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.address">
+                <div class="error-message" *ngIf="address.hasError(validation.type) && (address.dirty || address.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.postCode' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="12345" formControlName="postCode"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.postCode">
+                <div class="error-message" *ngIf="postCode.hasError(validation.type) && (postCode.dirty || postCode.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins" position="stacked">{{ 'global.label.city' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="Paris" formControlName="city"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.city">
+                <div class="error-message" *ngIf="city.hasError(validation.type) && (city.dirty || city.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content> -->
+
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/home" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'account.personalDetails.title' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button id="applyBtn" #applyBtn (click)="onClickApplyButton()" class="apply-button">
+        <ion-icon name="checkmark" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="personalDetailsForm" class="mh-100">
+    <div class="page-wrapper">
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <!-- <ion-label class="account-section-title font-poppins">{{ 'global.label.personalDetails' | translate }}</ion-label> -->
+              <ion-label class="account-section-title font-poppins">Personal details</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col size="4" class="ion-no-padding w-100 h-100">
+            <ion-avatar class="position-relative flex-container align-items-center justify-content-center">
+              <img src="../../assets/images/avatar.png" class="default-avatar" />
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="8" class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+              <ion-col size="12" class="ion-no-padding">
+                <ion-item lines="none" detail="false" class="account-input-item">
+                  <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.firstName' | translate }}</ion-label>
+                  <ion-input class="account-input font-sanspro" placeholder="Karim" formControlName="firstName"></ion-input>
+                </ion-item>
+                <div class="w-100"></div>
+                <div class="ion-padding-horizontal-10 validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.firstName">
+                    <div class="error-message" *ngIf="firstName.hasError(validation.type) && (firstName.dirty || firstName.touched)">
+                      {{ validation.message | translate }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+              <ion-col size="12" class="ion-no-padding">
+                <ion-item lines="none" detail="false" class="account-input-item">
+                  <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.lastName' | translate }}</ion-label>
+                  <ion-input class="account-input font-sanspro" placeholder="Nasser" formControlName="lastName"></ion-input>
+                </ion-item>
+                <div class="w-100"></div>
+                <div class="ion-padding-horizontal-10 validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.lastName">
+                    <div class="error-message" *ngIf="lastName.hasError(validation.type) && (lastName.dirty || lastName.touched)">
+                      {{ validation.message | translate }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.birthdate' | translate }}</ion-label>
+              <ion-datetime
+                displayFormat="DD-MM-YYYY"
+                formControlName="birthdate"
+                class="account-input font-sanspro"
+                placeholder="05.05.2000"
+              >
+              </ion-datetime>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.birthdate">
+                <div class="error-message" *ngIf="birthdate.hasError(validation.type) && (birthdate.dirty || birthdate.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <!-- <ion-label class="account-section-title font-poppins">{{ 'global.label.personalDetails' | translate }}</ion-label> -->
+              <ion-label class="account-section-title font-poppins">Contact details</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-start ion-justify-content-center ion-no-padding">
+          <ion-col size="5" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <!-- <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.phoneCountryCode' | translate }}</ion-label> -->
+              <ion-label class="account-input-placeholder font-poppins">Country</ion-label>
+              <!-- <ion-input class="account-input font-sanspro" formControlName="phoneCountryCode"></ion-input> -->
+              <ionic-selectable
+                item-content
+                formControlName="phoneCountryCode"
+                itemTextField="name"
+                itemValueField="dialCode"
+                [canSearch]="false"
+                closeButtonText="'Close'"
+                closeButtonSlot="'end'"
+                class="account-input font-sanspro"
+                modalCssClass="ionic-tel-input-modal"
+                searchFailText="'No countries found'"
+                searchPlaceholder="'Enter country name'"
+                [shouldBackdropClose]="true"
+                [shouldFocusSearchbar]="true"
+                (onChange)="onCodeChange($event)"
+                [items]="phoneCountryCodes">
+                <ng-template ionicSelectableTitleTemplate>
+                  Select country
+                </ng-template>
+                <ng-template ionicSelectableValueTemplate let-country="value">
+                  <div class="custom-value-template-class flex-container align-items-center justify-content-space-between">
+                    <span class="mr-5">{{ country.name }}</span>
+                    <span>(+{{ country.dialCode }})</span>
+                    <ion-icon name="chevron-down"></ion-icon>
+                  </div>
+                </ng-template>
+                <ng-template ionicSelectableIconTemplate>
+                  <div class="custom-icon-template-class">
+                    <div *ngIf="separateDialCode" class="divider"></div>
+                    <span *ngIf="separateDialCode">{{ dialCodePrefix}}{{country.dialCode }}</span>
+                  </div>
+                </ng-template>
+                <ng-template ionicSelectableItemTemplate let-country="item">
+                    <span class="ion-margin-end">{{ country.name }}</span>
+                    <span *ngIf="separateDialCode">{{ dialCodePrefix }}{{ country.dialCode }}</span>
+                </ng-template>
+                <ng-template ionicSelectableItemEndTemplate let-country="item">
+                  <span class="flag-icon flag-icon-{{country.flagClass}}"></span>
+                </ng-template>
+              </ionic-selectable>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.phoneCountryCode">
+                <div class="error-message" *ngIf="phoneCountryCode.hasError(validation.type) && (phoneCountryCode.dirty || phoneCountryCode.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col size="7" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.phoneNumber' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" formControlName="phoneNumber"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.phoneNumber">
+                <div class="error-message" *ngIf="phoneNumber.hasError(validation.type) && (phoneNumber.dirty || phoneNumber.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.emailAddress' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="nasser.karim@gmail.com" formControlName="email"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message" *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+        <!-- <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="11" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.password' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="**********" type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.password">
+                <div class="error-message" *ngIf="password.hasError(validation.type) && (password.dirty || password.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
+
+      <ion-grid>
+        <!-- <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <ion-icon slot="end" src="../../assets/images/edit.svg" (click)="onClickAddressEdit()"></ion-icon>
+              <ion-label class="account-section-title font-poppins">{{ 'global.label.address' | translate }}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row> -->
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-section-item">
+              <!-- <ion-label class="account-section-title font-poppins">{{ 'global.label.personalDetails' | translate }}</ion-label> -->
+              <ion-label class="account-section-title font-poppins">Personal address</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.streetAndHouseNumber' | translate }}</ion-label>
+              <input class="account-input font-sanspro" placeholder="mainstreet 123" formControlName="address" #address id="address" />
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.address">
+                <div class="error-message" *ngIf="address.hasError(validation.type) && (address.dirty || address.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="6" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.postCode' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="12345" formControlName="postCode"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.postCode">
+                <div class="error-message" *ngIf="postCode.hasError(validation.type) && (postCode.dirty || postCode.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col size="6" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.city' | translate }}</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="Paris" formControlName="city"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.city">
+                <div class="error-message" *ngIf="city.hasError(validation.type) && (city.dirty || city.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-no-padding ion-margin-top">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none" detail="false" class="account-input-item">
+              <!-- <ion-label class="account-input-placeholder font-poppins">{{ 'global.label.country' | translate }}</ion-label> -->
+              <ion-label class="account-input-placeholder font-poppins">Country</ion-label>
+              <ion-input class="account-input font-sanspro" placeholder="mainstreet 123" formControlName="country"></ion-input>
+            </ion-item>
+            <div class="w-100"></div>
+            <div class="ion-padding-horizontal-10 validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.country">
+                <div class="error-message" *ngIf="country.hasError(validation.type) && (country.dirty || country.touched)">
+                  {{ validation.message | translate }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <ion-grid class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-bottom">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+    </div>
+  </form>
+</ion-content>
+

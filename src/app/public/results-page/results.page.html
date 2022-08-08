@@ -1,0 +1,25 @@
+<ion-tabs (ionTabsDidChange)="changeActiveTab()"  #menuTabs>
+  <ion-tab-bar color="primary" slot="bottom">
+    <ion-tab-button tab="filter" [ngClass]="activeTab === 'filter' ? 'active-tab' : ''">
+      <ion-icon name="{{activeTab === 'filter' ? 'filter-active' : 'filter'}}"></ion-icon>
+      <ion-label>{{ 'Filter' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="map" [ngClass]="activeTab === 'map' ? 'active-tab' : ''">
+      <ion-icon name="{{activeTab === 'map' ? 'map-active' : 'map'}}"></ion-icon>
+      <ion-label>{{ 'Map' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="results-list" [ngClass]="activeTab === 'results-list' ? 'active-tab' : ''">
+      <ion-icon name="{{activeTab === 'results-list' ? 'results-active' : 'results'}}"></ion-icon>
+      <ion-label>{{ 'Results' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="favourite" [ngClass]="activeTab === 'favourite' ? 'active-tab' : ''">
+      <ion-icon name="{{activeTab === 'favourite' ? 'favorite-active' : 'favorite'}}"></ion-icon>
+      <ion-label>{{ 'Favourite' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="basket" [ngClass]="activeTab === 'basket' ? 'active-tab' : ''">
+      <ion-icon *ngIf="(orders$ | async).length > 0" name="{{activeTab === 'basket' ? 'basket-active' : 'basket'}}"></ion-icon>
+      <ion-icon *ngIf="(orders$ | async).length === 0" name="{{activeTab === 'basket' ? 'empty-basket-active' : 'empty-basket'}}"></ion-icon>
+      <ion-label>{{ 'Basket' | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

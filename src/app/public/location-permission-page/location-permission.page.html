@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="location-permission-wrapper flex-container align-items-center justify-content-center w-100 h-100">
+    <div class="location-permission-section">
+      <ion-text class="permission-title ion-text-center">{{ 'permission.location.title' | translate }}</ion-text>
+      <ion-img src="../assets/images/location-permission.svg" class="location-permission-icon mt-15"></ion-img>
+      <div class="w-100 flex-container align-items-center justify-content-center mt-15 mb-30">
+        <ion-text class="permission-description ion-text-center">{{ 'permission.location.description' | translate }}</ion-text>
+      </div>
+      <div class="btn-wrapper">
+        <div class="btn-block-wrapper">
+          <ion-button class="permission-allow-btn" (click)="onClickAllow()" expand="block">{{ 'global.button.allow' | translate }}</ion-button>
+        </div>
+      </div>
+      <div class="btn-wrapper">
+        <div class="btn-block-wrapper">
+          <ion-button class="permission-skip-btn" (click)="onClickSkip()" expand="block" color="secondary">{{ 'global.button.skip' | translate }}</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

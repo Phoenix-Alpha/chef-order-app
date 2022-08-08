@@ -1,0 +1,38 @@
+:host {
+    background: white;
+  }
+  
+  ion-toolbar {
+    --border-width: 0 !important;
+    ion-icon {
+      font-size: 3rem;
+    }
+    div.title-section {
+      position: absolute; 
+      top: 0; 
+      left: 48px;
+      right: 48px;
+      height: 100%;
+      width: calc(100% - 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ion-title {
+        font-size: 2.2rem;
+        font-weight: 400;
+        width: 100%;
+        padding-inline-start: unset !important;
+        padding-inline-end: unset !important;
+      }
+      ion-title.chatSubtitle {
+          opacity: 0.5;
+      }
+    }
+  }
+  
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

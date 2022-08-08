@@ -1,0 +1,174 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/offer/0" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.offer.new.dishDetails.title' | translate }}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+    <div class="page-wrapper">
+      <form [formGroup]="offerDishDetailCommonForm" class="h-100">
+        <div class="flex-container flex-direction-row align-items-center mt-25 ml-10 mr-10">
+          <div class="font-weight-heavy ion-text-nowrap mr-10">{{ 'chef.offer.new.dishDetails.title' | translate }}</div>
+          <ion-select 
+            class="red-dropdown-icon"
+            placeholder="Dish origin"
+            multiple="true"
+            formControlName="cuisines">
+            <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+            <ion-select-option value="Indian">Indian</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="w-100"></div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.cuisines">
+            <div class="error-message" *ngIf="cuisines.hasError(validation.type) && (cuisines.dirty || cuisines.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="highlighted pt-5 pl-5 pb-5">
+          <div class="flex-container flex-direction-row align-items-center pl-10 pt-5 pb-5">
+            <div class="font-weight-medium pr-10">{{ 'global.label.tags' | translate }}</div>
+            <app-ion-chip-checkable-list
+              [itemList]="tagList"
+              [isSmall]="true"
+              [isMultiple]="true"
+              [isCheckable]="true"
+              [selectedItems]="dishDetailInfo.tags"
+              (onChanged)="onTagsChanged($event)">
+            </app-ion-chip-checkable-list>
+          </div>
+          <div class="flex-container flex-direction-row align-items-center pl-10 pt-5 pb-5">
+            <div class="font-weight-medium pr-10">{{ 'global.label.allergens' | translate }}</div>
+            <app-ion-chip-checkable-list
+              [itemList]="allergenList"
+              [isSmall]="true"
+              [isMultiple]="true"
+              [isCheckable]="true"
+              [selectedItems]="dishDetailInfo.allergens"
+              (onChanged)="onAllergensChanged($event)">
+            </app-ion-chip-checkable-list>
+          </div>
+          <div class="flex-container flex-direction-row align-items-center pl-10 pr-10">
+            <div class="font-weight-medium pr-10">{{ 'global.label.portionWeight' | translate }} <span>({{ 'global.label.estimation' | translate }})</span></div>
+            <ion-input
+              class="primary-underline-input ion-text-center"
+              type="number"
+              placeholder="ex. 300"
+              formControlName="weight">
+            </ion-input>
+            <div class="font-weight-medium">{{ 'global.label.gramm' | translate }}</div>
+          </div>
+          <div class="w-100"></div>
+          <div class="mr-16 ml-16 validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.weight">
+              <div class="error-message" *ngIf="weight.hasError(validation.type) && (weight.dirty || weight.touched)">
+                {{ validation.message | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </form>
+      <div class="flex-container flex-direction-row align-items-center mt-25 ml-10 mr-10">
+        <div class="font-weight-heavy ion-text-nowrap mr-10">{{ 'global.label.offerType' | translate }}*</div>
+        <app-ion-chip-checkable-list
+          [itemList]="offerTypeList"
+          [isSmall]="false"
+          [isMultiple]="false"
+          [isCheckable]="true"
+          [selectedItems]="dishDetailInfo.offerType"
+          (onChanged)="onOfferTypeChanged($event)">
+        </app-ion-chip-checkable-list>
+      </div>
+      <form [formGroup]="offerDishDetailPreorderForm" *ngIf="dishDetailInfo.offerType == 'PREORDER'" class="highlighted pt-5 pl-5 pb-5">
+        <div class="flex-container flex-direction-row align-items-center pl-10 pr-10">
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.servingDate' | translate }}</div>
+          <input
+            class="serving-date-range-input ion-text-center" 
+            type="text"
+            mask="d0.M0.0000 Hh:m0 - Hh:m0"
+            [dropSpecialCharacters]="false"
+            [leadZeroDateTime]="true"
+            placeholder="DD.MM.YYYY HH:MM - HH:MM"
+            formControlName="servingDate">
+        </div>
+        <div class="w-100"></div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.servingDate">
+            <div class="error-message" *ngIf="servingDate.hasError(validation.type) && (servingDate.dirty || servingDate.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex-container flex-direction-row align-items-center pl-10 pr-10">
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.orderUntil' | translate }}</div>
+          <input
+            class="serving-date-range-input ion-text-center" 
+            type="text"
+            mask="d0.M0.0000 Hh:m0"
+            [dropSpecialCharacters]="false"
+            [leadZeroDateTime]="true"
+            placeholder="DD.MM.YYYY HH:MM"
+            formControlName="orderUntil">
+        </div>
+        <div class="w-100"></div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.orderUntil">
+            <div class="error-message" *ngIf="orderUntil.hasError(validation.type) && (orderUntil.dirty || orderUntil.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex-container flex-direction-row align-items-center pl-10 pr-10">
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.quantity' | translate }}</div>
+          <ion-input 
+            class="primary-underline-input ion-text-center"
+            type="text"
+            placeholder="ex. 10"
+            formControlName="maxQuantity">
+          </ion-input>
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.dishes' | translate }}</div>
+        </div>
+        <div class="w-100"></div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.maxQuantity">
+            <div class="error-message" *ngIf="maxQuantity.hasError(validation.type) && (maxQuantity.dirty || maxQuantity.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+      </form>
+      <form [formGroup]="offerDishDetailOnDemandForm" *ngIf="dishDetailInfo.offerType == 'ONDEMAND'" class="highlighted pt-5 pl-5 pb-5">
+        <div class="flex-container flex-direction-row align-items-center pl-10 pr-10">
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.noticePeriod' | translate }}</div>
+          <ion-input
+            class="primary-underline-input ion-text-center"
+            type="number"
+            placeholder="ex. 24"
+            formControlName="minPreorderHours">
+          </ion-input>
+          <div class="font-weight-medium ion-text-nowrap">{{ 'global.label.hours' | translate }}</div>
+        </div>
+        <div class="w-100"></div>
+        <div class="mr-16 ml-16 validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.minPreorderHours">
+            <div class="error-message" *ngIf="minPreorderHours.hasError(validation.type) && (minPreorderHours.dirty || minPreorderHours.touched)">
+              {{ validation.message | translate }}
+            </div>
+          </ng-container>
+        </div>
+      </form>
+      <ion-grid class="mt-auto w-100 imb-50">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button class="auth-submit-btn" expand="block" (click)="onSave()">{{ 'global.button.save' | translate }}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+</ion-content>

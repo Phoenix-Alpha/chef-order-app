@@ -1,0 +1,88 @@
+:host {
+  background: white;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ion-list.offer-list {
+  width: 100%;
+  padding: 15px 10px 15px 10px;
+}
+
+ion-item.offer-item {
+  position: relative;
+  --color: black;
+  --padding-top: 0px !important;
+  --padding-bottom: 0px !important;
+  --inner-padding-top: 0px !important;
+  --inner-padding-bottom: 0px !important;
+  --detail-icon-color: var(--ion-color-primary);
+  --detail-icon-font-size: 2.8rem;
+  border-radius: 60px;
+  box-shadow: 1px 1px 2px 1px #00000033;
+  margin: 0 0 20px 0 !important;
+  ion-avatar{
+    width: 80px !important;
+    height: 80px !important;
+    margin: 10px 0 !important;
+    img.offer-item-avatar {
+      width: 80px !important;
+      height: 80px !important;
+    }
+  }
+  div.offer-info {
+    width: 100%;
+    height: 100%;
+    // padding: 15px 0 10px 0 !important;
+    div.offer-header {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      div.offer-title {
+        font-size: 1.6rem;
+        color: black;
+      }
+      div.offer-viewed {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        color: black;
+      }
+    }
+    div.offer-body {
+      font-size: 1.6rem;
+      color: #636363;
+    }
+  }
+}
+
+ion-badge.offer-info-badge {
+  --background: #FEC900;
+  --color: #636363;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 10px
+}
+
+ion-icon.offer-info-icon {
+  width: 20px;
+  height: 20px;
+}
+
+ion-button.offer-item-edit-btn {
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+  --ripple-color: var(--ion-color-primary);
+  border: none !important;
+  ion-icon.offer-item-edit-icon {
+    color: black !important;
+  }
+}

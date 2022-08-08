@@ -1,0 +1,36 @@
+<ion-header class="header-no-border">
+  <ion-toolbar class="position-relative" color="primary"> 
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public/chef/dashboard" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title-section">
+      <ion-title color="secondary ion-text-center">{{ 'chef.orders.title' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end" class="right-btn-group">
+      <ion-button id="infoBtn" #settingBtn (click)="onClickInfoButton($event)" class="info-button">
+        <ion-icon src="../../assets/images/info.svg" class="info-btn-icon" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <div class="page-wrapper position-relative">
+    <ion-tabs #tabs (ionTabsWillChange)="tabWillChange($event)">
+      <ion-tab-bar slot="top">
+        <ion-tab-button tab="pending">
+          <ion-label>{{ 'global.label.pending' | translate }}</ion-label>
+          <div *ngIf="currentTab =='pending'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="inprep">
+          <ion-label>{{ 'global.label.inPrep' | translate }}</ion-label>
+          <div *ngIf="currentTab =='inprep'" class="tab-decorator"></div>
+        </ion-tab-button>
+        <ion-tab-button tab="delivered">
+          <ion-label>{{ 'global.label.delivered' | translate }}</ion-label>
+          <div *ngIf="currentTab =='delivered'" class="tab-decorator"></div>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-content>

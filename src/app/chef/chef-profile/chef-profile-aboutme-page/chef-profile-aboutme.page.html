@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="overflow-y-auto transparent">
+  <form [formGroup]="chefProfileForm" class="h-100">
+    <div class="page-wrapper">
+      <ion-button class="about-me-edit-btn text-transform-none ion-align-self-end" (click)="onClickEditButton()">
+        <div class="flex-container flex-direction-col align-items-center ion-justify-content-center text-overflow-ellipsis">
+          <ion-icon src="../../assets/images/edit.svg" class="edit-btn-icon" color="secondary"></ion-icon>
+          <span *ngIf="!isEditable">{{ 'global.label.edit' | translate }}</span>
+          <span *ngIf="isEditable">{{ 'global.label.save' | translate }}</span>
+        </div>
+      </ion-button>
+      <div class="chef-about-me-item">
+        <ion-textarea 
+          placeholder=""
+          rows="5"
+          class="about-me-textarea"
+          formControlName="aboutMe"
+        >
+        </ion-textarea>
+      </div>
+      <div class="chef-dropdown-item">
+        <ion-label position="stacked">{{ 'global.label.cuisines' | translate }}</ion-label>
+        <ion-select
+          class="red-dropdown-icon"
+          multiple="true"
+          formControlName="cuisines"
+        >
+          <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+          <ion-select-option value="Indian">Indian</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="chef-about-me-item">
+        <ion-label class="font-poppins" position="stacked">{{ 'global.label.dishes' | translate }}</ion-label>
+        <ion-textarea 
+          readonly
+          placeholder=""
+          rows="2"
+          class="about-me-textarea"
+          [value]="dishes"       
+        >
+        </ion-textarea>
+      </div>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,21 @@
+<div class="ngx-timepicker-control" [ngClass]="{'ngx-timepicker-control--active': isFocused}">
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <input class="ngx-timepicker-control__input"
+           maxlength="2"
+           [ngModel]="time | timeParser: timeUnit | timeLocalizer: timeUnit : true"
+           (ngModelChange)="onModelChange($event)"
+           [placeholder]="placeholder"
+           [disabled]="disabled"
+           (keydown)="onKeydown($event)"
+           (keypress)="changeTime($event)"
+           (focus)="onFocus()"
+           (blur)="onBlur()">
+    <div class="ngx-timepicker-control__arrows">
+            <span class="ngx-timepicker-control__arrow" role="button" (click)="increase()">
+                &#9650;
+            </span>
+        <span class="ngx-timepicker-control__arrow" role="button" (click)="decrease()">
+                &#9660;
+            </span>
+    </div>
+</div>

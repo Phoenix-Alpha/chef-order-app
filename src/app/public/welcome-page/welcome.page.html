@@ -1,0 +1,14 @@
+<ion-content [fullscreen]="true" (click)="onClickPage()">
+  <div class="welcome-wrapper flex-container align-items-center justify-content-center position-relative w-100 h-100">
+    <div class="welcome-greetings-section">
+      <div class="w-100 flex-container align-items-center justify-content-center">
+        <ion-text class="ion-text-center">Salamu'Alaykom</ion-text>
+      </div>
+      <div class="w-100 flex-container align-items-center justify-content-center">
+        <ion-text class="ion-text-center">{{ firstName }}</ion-text>
+      </div>
+      <img src="../assets/images/welcome-emoticon.png" class="welcome-emoticon">
+    </div>
+    <img src="../assets/images/welcome-logo.png" class="welcome-logo">
+  </div>
+</ion-content>

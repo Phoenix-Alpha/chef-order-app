@@ -1,0 +1,113 @@
+ion-content {
+  --background: white;
+}
+
+ion-grid.no-padding-grid {
+  --ion-grid-padding: 0;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+  ion-buttons {
+    ion-back-button {
+      --color: #4A4949;
+      --icon-font-size: 3.5rem !important;
+    }
+  }
+
+  div.title-section {
+    color: #4A4949;
+    position: absolute; 
+    top: 0; 
+    left: 48px;
+    right: 48px;
+    height: 100%;
+    width: calc(100% - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      width: 100%;
+      padding-inline-start: unset !important;
+      padding-inline-end: unset !important;
+    }
+  }
+}
+
+.phone-verification-slide {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5%;
+  .image-section {
+    margin-top: 15vw !important;
+    max-height: 30% !important;
+    height: 200px !important;
+    ion-img.phone-image {
+      height: 100%;
+      width: auto;
+    }
+  }
+  .description-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  .btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    width: 100%;
+    .btn-block-wrapper {
+      width: 53.3%;
+      height: 100%;
+    }
+  }
+}
+
+.swiper-slide {
+  display: block;
+}
+
+.description {
+  font-size: 2rem !important;
+  color: #4A4A4A !important;
+  line-height: 1.67 !important;
+}
+
+.code-input-section {
+  max-width: 300px !important;
+  code-input {
+    font-size: 2rem;
+    --item-spacing: 5px;
+    --item-height: 50px;
+    --item-border: 1px solid #707070;
+    --item-border-bottom: 1px solid #707070;
+    --item-border-has-value: 1px solid #D48051;
+    --item-border-bottom-has-value: 1px solid #D48051;
+    --item-shadow-focused: none;
+    --item-border-radius: 12px;
+    --item-background: white;
+  }
+}
+
+ion-button.item-continue-btn {
+  --background: var(--ion-color-primary);
+  --border-radius: 2.4rem;
+  --color: white;
+  --min-height: 4.2rem;
+  height: 4.2rem !important;
+  font-size: 1.6rem;
+}
+
+ion-grid.phone-verification-grid {
+  border-radius: 2.4rem;
+  box-shadow: 0px 2px 4px #0000004D;
+}

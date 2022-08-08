@@ -1,0 +1,43 @@
+<ion-header class="header-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/public" icon="chevron-back-circle-outline">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="transparent">
+  <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-top">
+      <ion-col size="9">
+        <ion-img src="../../assets/images/email-send.png" style="height:150px;"></ion-img>  
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-label color="secondary" class="ion-padding-horizontal-10 font-title">{{ 'auth.emailVerification.verifiyYourEmail' | translate }}</ion-label>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-text class="ion-padding-horizontal-10 font-sub-title ion-text-center">{{ 'auth.emailVerification.pleaseEnterCode' | translate }}</ion-text>
+      <ion-text class="ion-padding-horizontal-10 font-sub-title ion-text-center">{{ verifyEmail }}</ion-text>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-horizontal-5 ion-padding-vertical">
+      <div class="code-input-section">
+        <code-input
+          [codeLength]="6"
+          (codeChanged)="onCodeChanged($event)"
+          (codeCompleted)="onCodeCompleted($event)">
+        </code-input>
+      </div>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-horizontal-5 ion-padding-vertical">
+      <a class="ion-padding-horizontal-10 auth-label-small-link" (click)="onResendCode()">{{ 'global.label.resendCode' | translate }}</a>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center ion-margin-vertical">
+      <ion-col size="9">
+        <ion-button class="auth-submit-btn" expand="block" (click)="onConfirm()">{{ 'global.button.confirm' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<div class="background-gradient-wrapper"></div>
